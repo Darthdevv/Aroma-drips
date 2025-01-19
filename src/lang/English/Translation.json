@@ -1,0 +1,8 @@
+{
+    "Sidebar":{
+        "Dashboard":"Dashboard",
+        "Users":"Users",
+        "Settings":"Settings",
+        "Logout":"Logout"
+    }
+}
