@@ -53,7 +53,7 @@ export const SidebarProvider = ({
 
 export const Sidebar = ({
   children,
-  open,
+  // open,
   setOpen,
   animate,
 }: {
@@ -63,7 +63,7 @@ export const Sidebar = ({
   animate?: boolean;
 }) => {
   return (
-    <SidebarProvider open={open} setOpen={setOpen} animate={animate}>
+    <SidebarProvider open={true} setOpen={setOpen} animate={animate}>
       {children}
     </SidebarProvider>
   );
@@ -88,7 +88,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
+          "h-full hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
           className
         )}
         animate={{
@@ -114,7 +114,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full"
+          "h-10 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full"
         )}
         {...props}
       >
@@ -164,23 +164,33 @@ export const SidebarLink = ({
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
+  const isActive = window.location.search.includes(link.href.split("=")[1]);
+
   return (
     <Link
       to={link.href}
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        "flex items-center justify-start gap-2 group/sidebar py-2 transition-all duration-300 px-4",
+        isActive
+          ? "text-[#ff8b43] border-r-4 border-[#ff8b43]"
+          : "text-black",
         className
       )}
       {...props}
     >
-      {link.icon}
+      {React.cloneElement(link.icon as React.ReactElement, {
+        color: isActive ? "#ff8b43" : "#000000",
+      })}
 
       <motion.span
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className={cn(
+          "text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0",
+          isActive ? "text-[#ff8b43]" : ""
+        )}
       >
         {link.label}
       </motion.span>
