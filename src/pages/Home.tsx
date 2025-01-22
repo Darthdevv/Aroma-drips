@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import adsCamp1 from '@/assets/images/ads2.png'
-import adsCamp2 from '@/assets/images/ads1.png'
+import adsCamp1 from '@/assets/images/ads2.png';
+import adsCamp2 from '@/assets/images/ads1.png';
 import drink1 from '@/assets/images/drink1.png';
 import drink2 from '@/assets/images/drink2.png';
 import drink3 from '@/assets/images/drink3.png';
@@ -74,11 +74,11 @@ const Home = () => {
                             transition={{ duration: 0.5, delay: drink.id * 0.2 }}
                             whileHover={{ scale: 1.05 }}
                         >
-                            <div className='w-[17.875rem] h-[16.063rem] bg-[#f8f8f8]'>
+                            <div className=''>
                                 <img
                                     src={drink.image}
                                     alt={`drink-${drink.id}`}
-                                    className="object-contain mx-auto"
+                                    className="object-contain mx-auto w-[15.5rem] h-[15.5rem]"
                                 />
                             </div>
                             <div className='text-center mt-2'>

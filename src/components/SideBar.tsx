@@ -34,7 +34,7 @@ const SideBar = () => {
                                     return (
                                         <SidebarLink
                                             className={`font-bold flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                                                isActive ? 'text-[#ff8b43] border-r-4 border-[#ff8b43]' : 'text-black'
+                                                isActive ? 'text-[#ff8b43]' : 'text-black'
                                             }`}
                                             key={index}
                                             link={{

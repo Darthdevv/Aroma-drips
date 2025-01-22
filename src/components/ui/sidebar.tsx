@@ -172,7 +172,7 @@ export const SidebarLink = ({
       className={cn(
         "flex items-center justify-start gap-2 group/sidebar py-2 transition-all duration-300 px-4",
         isActive
-          ? "text-[#ff8b43] border-r-4 border-[#ff8b43]"
+          ? "text-[#ff8b43]"
           : "text-black",
         className
       )}
