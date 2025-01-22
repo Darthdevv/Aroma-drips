@@ -81,40 +81,34 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
       </div>
 
       {/* Order Items */}
-      {isExpanded && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {isExpanded && (
           <motion.ul
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            key="order-list"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="mt-4 space-y-2 bg-background-gray rounded-[10px] px-4 py-6 overflow-hidden"
-            variants={{
-              hidden: { opacity: 0, height: 0 },
-              visible: { opacity: 1, height: "auto" },
-            }}
           >
             {order.items.map((item, index) => (
               <motion.li
                 key={index}
-                className="flex flex-col lg:flex-row justify-between border-b border-[#dbdbdb] last:border-0 p-2"
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      delay: index * 0.1, // Delay each item
-                    },
-                  },
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1, // Staggered animation for items
                 }}
+                className="flex flex-col lg:flex-row justify-between border-b border-[#dbdbdb] last:border-0 p-2"
               >
                 <div className="flex items-center gap-4">
                   <img
                     loading="lazy"
                     src={OrderImage}
                     alt={`Image of ${item.name}`}
-                    className="w-[3.125rem] h-[3.125rem]  rounded-md"
+                    className="w-[3.125rem] h-[3.125rem] rounded-md"
                   />
                   <div>
                     <p className="font-medium">{item.name}</p>
@@ -128,8 +122,8 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
               </motion.li>
             ))}
           </motion.ul>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
 
       {/* Order Footer */}
       <div className="flex justify-end mt-4 gap-2">
