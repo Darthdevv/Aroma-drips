@@ -24,7 +24,7 @@ const MainContent = () => {
     }, [location.search])
     return (
         <div className="w-full flex flex-col">
-            <div className="h-[6.625rem] w-full flex items-center justify-center">
+            { tab === "home" && <div className="h-[6.625rem] w-full flex items-center justify-center">
                 <div className="relative w-[40rem] flex items-center bg-[#f5f5f5] rounded-full shadow-sm">
                     <IconSearch className="absolute left-4 text-gray-400" size={20} />
                     <Controller
@@ -44,7 +44,7 @@ const MainContent = () => {
                         Search
                     </button>
                 </div>
-            </div>
+            </div>}
             <div className="w-full bg-[#f8f8f8]">
                 {tab === "home" && <Home />}
                 {tab === "menu" && <Menu />}
