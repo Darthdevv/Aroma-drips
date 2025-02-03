@@ -2,11 +2,12 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
-import exampleReducer from "./redux/exampleSlice"; // Import your slice reducer
+import cartReducer from './redux/cartSlice'
 
-// Combine all reducers
+
+
 const rootReducer = combineReducers({
-    example: exampleReducer,
+    cart: cartReducer,
 });
 
 

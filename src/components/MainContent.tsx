@@ -6,6 +6,14 @@ import { IconFilter, IconSearch } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { Controller, useForm } from "react-hook-form"
+import IcedCoffeProducts from "./IcedCoffeProducts"
+import MilkShakeProducts from "./MilkShakeProducts"
+import CoffeProducts from "./CoffeProducts"
+import FrappeProducts from "./FrappeProducts"
+import MojitoProducts from "./MojitoProducts"
+import BreezersProducts from "./BreezersProducts"
+import SmoothiesProducts from "./SmoothiesProducts"
+import ProductDetails from "@/pages/ProductDetails"
 
 
 const MainContent = () => {
@@ -19,7 +27,7 @@ const MainContent = () => {
 
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
-        const tab = urlParams.get("tab") || '';
+        const tab = urlParams.get("tab") || 'home';
         setTab(tab)
     }, [location.search])
     return (
@@ -45,11 +53,19 @@ const MainContent = () => {
                     </button>
                 </div>
             </div>
-            <div className="w-full bg-[#f8f8f8]">
+            <div className="w-full h-[100%] p-6 bg-[#f8f8f8]">
                 {tab === "home" && <Home />}
                 {tab === "menu" && <Menu />}
                 {tab === "cart" && <Cart />}
                 {tab === "orderHistory" && <OrderHistory />}
+                {tab === "Hot-Coffee" && <CoffeProducts />}
+                {tab === "Iced-Coffee" && <IcedCoffeProducts />}
+                {tab === "Milk-Shakes" && <MilkShakeProducts />}
+                {tab === "Frappe" && <FrappeProducts />}
+                {tab === "Mojito" && <MojitoProducts />}
+                {tab === "Breezers" && <BreezersProducts />}
+                {tab === "Smoothies" && <SmoothiesProducts />}
+                {tab === "product-details" && <ProductDetails />}
             </div>
         </div>
     )
