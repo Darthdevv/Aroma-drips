@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import OrderCard from "@/pages/OrderCard";
+import SearchFilter from "./SearchFilter";
+import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
 
 /**
  * Represents an order item.
@@ -8,6 +10,11 @@ import OrderCard from "@/pages/OrderCard";
  * @property {string} description - A description of the item.
  * @property {number} price - The price of the item.
  */
+interface OrderItem {
+    name: string;
+    description: string;
+    price: number;
+}
 
 /**
  * Represents an order.
@@ -17,7 +24,20 @@ import OrderCard from "@/pages/OrderCard";
  * @property {OrderItem[]} items - The list of items in the order.
  * @property {number} total - The total cost of the order.
  * @property {string} status - The current status of the order.
+ * @property {number} [subtotal] - The subtotal amount before taxes and discounts (optional).
+ * @property {number} [tax] - The tax amount applied to the order (optional).
+ * @property {number} [promo] - The promotional discount applied to the order (optional).
  */
+interface Order {
+    id: string;
+    date: string;
+    items: OrderItem[];
+    total: number;
+    status: "Pending" | "Cancelled" | "Delivered";
+    subtotal?: number;
+    tax?: number;
+    promo?: number;
+}
 
 /**
  * OrderHistory component displays the list of orders with tabs to filter between
@@ -31,12 +51,11 @@ import OrderCard from "@/pages/OrderCard";
  */
 const OrderHistory: React.FC = () => {
     // State to track the active tab
-    const [activeTab, setActiveTab] = useState<"upcoming" | "history">(
-        "upcoming"
-    );
+    const [activeTab, setActiveTab] = useState<"upcoming" | "history">("upcoming");
+
 
     // Example order data
-    const orders = [
+    const upcomingOrders: Order[] = [
         {
             id: "1234567678688",
             date: "20 December, 2025 - 2:00 PM",
@@ -85,43 +104,110 @@ const OrderHistory: React.FC = () => {
         },
     ];
 
+    const historyOrders: Order[] = [
+        {
+            id: "9876543210123",
+            date: "15 December, 2025 - 5:00 PM",
+            items: [
+                { name: "Item A", description: "Full Cream Milk | With Sugar", price: 150 },
+                { name: "Item B", description: "Almond Milk | With Honey", price: 200 },
+                { name: "Item C", description: "Soy Milk | Without Sugar", price: 175 },
+            ],
+            subtotal: 150 + 200 + 175, // 525
+            tax: 525 * 0.05, // 5% tax = 26.25
+            promo: 50, // Flat discount
+            total: 525 + 26.25 - 50, // 501.25
+            status: "Delivered",
+        },
+        {
+            id: "9876543210456",
+            date: "10 December, 2025 - 1:00 PM",
+            items: [
+                { name: "Item X", description: "Low Fat Milk | Without Sugar", price: 100 },
+                { name: "Item Y", description: "Skimmed Milk | With Sugar", price: 125 },
+                { name: "Item Z", description: "Coconut Milk | With Sugar", price: 150 },
+            ],
+            subtotal: 100 + 125 + 150, // 375
+            tax: 375 * 0.05, // 5% tax = 18.75
+            promo: 50, // Flat discount
+            total: 375 + 18.75 - 50, // 343.75
+            status: "Cancelled",
+        },
+    ];
+
+
     return (
         <div>
             {/* Page Header */}
-            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4  text-black text-lg font-bold">
-                <span>&lt; Order history</span>
+            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
+                <span className="flex items-center justify-center gap-3 px-6">
+                    <ChevronLeftIcon />
+                    <span className="text-2xl">Order History</span>
+                </span>
             </header>
 
             {/* Tabs to switch between Upcoming and History */}
-            <nav className="px-8 mt-6">
-                <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
-                    <button
-                        onClick={() => setActiveTab("upcoming")}
-                        className={`w-1/2 py-2 text-center rounded-full transition ${activeTab === "upcoming"
-                                ? "bg-orange-500 text-white font-semibold"
-                                : "bg-transparent text-black"
-                            }`}
-                    >
-                        Upcoming
-                    </button>
-                    <button
-                        onClick={() => setActiveTab("history")}
-                        className={`w-1/2 py-2 text-center rounded-full transition ${activeTab === "history"
-                                ? "bg-orange-500 text-white font-semibold"
-                                : "bg-transparent text-black"
-                            }`}
-                    >
-                        History
-                    </button>
+            {activeTab === "upcoming" ? (
+                <nav className="px-8 mt-6">
+                    <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
+                        <button
+                            onClick={() => setActiveTab("upcoming")}
+                            className={`w-1/2 py-2 text-center rounded-full transition ${activeTab === "upcoming"
+                                    ? "bg-orange-500 text-white font-semibold"
+                                    : "bg-transparent text-black"
+                                }`}
+                        >
+                            Upcoming
+                        </button>
+                        <button
+                            onClick={() => setActiveTab("history")}
+                            className={`w-1/2 py-2 text-center rounded-full transition`}
+                        >
+                            History
+                        </button>
+                    </div>
+                </nav>
+            ) : (
+                <div className="flex items-center justify-between">
+                    <nav className="px-8 mt-6">
+                        <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
+                            <button
+                                onClick={() => setActiveTab("upcoming")}
+                                className={`w-1/2 py-2 text-center rounded-full transition `}
+                            >
+                                Upcoming
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("history")}
+                                className={`w-1/2 py-2 text-center rounded-full transition ${activeTab === "history"
+                                        ? "bg-orange-500 text-white font-semibold"
+                                        : "bg-transparent text-black"
+                                    }`}
+                            >
+                                History
+                            </button>
+                        </div>
+                    </nav>
+                    <SearchFilter />
                 </div>
-            </nav>
+            )}
 
             {/* Order cards rendered based on the active tab */}
-            <section className="space-y-[16px] px-8 py-6">
-                {orders.map((order) => (
-                    <OrderCard key={order.id} order={order} />
-                ))}
-            </section>
+            {activeTab === "upcoming" && (
+                <section className="space-y-[16px] px-8 py-6">
+                    {upcomingOrders.map((order) => (
+                        <OrderCard key={order.id} order={order} tab={activeTab} />
+                    ))}
+                </section>
+            )}
+
+            {activeTab === "history" && (
+                <section className="space-y-[16px] px-8 py-6">
+                    {historyOrders.map((order) => (
+                        <OrderCard key={order.id} order={order} tab={activeTab} />
+                    ))}
+                </section>
+            )}
         </div>
     );
 };
