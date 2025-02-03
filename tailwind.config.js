@@ -15,6 +15,9 @@ export default {
         },
         accent: {
           orange: "#FF8B43;",
+          darkorange: "#FE724C",
+          yellow: "#fff5cc",
+          brown: "#A2845E",
           green: "#244937;",
         },
       },
