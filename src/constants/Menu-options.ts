@@ -66,6 +66,22 @@ import pepper from '@/assets/images/Options/Pepper.png';
 
 
 
+/**
+ * @file menu-options.ts
+ * @description Defines the data structure for drink and food items available in the menu, 
+ * including images, descriptions, prices, and categories.
+ */
+
+/**
+ * @interface CoffeeItem
+ * @description Represents a drink or food item in the menu.
+ * @property {number} id - Unique identifier for the product.
+ * @property {string} name - Name of the product.
+ * @property {string} description - Short description of the product.
+ * @property {number} price - Price of the product in LE (Local Currency).
+ * @property {string} imageUrl - URL of the product image.
+ */
+
 
 
 interface CoffeeItem {
@@ -75,15 +91,57 @@ interface CoffeeItem {
     price: number;
     imageUrl: string;
 }
+
+
+
+
+/**
+ * @interface Options
+ * @description Represents additional options available for customization.
+ * @property {number} id - Unique identifier for the option.
+ * @property {string} name - Name of the option.
+ * @property {string} imageUrl - URL of the option image.
+ * @property {number} price - Additional price for the option.
+ */
+
+
+
+
+
+
+
+
 interface Options {
     id: number;
     name: string;
     imageUrl: string;
     price: number;
 }
+
+
+
+/**
+ * @interface Sizes
+ * @description Represents available drink sizes.
+ * @property {string} name - Name of the size.
+ */
+
+
+
+
+
+
 interface Sizes {
     name: string;
 }
+
+
+
+
+/**
+ * @constant Drinks
+ * @description Array of available drink categories in the menu.
+ */
 
 export const Drinks = [
     { id: 1, image: drink1, name: 'Hot-Coffee' },
@@ -94,6 +152,12 @@ export const Drinks = [
     { id: 6, image: drink5, name: 'Smoothies' },
     { id: 7, image: drink6, name: 'Milk-Shakes' },
 ];
+
+
+/**
+ * @constant coffeeItems
+ * @description Array of hot coffee products with details.
+ */
 
 export const coffeeItems: CoffeeItem[] = [
     {
@@ -195,6 +259,23 @@ export const coffeeItems: CoffeeItem[] = [
         imageUrl: Ellipse14,
     },
 ];
+
+
+
+
+
+
+/**
+ * @constant iceCoffeeItems
+ * @description Array of iced coffee products with details.
+ */
+
+
+
+
+
+
+
 export const iceCoffeeItems: CoffeeItem[] = [
     {
         id: 15,
@@ -267,6 +348,21 @@ export const iceCoffeeItems: CoffeeItem[] = [
         imageUrl: WhiteMoka,
     },
 ];
+
+
+
+/**
+ * @constant MilkshakesItems
+ * @description Array of milkshake options available.
+ */
+
+
+
+
+
+
+
+
 export const MilkshakesItems: CoffeeItem[] = [
     {
         id: 25,
@@ -353,6 +449,18 @@ export const MilkshakesItems: CoffeeItem[] = [
         imageUrl: ChocolateOreo,
     }
 ];
+
+
+
+
+
+/**
+ * @constant SmoothiesItems
+ * @description Array of SmoothiesItems options available.
+ */
+
+
+
 export const SmoothiesItems: CoffeeItem[] = [
     {
         id: 37,
@@ -397,6 +505,17 @@ export const SmoothiesItems: CoffeeItem[] = [
         imageUrl: WatermelonSmoothy,
     },
 ];
+
+
+
+
+/**
+ * @constant MojitoItems
+ * @description Array of MojitoItems options available.
+ */
+
+
+
 export const MojitoItems: CoffeeItem[] = [
     {
         id: 43,
@@ -434,6 +553,24 @@ export const MojitoItems: CoffeeItem[] = [
         imageUrl: Redbull,
     },
 ];
+
+
+
+
+
+
+/**
+ * @constant BreezersItems
+ * @description Array of BreezersItems options available.
+ */
+
+
+
+
+
+
+
+
 export const BreezersItems: CoffeeItem[] = [
     {
         id: 48,
@@ -457,6 +594,15 @@ export const BreezersItems: CoffeeItem[] = [
         imageUrl: PeachIce,
     }
 ];
+
+
+/**
+ * @constant FrappeItems
+ * @description Array of FrappeItems options available.
+ */
+
+
+
 export const FrappeItems: CoffeeItem[] = [
     {
         id: 51,
@@ -494,6 +640,16 @@ export const FrappeItems: CoffeeItem[] = [
         imageUrl: SpanishLatteFrappe,
     },
 ];
+
+
+
+
+
+/**
+ * @constant Options
+ * @description Array of options available.
+ */
+
 export const Options: Options[] = [
     {
         id: 1,
@@ -514,6 +670,19 @@ export const Options: Options[] = [
         price: 30,
     },
 ];
+
+
+
+
+
+/**
+ * @constant Sizes
+ * @description Array of available drink sizes.
+ */
+
+
+
+
 export const Sizes: Sizes[] = [
     {
         name: "Small",

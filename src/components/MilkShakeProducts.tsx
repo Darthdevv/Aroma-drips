@@ -4,16 +4,26 @@ import { MilkshakesItems } from "@/constants/Menu-options";
 import { Link, useNavigate } from "react-router-dom";
 import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
 
-const MilkShakeProducts = () => {
-    const navigate = useNavigate()
+/**
+ * @component MilkShakeProducts
+ * @description Displays a list of milkshake products in a grid layout with animations.
+ * Each product is clickable and navigates to the product details page.
+ * @returns {JSX.Element} The MilkShakeProducts component.
+ */
+const MilkShakeProducts = (): JSX.Element => {
+    const navigate = useNavigate();
+
     return (
         <section>
+            {/* Page Header */}
             <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
                 <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Drink menu / Milk Shake</span>
                 </Link>
             </header>
+
+            {/* Product Grid */}
             <main className="flex flex-wrap justify-start gap-16 px-4 md:px-10 lg:px-20">
                 {MilkshakesItems.map((item, index) => (
                     <motion.div
@@ -25,14 +35,17 @@ const MilkShakeProducts = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
+                        {/* Product Image */}
                         <motion.img
                             src={item.imageUrl}
                             className="rounded-full w-[9.688rem] absolute top-[-35px]"
-                            alt="image url"
+                            alt={`${item.name} image`}
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         />
+
+                        {/* Product Details */}
                         <div className="flex flex-col justify-center items-center z-40 mt-36">
                             <div className="text-center">
                                 <h1 className="text-[1.25rem] font-bold">{item.name}</h1>
@@ -41,12 +54,13 @@ const MilkShakeProducts = () => {
                                 <h1 className="text-[1rem] text-[#ff8b43] font-bold">{item.price} LE</h1>
                             </div>
                         </div>
+
+                        {/* Share Icon */}
                         <div className="absolute bottom-0 right-0">
                             <div
-                                onClick={() => {
-                                    navigate('/?tab=product-details', { state: item })
-                                }}
-                                className="cursor-pointer">
+                                onClick={() => navigate('/?tab=product-details', { state: item })}
+                                className="cursor-pointer"
+                            >
                                 <ShareIcon />
                             </div>
                         </div>

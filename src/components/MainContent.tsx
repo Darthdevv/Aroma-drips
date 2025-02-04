@@ -1,58 +1,74 @@
-import Cart from "@/pages/Cart"
-import Home from "@/pages/Home"
-import Menu from "@/pages/Menu"
-import OrderHistory from "@/pages/OrderHistory"
-import { IconFilter, IconSearch } from "@tabler/icons-react"
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
-import { Controller, useForm } from "react-hook-form"
-import IcedCoffeProducts from "./IcedCoffeProducts"
-import MilkShakeProducts from "./MilkShakeProducts"
-import CoffeProducts from "./CoffeProducts"
-import FrappeProducts from "./FrappeProducts"
-import MojitoProducts from "./MojitoProducts"
-import BreezersProducts from "./BreezersProducts"
-import SmoothiesProducts from "./SmoothiesProducts"
-import ProductDetails from "@/pages/ProductDetails"
+import Cart from "@/pages/Cart";
+import Home from "@/pages/Home";
+import Menu from "@/pages/Menu";
+import OrderHistory from "@/pages/OrderHistory";
+import { IconFilter, IconSearch } from "@tabler/icons-react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import IcedCoffeProducts from "./IcedCoffeProducts";
+import MilkShakeProducts from "./MilkShakeProducts";
+import CoffeProducts from "./CoffeProducts";
+import FrappeProducts from "./FrappeProducts";
+import MojitoProducts from "./MojitoProducts";
+import BreezersProducts from "./BreezersProducts";
+import SmoothiesProducts from "./SmoothiesProducts";
+import ProductDetails from "@/pages/ProductDetails";
 
-
-const MainContent = () => {
+/**
+ * @component MainContent
+ * @description Handles routing and displays the appropriate page based on the selected tab.
+ * It includes a search bar on the home page.
+ * @returns {JSX.Element} The MainContent component.
+ */
+const MainContent = (): JSX.Element => {
     const { control } = useForm({
         defaultValues: {
             searchQuery: ""
         }
-    })
-    const location = useLocation()
-    const [tab, setTab] = useState<string>("home")
+    });
 
+    const location = useLocation();
+    const [tab, setTab] = useState<string>("home");
+
+    /**
+     * @function useEffect
+     * @description Extracts the `tab` parameter from the URL and updates the component state.
+     */
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
-        const tab = urlParams.get("tab") || 'home';
-        setTab(tab)
-    }, [location.search])
+        const tab = urlParams.get("tab") || "home";
+        setTab(tab);
+    }, [location.search]);
+
     return (
         <div className="w-full flex flex-col">
-            {tab === "home" && <div className="h-[6.625rem] w-full flex items-center justify-center">
-                <div className="relative w-[40rem] flex items-center bg-[#f5f5f5] rounded-full shadow-sm">
-                    <IconSearch className="absolute left-4 text-gray-400" size={20} />
-                    <Controller
-                        name="searchQuery"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                {...field}
-                                type="text"
-                                placeholder="Menu"
-                                className="w-[36.375rem] h-[3.625rem] pl-10 bg-[#f5f5f5] rounded-full outline-none text-gray-500"
-                            />
-                        )}
-                    />
-                    <button className="absolute right-1 top-1 bottom-1 bg-[#244937] text-white flex items-center justify-center rounded-full px-6 font-medium">
-                        <IconFilter className="mr-2" size={20} />
-                        Search
-                    </button>
+            {/* Search Bar (Only on Home Page) */}
+            {tab === "home" && (
+                <div className="h-[6.625rem] w-full flex items-center justify-center">
+                    <div className="relative w-[40rem] flex items-center bg-[#f5f5f5] rounded-full shadow-sm">
+                        <IconSearch className="absolute left-4 text-gray-400" size={20} />
+                        <Controller
+                            name="searchQuery"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    {...field}
+                                    type="text"
+                                    placeholder="Menu"
+                                    className="w-[36.375rem] h-[3.625rem] pl-10 bg-[#f5f5f5] rounded-full outline-none text-gray-500"
+                                />
+                            )}
+                        />
+                        <button className="absolute right-1 top-1 bottom-1 bg-[#244937] text-white flex items-center justify-center rounded-full px-6 font-medium">
+                            <IconFilter className="mr-2" size={20} />
+                            Search
+                        </button>
+                    </div>
                 </div>
-            </div>}
+            )}
+
+            {/* Dynamic Content Based on Selected Tab */}
             <div className="w-full h-full bg-[#f8f8f8]">
                 {tab === "home" && <Home />}
                 {tab === "menu" && <Menu />}
@@ -68,7 +84,7 @@ const MainContent = () => {
                 {tab === "product-details" && <ProductDetails />}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default MainContent
+export default MainContent;
