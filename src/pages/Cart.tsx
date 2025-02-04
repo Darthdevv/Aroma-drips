@@ -1,10 +1,13 @@
 import { useState } from "react";
-import CartImage from "@/assets/images/Ellipse 8.png";
 import EmptyCart from "@/assets/images/EmptyCart.png";
 import OrderSuccess from "@/assets/images/OrderSuccess.png";
 import { motion } from "framer-motion";
 import DeleteIcon from "@/assets/icons/DeleteIcon";
 import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { decreaseQuantity, increaseQuantity, removeProduct } from "@/redux/cartSlice";
 
 /**
  * @interface Product
@@ -15,14 +18,14 @@ import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
  * @property {number} quantity - Quantity of the product in the cart.
  * @property {string} image - Image URL of the product.
  */
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+// interface Product {
+//   id: number;
+//   name: string;
+//   description: string;
+//   price: number;
+//   quantity: number;
+//   image: string;
+// }
 
 /**
  * @component Cart
@@ -31,40 +34,8 @@ interface Product {
  * @returns {JSX.Element} The Cart component.
  */
 const Cart = (): JSX.Element => {
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      name: "Cappuccino",
-      description: "Large, extra Milk",
-      price: 20.5,
-      quantity: 2,
-      image: CartImage,
-    },
-    {
-      id: 2,
-      name: "Cappuccino",
-      description: "Large, extra Milk",
-      price: 20.5,
-      quantity: 1,
-      image: CartImage,
-    },
-    {
-      id: 3,
-      name: "Cappuccino",
-      description: "Large, extra Milk",
-      price: 20.5,
-      quantity: 3,
-      image: CartImage,
-    },
-    {
-      id: 4,
-      name: "Cappuccino",
-      description: "Large, extra Milk",
-      price: 20.5,
-      quantity: 4,
-      image: CartImage,
-    },
-  ]);
+  const cartProducts = useSelector((state: RootState) => state.cart.cart)
+  const dispatch = useDispatch()
 
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -74,9 +45,7 @@ const Cart = (): JSX.Element => {
    * Removes a product from the cart.
    * @param {number} id - The ID of the product to be removed.
    */
-  const handleRemove = (id: number): void => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
+
 
   /**
    * Applies a promo code and updates the discount value.
@@ -89,10 +58,11 @@ const Cart = (): JSX.Element => {
     }
   };
 
-  const subtotal: number = products.reduce(
-    (acc, p) => acc + p.price * p.quantity,
+  const subtotal: number = cartProducts.reduce(
+    (acc, p) => acc + Number(p.price) * p.quantity, // ✅ Convert to number
     0
   );
+
   const taxAndFees: number = 10.5;
   const total: number = subtotal + taxAndFees - discount;
 
@@ -100,30 +70,29 @@ const Cart = (): JSX.Element => {
     <section>
       {/* Page Header */}
       <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
-        <span className="flex items-center justify-center gap-3 px-4">
+        <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
           <ChevronLeftIcon />
           <span className="text-2xl">Cart</span>
-        </span>
+        </Link>
       </header>
-
       <main className="flex justify-center items-center bg-gray-100 p-6">
         <div className="bg-white p-6 rounded-xl shadow-lg w-full">
-          {products.length > 0 ? (
+          {cartProducts.length > 0 ? (
             <div className="grid grid-cols-12 gap-6 mt-2">
               {/* Cart Items */}
               <div className="col-span-8">
                 <h3 className="text-lg font-semibold px-2 mb-2">
-                  {products.length} Items
+                  {cartProducts.length} Items
                 </h3>
                 <div className="divide-y">
-                  {products.map((product) => (
+                  {cartProducts.map((product) => (
                     <div
                       key={product.id}
                       className="flex justify-between items-center py-4 w-full "
                     >
                       <div className="flex items-center space-x-4 w-full ">
                         <img
-                          src={product.image}
+                          src={product.imageUrl}
                           alt={product.name}
                           className="w-24 h-24 rounded-lg object-cover"
                         />
@@ -131,7 +100,7 @@ const Cart = (): JSX.Element => {
                           <div className="flex items-center justify-between w-full">
                             <p className="font-semibold mb-2">{product.name}</p>
                             <button
-                              onClick={() => handleRemove(product.id)}
+                              onClick={() => dispatch(removeProduct(product.id))}
                               className="text-red-500 hover:text-red-700"
                             >
                               <DeleteIcon />
@@ -145,13 +114,13 @@ const Cart = (): JSX.Element => {
                               {product.price} LE
                             </p>
                             <div className="flex items-center justify-center space-x-4">
-                              <button className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-accent-orange pb-4 font-bold">
+                              <button onClick={() => dispatch(decreaseQuantity(product.id))} className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-accent-orange pb-4 font-bold">
                                 _
                               </button>
                               <span className="text-gray-800">
                                 {product.quantity}
                               </span>
-                              <button className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-white bg-accent-orange pb-1 font-bold">
+                              <button onClick={() => dispatch(increaseQuantity(product.id))} className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-white bg-accent-orange pb-1 font-bold">
                                 +
                               </button>
                             </div>
@@ -196,7 +165,7 @@ const Cart = (): JSX.Element => {
                     </p>
                   )}
                   <p className="flex justify-between font-semibold mt-2">
-                    <span>Total ({products.length} items)</span>
+                    <span>Total ({cartProducts.length} items)</span>
                     <span>{total.toFixed(2)} LE</span>
                   </p>
                   <button

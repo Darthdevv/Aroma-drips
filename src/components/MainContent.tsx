@@ -53,7 +53,7 @@ const MainContent = () => {
                     </button>
                 </div>
             </div>}
-            <div className="w-full bg-[#f8f8f8]">
+            <div className="w-full h-full bg-[#f8f8f8]">
                 {tab === "home" && <Home />}
                 {tab === "menu" && <Menu />}
                 {tab === "cart" && <Cart />}

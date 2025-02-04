@@ -16,7 +16,6 @@ const SideBar = () => {
         { label: "Home", href: "/?tab=home", icon: <HomeIcon color={location.search.includes("home") ? "#ff8b43" : "#000000"} /> },
         { label: "Menu", href: "/?tab=menu", icon: <MenuIcon color={location.search.includes("menu") ? "#ff8b43" : "#000000"} /> },
         { label: "Cart", href: "/?tab=cart", icon: <CartIcon color={location.search.includes("cart") ? "#ff8b43" : "#000000"} /> },
-        { label: "Categories", href: "/?tab=categories", icon: <CartIcon color={location.search.includes("categories") ? "#ff8b43" : "#000000"} /> },
         { label: "Order History", href: "/?tab=orderHistory", icon: <OrderHistoryIcon color={location.search.includes("orderHistory") ? "#ff8b43" : "#000000"} /> }
     ];
 
