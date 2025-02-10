@@ -79,7 +79,7 @@ const Cart = (): JSX.Element => {
       <main className="flex justify-center items-center bg-gray-100 p-6">
         <div className="bg-white p-6 rounded-xl shadow-lg w-full">
           {cartProducts.length > 0 ? (
-            <div className="grid grid-cols-12 gap-6 mt-2">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
               {/* Cart Items */}
               <div className="lg:col-span-8">
                 <h3 className="text-lg font-semibold px-2 mb-2">
