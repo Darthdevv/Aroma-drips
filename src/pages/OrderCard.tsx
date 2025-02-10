@@ -129,9 +129,9 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     duration: 0.3,
                     delay: index * 0.1, // Staggered animation for items
                   }}
-                  className="flex flex-col lg:flex-row justify-between border-b border-[#dbdbdb] last:border-0 p-2"
+                  className="flex lg:flex-row justify-between border-b border-[#dbdbdb] last:border-0 p-2"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center gap-4">
                     <img
                       loading="lazy"
                       src={OrderImage}
@@ -146,9 +146,11 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     </div>
                   </div>
 
-                  <p className="mt-2 lg:mt-0 flex items-center justify-center font-light text-[#13171A]">
-                    EGP {item.price}
-                  </p>
+                  <div className="flex items-center justify-center gap-4">
+                    <p className="mt-2 lg:mt-0 flex items-center justify-center font-medium text-[#13171A]">
+                      EGP {item.price}
+                    </p>
+                  </div>
                 </motion.li>
               ))}
             </motion.ul>
