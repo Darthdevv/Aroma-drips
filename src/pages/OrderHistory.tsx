@@ -168,8 +168,8 @@ const OrderHistory: React.FC = () => {
                     </div>
                 </nav>
             ) : (
-                <div className="flex items-center justify-between">
-                    <nav className="px-8 mt-6">
+                <div className="flex flex-col lg:flex-row items-center justify-between">
+                    <nav className="px-8 mt-6 self-start">
                         <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
                             <button
                                 onClick={() => setActiveTab("upcoming")}

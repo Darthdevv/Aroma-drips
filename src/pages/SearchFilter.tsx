@@ -44,7 +44,7 @@ const SearchFilter = () => {
   const filters = ["Last 7 Days", "Last 30 Days", "Last 3 Months", "Last Year"];
 
   return (
-    <div className="flex items-center space-x-4 p-2 bg-background-gray rounded-lg w-full pr-8 mt-6">
+    <div className="flex items-center space-x-4 p-2 bg-background-gray rounded-lg w-full pl-8 pr-8 mt-6">
       {/* Search Input */}
       <div className="relative flex-grow">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -61,13 +61,13 @@ const SearchFilter = () => {
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 bg-white border border-gray-100 px-4 py-2 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-accent-darkorange"
+          className="flex items-center space-x-2 bg-white border border-gray-100 px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-darkorange"
         >
           <span className="text-gray-600">{selectedFilter}</span>
           <ChevronDown className="text-gray-400" />
         </button>
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
+          <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-md shadow-sm">
             {filters.map((filter) => (
               <div
                 key={filter}
@@ -75,7 +75,7 @@ const SearchFilter = () => {
                   setSelectedFilter(filter);
                   setIsOpen(false);
                 }}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer"
+                className="px-4 py-2 text-gray-700 hover:bg-accent-darkorange hover:text-white cursor-pointer rounded-md"
               >
                 {filter}
               </div>

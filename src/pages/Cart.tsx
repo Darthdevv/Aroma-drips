@@ -41,6 +41,7 @@ const Cart = (): JSX.Element => {
   const [discount, setDiscount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   /**
    * Removes a product from the cart.
    * @param {number} id - The ID of the product to be removed.
@@ -78,9 +79,9 @@ const Cart = (): JSX.Element => {
       <main className="flex justify-center items-center bg-gray-100 p-6">
         <div className="bg-white p-6 rounded-xl shadow-lg w-full">
           {cartProducts.length > 0 ? (
-            <div className="grid grid-cols-12 gap-6 mt-2">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
               {/* Cart Items */}
-              <div className="col-span-8">
+              <div className="lg:col-span-8">
                 <h3 className="text-lg font-semibold px-2 mb-2">
                   {cartProducts.length} Items
                 </h3>
@@ -88,15 +89,15 @@ const Cart = (): JSX.Element => {
                   {cartProducts.map((product) => (
                     <div
                       key={product.id}
-                      className="flex justify-between items-center py-4 w-full "
+                      className="flex justify-between items-center py-4 w-full"
                     >
-                      <div className="flex items-center space-x-4 w-full ">
+                      <div className="flex items-center space-x-4 w-full">
                         <img
                           src={product.imageUrl}
                           alt={product.name}
                           className="w-24 h-24 rounded-lg object-cover"
                         />
-                        <div className="w-full ">
+                        <div className="w-full">
                           <div className="flex items-center justify-between w-full">
                             <p className="font-semibold mb-2">{product.name}</p>
                             <button
@@ -133,7 +134,7 @@ const Cart = (): JSX.Element => {
               </div>
 
               {/* Summary Section */}
-              <div className="col-span-4 bg-gray-50 p-6 rounded-lg">
+              <div className="lg:col-span-4 bg-gray-50 p-6 rounded-lg">
                 <div className="flex items-center space-x-2">
                   <input
                     type="text"
@@ -170,7 +171,7 @@ const Cart = (): JSX.Element => {
                   </p>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="flex items-center justify-center ml-auto mt-4 w-[12.8125rem] h-[2.6875rem] bg-accent-darkorange rounded-[1.7813rem] text-white py-2"
+                    className="flex items-center justify-center ml-auto mt-4 w-full lg:w-[12.8125rem] h-[2.6875rem] bg-accent-darkorange rounded-[1.7813rem] text-white py-2"
                   >
                     Place Order
                   </button>
@@ -182,7 +183,7 @@ const Cart = (): JSX.Element => {
               initial={{ y: 70, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex flex-col items-center w-full"
+              className="flex flex-col items-center w-full text-center"
             >
               <img src={EmptyCart} alt="Empty Cart" className="" />
               <p className="text-2xl font-semibold mb-2">
