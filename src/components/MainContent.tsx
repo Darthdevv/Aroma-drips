@@ -45,7 +45,7 @@ const MainContent = (): JSX.Element => {
         <div className="w-full flex flex-col">
             {/* Search Bar (Only on Home Page) */}
             {tab === "home" && (
-                <div className="h-[6.625rem] w-full flex items-center justify-center">
+                <div className="h-[7rem] py-5 w-full flex items-center justify-center">
                     <div className="relative w-[40rem] flex items-center bg-[#f5f5f5] rounded-full shadow-sm">
                         <IconSearch className="absolute left-4 text-gray-400" size={20} />
                         <Controller
