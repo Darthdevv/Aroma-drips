@@ -1,8 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
     --radius: 0.5rem
   }
+}
+
+
+/* High Contrast Mode */
+.contrast-high {
+  filter: contrast(150%);
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Grayscale Mode */
+.grayscale {
+  filter: grayscale(100%);
+}
+
+/* Dyslexia-Friendly Font */
+.dyslexia-font * {
+  font-family: "OpenDyslexic", Arial, sans-serif !important;
+}
+
+/* Increase focus visibility */
+*:focus {
+  outline: 3px solid #ffbf47;
+}
+
+/* Adjust text sizes for accessibility */
+.text-sm {
+  font-size: 14px;
+}
+
+.text-base {
+  font-size: 16px;
+}
+
+.text-lg {
+  font-size: 18px;
 }

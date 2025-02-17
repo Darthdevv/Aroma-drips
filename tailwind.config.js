@@ -8,6 +8,23 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        dyslexia: ["OpenDyslexic", "Arial", "sans-serif"],
+      },
+      borderWidth: {
+        4: "4px",
+      },
+      boxShadow: {
+        "hero-btn": "0px 6.25px 20px 0px #00000020",
+      },
+      borderRadius: {
+        "t-lg": "16px 16px 0px 0px",
+      },
+      spacing: {
+        13: "3.125rem",
+        5.5: "1.125rem",
+        18: "4.375rem",
+      },
       colors: {
         background: {
           white: "#FFFFFF;",
@@ -25,4 +42,12 @@ export default {
   },
   darkMode: ["class", "class"],
   plugins: [require("tailwindcss-animate")],
+  safelist: [
+    "contrast-high",
+    "grayscale",
+    "dyslexia-font",
+    "text-sm",
+    "text-base",
+    "text-lg",
+  ],
 };

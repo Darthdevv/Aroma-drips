@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import { Provider } from "react-redux";
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         <RouterProvider router={AppRoutes} />
       </QueryClientProvider>
     </Provider>
