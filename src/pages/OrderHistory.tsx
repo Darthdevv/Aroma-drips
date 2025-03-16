@@ -139,7 +139,7 @@ const OrderHistory: React.FC = () => {
     return (
         <div>
             {/* Page Header */}
-            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
+            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
                 <span className="flex items-center justify-center gap-3 px-6">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Order History</span>
@@ -149,7 +149,7 @@ const OrderHistory: React.FC = () => {
             {/* Tabs to switch between Upcoming and History */}
             {activeTab === "upcoming" ? (
                 <nav className="px-8 mt-6">
-                    <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
+                    <div className="w-[336px] h-[55px] flex space-x-2 bg-background-gray dark:bg-background-navy border-2 border-background-white dark:border-[#2E3439]  rounded-full p-0.5">
                         <button
                             onClick={() => setActiveTab("upcoming")}
                             className={`w-1/2 py-2 text-center rounded-full transition ${activeTab === "upcoming"
@@ -161,7 +161,7 @@ const OrderHistory: React.FC = () => {
                         </button>
                         <button
                             onClick={() => setActiveTab("history")}
-                            className={`w-1/2 py-2 text-center rounded-full transition`}
+                            className={`w-1/2 py-2 text-center rounded-full transition text-text-blackish dark:text-text-whitish`}
                         >
                             History
                         </button>
@@ -170,10 +170,10 @@ const OrderHistory: React.FC = () => {
             ) : (
                 <div className="flex flex-col lg:flex-row items-center justify-between">
                     <nav className="px-8 mt-6 self-start">
-                        <div className="w-[336px] h-[55px] flex space-x-2 bg-gray-100 border-2 border-background-white rounded-full p-0.5">
+                        <div className="w-[336px] h-[55px] flex space-x-2 bg-background-gray dark:bg-background-navy border-2 border-background-white dark:border-[#2E3439] rounded-full p-0.5">
                             <button
                                 onClick={() => setActiveTab("upcoming")}
-                                className={`w-1/2 py-2 text-center rounded-full transition `}
+                                className={`w-1/2 py-2 text-center rounded-full transition text-text-blackish dark:text-text-whitish`}
                             >
                                 Upcoming
                             </button>

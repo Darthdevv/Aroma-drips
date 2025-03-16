@@ -11,6 +11,7 @@ import storage from "redux-persist/lib/storage";
  * @property {string} imageUrl - URL of the product image.
  * @property {number} price - Price of the product (number type for calculations).
  * @property {number} quantity - Quantity of the product in the cart.
+ * @property {string} category - Category of the product.
  */
 interface Product {
     id: number;
@@ -19,6 +20,7 @@ interface Product {
     description: string;
     price: number;
     quantity: number;
+    category: string;
 }
 
 /**

@@ -17,6 +17,7 @@ interface Product {
     description: string;
     name: string;
     price: number;
+    category: string;
 }
 
 const ProductDetails = () => {
@@ -57,6 +58,7 @@ const ProductDetails = () => {
             size: selectedSize,
             addOn: selectedOption,
             quantity: 1,
+            category: Product.category
         };
 
         dispatch(addToCart(productToAdd));
@@ -89,7 +91,7 @@ const ProductDetails = () => {
 
     return (
         <section>
-            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
+            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
                 <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">{Product && Product.name}</span>
@@ -100,7 +102,7 @@ const ProductDetails = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className='bg-white h-auto w-full rounded-xl shadow-lg p-10'
+                    className='bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish h-auto w-full rounded-xl shadow-lg p-10'
                 >
                     <form onSubmit={handleSubmit(handleAddToCart)} className="w-full flex space-x-5">
                         <motion.div

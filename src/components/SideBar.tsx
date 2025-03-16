@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar, SidebarBody, SidebarLink } from './ui/sidebar';
 import { useLocation } from 'react-router-dom';
 import logo from '../assets/images/Assets/AromaLogo.png';
@@ -16,27 +16,33 @@ import OrderHistoryIcon from '@/assets/icons/OrderHistoryIcon';
  */
 const SideBar = (): JSX.Element => {
     const [sideBarOpen, setSideBarOpen] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const location = useLocation();
+
+    // Check if dark mode is active
+    useEffect(() => {
+        setIsDarkMode(document.documentElement.classList.contains("dark"));
+    }, []);
 
     /**
      * @constant links
      * @description Array containing sidebar navigation links with their labels, paths, and icons.
      */
     const links = [
-        { label: "Home", href: "/?tab=home", icon: <HomeIcon color={location.search.includes("home") ? "#ff8b43" : "#000000"} /> },
-        { label: "Menu", href: "/?tab=menu", icon: <MenuIcon color={location.search.includes("menu") ? "#ff8b43" : "#000000"} /> },
-        { label: "Cart", href: "/?tab=cart", icon: <CartIcon color={location.search.includes("cart") ? "#ff8b43" : "#000000"} /> },
-        { label: "Order History", href: "/?tab=orderHistory", icon: <OrderHistoryIcon color={location.search.includes("orderHistory") ? "#ff8b43" : "#000000"} /> }
+        { label: "Home", href: "/?tab=home", icon: <HomeIcon color={location.search.includes("home") ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
+        { label: "Menu", href: "/?tab=menu", icon: <MenuIcon color={location.search.includes("menu") ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
+        { label: "Cart", href: "/?tab=cart", icon: <CartIcon color={location.search.includes("cart") ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
+        { label: "Order History", href: "/?tab=orderHistory", icon: <OrderHistoryIcon color={location.search.includes("orderHistory") ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> }
     ];
 
     return (
         <Sidebar open={sideBarOpen} setOpen={setSideBarOpen}>
             <div className='flex-1'>
                 {/* Sidebar Content */}
-                <SidebarBody className="justify-between bg-white gap-10">
+                <SidebarBody className="justify-between bg-white dark:bg-background-navygrey gap-10">
                     <div>
                         {/* Logo Section */}
-                        <div className='h-[6.625rem] flex justify-center items-center bg-[#244937] w-full'>
+                        <div className='h-[6.625rem] flex justify-center items-center bg-accent-green dark:bg-background-navy w-full'>
                             <img src={logo} alt='logo' />
                         </div>
                         {/* Navigation Links */}
@@ -46,7 +52,7 @@ const SideBar = (): JSX.Element => {
                                     const isActive = location.search.includes(link.href.split("=")[1]);
                                     return (
                                         <SidebarLink
-                                            className={`font-bold flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${isActive ? 'text-[#ff8b43]' : 'text-black'
+                                            className={`font-bold flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${isActive ? 'text-[#ff8b43]' : 'text-black dark:text-white'
                                                 }`}
                                             key={index}
                                             link={{
@@ -61,8 +67,9 @@ const SideBar = (): JSX.Element => {
                         </div>
                     </div>
                     {/* User Profile Section */}
-                    <div className='p-4'>
+                    <div className='p-4 text-text-blackish dark:text-text-whitish'>
                         <SidebarLink
+                            className='text-text-blackish dark:text-text-whitish'
                             link={{
                                 label: "John Esmat",
                                 href: "#",

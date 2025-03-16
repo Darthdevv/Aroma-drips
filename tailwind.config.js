@@ -10,6 +10,7 @@ export default {
       },
       fontFamily: {
         dyslexia: ["OpenDyslexic", "Arial", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       borderWidth: {
         4: "4px",
@@ -29,6 +30,8 @@ export default {
         background: {
           white: "#FFFFFF;",
           gray: "#F8F8F8;",
+          navy: "#0B0F14",
+          navygrey: "#141B22",
         },
         accent: {
           orange: "#FF8B43;",
@@ -37,10 +40,15 @@ export default {
           brown: "#A2845E",
           green: "#244937;",
         },
+        text: {
+          whitish: "#E6E6E6",
+          blackish: "#141B22",
+          greyish: "#999999",
+        },
       },
     },
   },
-  darkMode: ["class", "class"],
+  darkMode: "class",
   plugins: [require("tailwindcss-animate")],
   safelist: [
     "contrast-high",

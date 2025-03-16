@@ -45,9 +45,9 @@ const MainContent = (): JSX.Element => {
         <div className="w-full flex flex-col">
             {/* Search Bar (Only on Home Page) */}
             {tab === "home" && (
-                <div className="h-[7rem] py-5 w-full flex items-center justify-center">
-                    <div className="relative w-[40rem] flex items-center bg-[#f5f5f5] rounded-full shadow-sm">
-                        <IconSearch className="absolute left-4 text-gray-400" size={20} />
+                <div className="h-[7rem] py-5 w-full flex items-center justify-center bg-[#fff] dark:bg-background-navygrey">
+                    <div className="relative w-[40rem] flex items-center bg-[#fff] dark:bg-background-navygrey rounded-full shadow-sm">
+                        <IconSearch className="absolute left-4 text-text-whitish font-semibold" size={20} />
                         <Controller
                             name="searchQuery"
                             control={control}
@@ -56,11 +56,11 @@ const MainContent = (): JSX.Element => {
                                     {...field}
                                     type="text"
                                     placeholder="Menu"
-                                    className="w-[36.375rem] h-[3.625rem] pl-10 bg-[#f5f5f5] rounded-full outline-none text-gray-500"
+                                    className="w-[36.375rem] h-[3.625rem] pl-10 bg-background-gray dark:bg-background-navy rounded-full outline-none text-text-whitish placeholder:text-text-whitish font-semibold"
                                 />
                             )}
                         />
-                        <button className="absolute right-1 top-1 bottom-1 bg-[#244937] text-white flex items-center justify-center rounded-full px-6 font-medium">
+                        <button className="absolute right-1  h-[3.6rem] w-[9.75rem] bg-[#244937] text-white flex items-center justify-center rounded-full px-6 font-medium">
                             <IconFilter className="mr-2" size={20} />
                             Search
                         </button>
@@ -69,14 +69,14 @@ const MainContent = (): JSX.Element => {
             )}
 
             {/* Dynamic Content Based on Selected Tab */}
-            <div className="w-full h-full bg-[#f8f8f8]">
+            <div className="w-full h-full bg-background-gray dark:bg-background-navy">
                 {tab === "home" && <Home />}
                 {tab === "menu" && <Menu />}
                 {tab === "cart" && <Cart />}
                 {tab === "orderHistory" && <OrderHistory />}
-                {tab === "Hot-Coffee" && <CoffeProducts />}
-                {tab === "Iced-Coffee" && <IcedCoffeProducts />}
-                {tab === "Milk-Shakes" && <MilkShakeProducts />}
+                {tab === "Hot Coffee" && <CoffeProducts />}
+                {tab === "Iced Coffee" && <IcedCoffeProducts />}
+                {tab === "Milk Shakes" && <MilkShakeProducts />}
                 {tab === "Frappe" && <FrappeProducts />}
                 {tab === "Mojito" && <MojitoProducts />}
                 {tab === "Breezers" && <BreezersProducts />}

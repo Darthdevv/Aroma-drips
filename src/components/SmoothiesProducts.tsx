@@ -16,7 +16,7 @@ const SmoothiesProducts = (): JSX.Element => {
     return (
         <section>
             {/* Page Header */}
-            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold">
+            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
                 <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Drink menu / Smoothies</span>
@@ -28,7 +28,7 @@ const SmoothiesProducts = (): JSX.Element => {
                 {SmoothiesItems.map((item, index) => (
                     <motion.div
                         key={index}
-                        className="bg-white relative flex flex-col items-center w-[14.75rem] mt-20 mb-14 h-[15.875rem] rounded-t-[120px] rounded-b-2xl"
+                        className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish relative flex flex-col items-center w-[14.75rem] mt-20 mb-14 h-[15.875rem] rounded-t-[120px] rounded-b-2xl"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -56,7 +56,7 @@ const SmoothiesProducts = (): JSX.Element => {
                         </div>
 
                         {/* Share Button */}
-                        <div className="absolute bottom-0 right-0">
+                        <div className="absolute -bottom-[1px] -right-[1px] rounded-3xl">
                             <div
                                 onClick={() => {
                                     navigate('/?tab=product-details', { state: item });

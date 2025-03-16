@@ -8,7 +8,7 @@ const ArrowDownIcon: React.FC<React.SVGProps<SVGSVGElement>> = () => (
   >
     <path
       d="M4.07992 8.94995L10.5999 15.47C11.3699 16.24 12.6299 16.24 13.3999 15.47L19.9199 8.94995"
-      stroke="#8E8E93"
+      stroke="currentColor"
       stroke-width="1.5"
       stroke-miterlimit="10"
       stroke-linecap="round"

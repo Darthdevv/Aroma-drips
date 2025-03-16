@@ -32,7 +32,7 @@ const BreezersProducts = (): JSX.Element => {
     return (
         <section>
             {/* Page Header */}
-            <header className="bg-background-white h-[6.625rem] w-full flex items-center justify-start p-4 text-black text-lg font-semibold sticky top-0 z-50 shadow-md">
+            <header className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish h-[6.625rem] w-full flex items-center justify-start p-4 text-lg font-semibold sticky top-0 z-50 shadow-md">
                 <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Drink menu / Breezers</span>
@@ -44,7 +44,7 @@ const BreezersProducts = (): JSX.Element => {
                 {BreezersItems.map((item: Product, index: number) => (
                     <motion.div
                         key={item.id}
-                        className="bg-white relative flex flex-col items-center w-full sm:w-[48%] md:w-[30%] lg:w-[22%] max-w-[14.75rem] mt-5 h-[15.875rem] rounded-t-[120px] rounded-b-2xl shadow-lg"
+                        className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish  relative flex flex-col items-center w-full sm:w-[48%] md:w-[30%] lg:w-[22%] max-w-[14.75rem] mt-5 h-[15.875rem] rounded-t-[120px] rounded-b-2xl shadow-lg"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -72,7 +72,7 @@ const BreezersProducts = (): JSX.Element => {
                         </div>
 
                         {/* Share / Navigate Button */}
-                        <div className="absolute bottom-0 right-0 cursor-pointer">
+                        <div className="absolute -bottom-[1px] -right-[1px] rounded-3xl">
                             <div
                                 onClick={() => navigate('/?tab=product-details', { state: item })}
                                 className="cursor-pointer"

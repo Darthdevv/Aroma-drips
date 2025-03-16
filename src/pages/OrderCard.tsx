@@ -73,7 +73,7 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="bg-white shadow rounded-[20px] p-8">
+    <section className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish shadow rounded-[20px] p-8">
       {/* Order Header */}
       <div
         onClick={() => setIsExpanded(!isExpanded)}
@@ -87,11 +87,11 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
           <span
             className={
               orderStatus === "Pending"
-                ? "bg-accent-yellow text-accent-brown shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded"
+                ? "bg-accent-yellow dark:bg-[#FFCC0033] text-accent-brown shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
                 : orderStatus === "Cancelled"
-                ? "bg-[#ffeceb] text-[#FF3B30] shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded"
+                ? "bg-[#ffeceb] text-[#FF3B30] dark:bg-[#FF3B301A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
                 : orderStatus === "Delivered"
-                ? "bg-[#ebfaef] text-[#34C759] shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded"
+                ? "bg-[#ebfaef] text-[#34C759] dark:bg-[#34C7591A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
                 : "bg-gray-500 text-white shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded"
             }
           >
@@ -99,9 +99,9 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
           </span>
         </div>
 
-        <div className="flex items-start justify-center gap-4">
-          <p className="text-[#8E8E93]">{order.items.length} Items</p>
-          <button className="text-gray-500 focus:outline-none">
+        <div className="flex items-start justify-center gap-4 text-text-blackish dark:text-text-whitish">
+          <p className="">{order.items.length} Items</p>
+          <button className="focus:outline-none text-text-blackish dark:text-text-whitish">
             {isExpanded ? <ArrowUpIcon /> : <ArrowDownIcon />}
           </button>
         </div>
@@ -117,7 +117,7 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="mt-4 space-y-2 bg-background-gray rounded-[10px] px-4 py-6 overflow-hidden"
+              className="mt-4 space-y-2 bg-background-gray dark:bg-background-navy text-text-blackish dark:text-text-whitish rounded-[10px] px-4 py-6 overflow-hidden"
             >
               {order.items.map((item, index) => (
                 <motion.li
@@ -129,7 +129,7 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     duration: 0.3,
                     delay: index * 0.1, // Staggered animation for items
                   }}
-                  className="flex lg:flex-row justify-between border-b border-[#dbdbdb] last:border-0 p-2"
+                  className="flex lg:flex-row justify-between border-b border-text-whitish dark:border-[#2E3439]  text-text-blackish dark:text-text-whitish last:border-0 p-2"
                 >
                   <div className="flex items-center justify-center gap-4">
                     <img
@@ -146,8 +146,8 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center gap-4">
-                    <p className="mt-2 lg:mt-0 flex items-center justify-center font-medium text-[#13171A]">
+                  <div className="flex items-center justify-center gap-4 text-text-blackish dark:text-text-whitish">
+                    <p className="mt-2 lg:mt-0 flex items-center justify-center font-medium">
                       EGP {item.price}
                     </p>
                   </div>
@@ -167,12 +167,12 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="mt-4 bg-background-gray rounded-[10px] px-4 py-6 overflow-hidden"
+              className="mt-4 bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish rounded-[10px] px-4 py-6 overflow-hidden"
             >
               {/* Parent Container - Side by Side Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
                 {/* Order List */}
-                <motion.ul className="bg-white p-4 rounded-lg shadow-sm">
+                <motion.ul className="bg-background-gray dark:bg-background-navy text-text-blackish dark:text-text-whitish p-4 rounded-lg shadow-sm">
                   {order.items.map((item, index) => (
                     <motion.li
                       key={index}
@@ -180,9 +180,9 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex items-center justify-between border-b border-[#dbdbdb] last:border-0 py-3"
+                      className="flex items-center justify-between border-b border-text-whitish dark:border-[#2E3439] text-text-blackish dark:text-text-whitish bg-background-gray dark:bg-background-navy last:border-0 py-3"
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 text-text-blackish dark:text-text-whitish">
                         <img
                           loading="lazy"
                           src={OrderImage}
@@ -191,14 +191,10 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                         />
                         <div>
                           <p className="font-semibold">{item.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {item.description}
-                          </p>
+                          <p className="text-sm">{item.description}</p>
                         </div>
                       </div>
-                      <p className="font-medium text-[#13171A]">
-                        EGP {item.price}
-                      </p>
+                      <p className="font-medium">EGP {item.price}</p>
                     </motion.li>
                   ))}
                 </motion.ul>
@@ -212,9 +208,9 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     duration: 0.3,
                     delay: order.items.length * 0.1,
                   }}
-                  className="bg-white p-4 rounded-lg shadow-sm flex items-center"
+                  className="bg-background-gray dark:bg-background-navy text-text-blackish dark:text-text-whitish p-4 rounded-lg shadow-sm flex items-center"
                 >
-                  <div className="w-full space-y-6 text-gray-700">
+                  <div className="w-full space-y-6">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
                       <span>{order.subtotal} LE</span>
@@ -230,14 +226,9 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     <div className="flex justify-between mt-2">
                       <span>
                         <span>Total </span>
-                        <span className="text-[#BEBEBE]">
-                          ({order.items.length} items)
-                        </span>
+                        <span className="">({order.items.length} items)</span>
                       </span>
-                      <span className="font-bold text-black">
-                        {" "}
-                        {order.total} LE
-                      </span>
+                      <span className="font-bold"> {order.total} LE</span>
                     </div>
                   </div>
                 </motion.div>
@@ -249,15 +240,15 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
 
       {/* Order Footer */}
       {tab === "upcoming" ? (
-        <div className="flex justify-end mt-4 gap-2">
-          <p className="font-bold text-[#757575]">Total</p>
-          <p className="font-bold text-black">EGP {order.total}</p>
+        <div className="flex justify-end mt-4 gap-2 text-text-blackish dark:text-text-whitish">
+          <p className="font-bold ">Total</p>
+          <p className="font-bold ">EGP {order.total}</p>
         </div>
       ) : (
-        <div className="flex items-center justify-between mt-4 gap-2">
+        <div className="flex items-center justify-between mt-4 gap-2 text-text-blackish dark:text-text-whitish">
           <div className="flex items-center justify-center gap-2">
-            <p className="font-bold text-[#757575]">Total</p>
-            <p className="font-bold text-black">EGP {order.total}</p>
+            <p className="font-bold ">Total</p>
+            <p className="font-bold ">EGP {order.total}</p>
           </div>
           <button className="bg-orange-500 text-white font-semibold w-[8.5rem] py-2 text-center rounded-full">
             Order again

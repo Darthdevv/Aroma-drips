@@ -80,6 +80,7 @@ import pepper from '@/assets/images/Options/Pepper.png';
  * @property {string} description - Short description of the product.
  * @property {number} price - Price of the product in LE (Local Currency).
  * @property {string} imageUrl - URL of the product image.
+ * @property {string} category - Category of the product.
  */
 
 
@@ -90,6 +91,7 @@ interface CoffeeItem {
     description?: string;
     price: number;
     imageUrl: string;
+    category?: string;
 }
 
 
@@ -144,13 +146,13 @@ interface Sizes {
  */
 
 export const Drinks = [
-    { id: 1, image: drink1, name: 'Hot-Coffee' },
-    { id: 2, image: drink2, name: 'Iced-Coffee' },
+    { id: 1, image: drink1, name: 'Hot Coffee' },
+    { id: 2, image: drink2, name: 'Iced Coffee' },
     { id: 3, image: drink3, name: 'Frappe' },
     { id: 4, image: drink4, name: 'Mojito' },
     { id: 5, image: drink7, name: 'Breezers' },
     { id: 6, image: drink5, name: 'Smoothies' },
-    { id: 7, image: drink6, name: 'Milk-Shakes' },
+    { id: 7, image: drink6, name: 'Milk Shakes' },
 ];
 
 
@@ -166,6 +168,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: Ellipse1,
+        category: "Hot Coffee"
     },
     {
         id: 2,
@@ -173,6 +176,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: Ellipse2,
+        category: "Hot Coffee"
     },
     {
         id: 3,
@@ -180,6 +184,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Ellipse3,
+        category: "Hot Coffee"
     },
     {
         id: 4,
@@ -187,6 +192,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: Ellipse4,
+        category: "Hot Coffee"
     },
     {
         id: 5,
@@ -194,6 +200,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: Ellipse5,
+        category: "Hot Coffee"
     },
     {
         id: 6,
@@ -201,6 +208,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 28,
         imageUrl: Ellipse6,
+        category: "Hot Coffee"
     },
     {
         id: 7,
@@ -208,6 +216,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Ellipse7,
+        category: "Hot Coffee"
     },
     {
         id: 8,
@@ -215,6 +224,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Ellipse8,
+        category: "Hot Coffee"
     },
     {
         id: 9,
@@ -222,6 +232,7 @@ export const coffeeItems: CoffeeItem[] = [
         price: 32,
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         imageUrl: Ellipse9,
+        category: "Hot Coffee"
     },
     {
         id: 10,
@@ -229,13 +240,15 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: Ellipse10,
+        category: "Hot Coffee"
     },
     {
         id: 11,
         name: "Mocha",
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
-        imageUrl: Ellipse11
+        imageUrl: Ellipse11,
+        category: "Hot Coffee"
     },
     {
         id: 12,
@@ -243,6 +256,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: Ellipse12,
+        category: "Hot Coffee"
     },
     {
         id: 13,
@@ -250,6 +264,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 40,
         imageUrl: Ellipse13,
+        category: "Hot Coffee"
     },
     {
         id: 14,
@@ -257,6 +272,7 @@ export const coffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 38,
         imageUrl: Ellipse14,
+        category: "Hot Coffee"
     },
 ];
 
@@ -283,6 +299,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: Americano,
+        category: "Iced Coffee"
     },
     {
         id: 16,
@@ -290,6 +307,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: ClassicLatte,
+        category: "Iced Coffee"
     },
     {
         id: 17,
@@ -297,6 +315,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: ColdBrew,
+        category: "Iced Coffee"
     },
     {
         id: 18,
@@ -304,6 +323,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: HoneyCoffeMilkFoam,
+        category: "Iced Coffee"
     },
     {
         id: 19,
@@ -311,6 +331,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: IcedMatchaLatte,
+        category: "Iced Coffee"
     },
     {
         id: 20,
@@ -318,6 +339,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 28,
         imageUrl: Mocha,
+        category: "Iced Coffee"
     },
     {
         id: 21,
@@ -325,6 +347,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: SpanishLatte,
+        category: "Iced Coffee"
     },
     {
         id: 22,
@@ -332,6 +355,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: StrawberryAndMocha,
+        category: "Iced Coffee"
     },
     {
         id: 23,
@@ -339,6 +363,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 32,
         imageUrl: StrawBeryAndMatch,
+        category: "Iced Coffee"
     },
     {
         id: 24,
@@ -346,6 +371,7 @@ export const iceCoffeeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: WhiteMoka,
+        category: "Iced Coffee"
     },
 ];
 
@@ -370,6 +396,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: BelgiumChocolate,
+        category: "Milk Shakes"
     },
     {
         id: 26,
@@ -377,6 +404,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: CheeseCake,
+        category: "Milk Shakes"
     },
     {
         id: 27,
@@ -384,6 +412,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Coffe,
+        category: "Milk Shakes"
     },
     {
         id: 28,
@@ -391,6 +420,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: FrenchVanilla,
+        category: "Milk Shakes"
     },
     {
         id: 29,
@@ -398,6 +428,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: Hazelnut,
+        category: "Milk Shakes"
     },
     {
         id: 30,
@@ -405,6 +436,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 28,
         imageUrl: Kinder,
+        category: "Milk Shakes"
     },
     {
         id: 31,
@@ -412,6 +444,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Mango,
+        category: "Milk Shakes"
     },
     {
         id: 32,
@@ -419,6 +452,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: OreoCookies,
+        category: "Milk Shakes"
     },
     {
         id: 33,
@@ -426,6 +460,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 32,
         imageUrl: Pistachio,
+        category: "Milk Shakes"
     },
     {
         id: 34,
@@ -433,6 +468,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: SaltedCaramel,
+        category: "Milk Shakes"
     },
     {
         id: 35,
@@ -440,6 +476,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: StrawBerry,
+        category: "Milk Shakes"
     },
     {
         id: 36,
@@ -447,6 +484,7 @@ export const MilkshakesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: ChocolateOreo,
+        category: "Milk Shakes"
     }
 ];
 
@@ -468,6 +506,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: MangoSmoothy,
+        category: "Smoothies"
     },
     {
         id: 38,
@@ -475,6 +514,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: MixBerriesSmoothy,
+        category: "Smoothies"
     },
     {
         id: 39,
@@ -482,6 +522,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: Pinacolada,
+        category: "Smoothies"
     },
     {
         id: 40,
@@ -489,6 +530,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: Strawberry,
+        category: "Smoothies"
     },
     {
         id: 41,
@@ -496,6 +538,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: TropicalFruitsSmoothy,
+        category: "Smoothies"
     },
     {
         id: 42,
@@ -503,6 +546,7 @@ export const SmoothiesItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 28,
         imageUrl: WatermelonSmoothy,
+        category: "Smoothies"
     },
 ];
 
@@ -523,6 +567,7 @@ export const MojitoItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: Classic,
+        category: "Mojito"
     },
     {
         id: 44,
@@ -530,6 +575,7 @@ export const MojitoItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: MixBerries,
+        category: "Mojito"
     },
     {
         id: 45,
@@ -537,6 +583,7 @@ export const MojitoItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: RedbullPassion,
+        category: "Mojito"
     },
     {
         id: 46,
@@ -544,6 +591,7 @@ export const MojitoItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: RedbullPeach,
+        category: "Mojito"
     },
     {
         id: 47,
@@ -551,6 +599,7 @@ export const MojitoItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: Redbull,
+        category: "Mojito"
     },
 ];
 
@@ -578,6 +627,7 @@ export const BreezersItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: LemonMint,
+        category: "Breezers"
     },
     {
         id: 49,
@@ -585,6 +635,7 @@ export const BreezersItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: MixBerriesBreezer,
+        category: "Breezers"
     },
     {
         id: 50,
@@ -592,6 +643,7 @@ export const BreezersItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: PeachIce,
+        category: "Breezers"
     }
 ];
 
@@ -610,6 +662,7 @@ export const FrappeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 20,
         imageUrl: ClassicFrappe,
+        category: "Frappe"
     },
     {
         id: 52,
@@ -617,6 +670,7 @@ export const FrappeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: MochaFrappe,
+        category: "Frappe"
     },
     {
         id: 53,
@@ -624,6 +678,7 @@ export const FrappeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 30,
         imageUrl: PistachioFrappe,
+        category: "Frappe"
     },
     {
         id: 54,
@@ -631,6 +686,7 @@ export const FrappeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 35,
         imageUrl: SpanishLatteFrappe2,
+        category: "Frappe"
     },
     {
         id: 55,
@@ -638,6 +694,7 @@ export const FrappeItems: CoffeeItem[] = [
         description: "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
         price: 25,
         imageUrl: SpanishLatteFrappe,
+        category: "Frappe"
     },
 ];
 
