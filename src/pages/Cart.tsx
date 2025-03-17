@@ -80,7 +80,7 @@ const Cart = (): JSX.Element => {
       {/* Page Header */}
       <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
         <Link
-          to={"/?tab=home"}
+          to={"/home"}
           className="flex items-center justify-center gap-3 px-4 text-text-blackish dark:text-text-whitish"
         >
           <ChevronLeftIcon />

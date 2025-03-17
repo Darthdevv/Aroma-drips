@@ -33,7 +33,7 @@ const BreezersProducts = (): JSX.Element => {
         <section>
             {/* Page Header */}
             <header className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish h-[6.625rem] w-full flex items-center justify-start p-4 text-lg font-semibold sticky top-0 z-50 shadow-md">
-                <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
+                <Link to={'/home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Drink menu / Breezers</span>
                 </Link>
@@ -74,7 +74,7 @@ const BreezersProducts = (): JSX.Element => {
                         {/* Share / Navigate Button */}
                         <div className="absolute -bottom-[1px] -right-[1px] rounded-3xl">
                             <div
-                                onClick={() => navigate('/?tab=product-details', { state: item })}
+                                onClick={() => navigate('/product-details', { state: item })}
                                 className="cursor-pointer"
                             >
                                 <ShareIcon />

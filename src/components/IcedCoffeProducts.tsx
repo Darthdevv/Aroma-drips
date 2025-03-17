@@ -32,7 +32,7 @@ const IcedCoffeProducts = (): JSX.Element => {
         <section>
             {/* Page Header */}
             <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
-                <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
+                <Link to={'/home'} className="flex items-center justify-center gap-3 px-4">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Drink menu / Ice Coffee</span>
                 </Link>
@@ -73,7 +73,7 @@ const IcedCoffeProducts = (): JSX.Element => {
                         <div className="absolute -bottom-[1px] -right-[1px] rounded-3xl">
                             <div
                                 onClick={() => {
-                                    navigate('/?tab=product-details', { state: item });
+                                    navigate('/product-details', { state: item });
                                 }}
                                 className="cursor-pointer"
                             >

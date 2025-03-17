@@ -1,10 +1,10 @@
-import drink1 from '@/assets/images/HomeItems/drink1.png';
-import drink2 from '@/assets/images/HomeItems/drink2.png';
-import drink3 from '@/assets/images/HomeItems/drink3.png';
-import drink4 from '@/assets/images/HomeItems/drink4.png';
-import drink5 from '@/assets/images/HomeItems/drink5.png';
-import drink6 from '@/assets/images/HomeItems/drink6.png';
-import drink7 from '@/assets/images/HomeItems/drink7.png';
+import drink1 from '@/assets/images/hotCoffe.png';
+import drink2 from '@/assets/images/icedCoffe.png';
+import drink3 from '@/assets/images/frappe.png';
+import drink4 from '@/assets/images/mojito.png';
+import drink5 from '@/assets/images/brezzeers.png';
+import drink6 from '@/assets/images/smothies.png';
+import drink7 from '@/assets/images/milkshakes.png';
 import Ellipse1 from '@/assets/images/Coffee/Ellipse 1.png';
 import Ellipse2 from '@/assets/images/Coffee/Ellipse 2.png';
 import Ellipse3 from '@/assets/images/Coffee/Ellipse 3.png';
@@ -146,13 +146,13 @@ interface Sizes {
  */
 
 export const Drinks = [
-    { id: 1, image: drink1, name: 'Hot Coffee' },
-    { id: 2, image: drink2, name: 'Iced Coffee' },
-    { id: 3, image: drink3, name: 'Frappe' },
-    { id: 4, image: drink4, name: 'Mojito' },
-    { id: 5, image: drink7, name: 'Breezers' },
-    { id: 6, image: drink5, name: 'Smoothies' },
-    { id: 7, image: drink6, name: 'Milk Shakes' },
+    { id: 1, image: drink1, name: 'Hot Coffee' , value:'hotcoffe' },
+    { id: 2, image: drink2, name: 'Iced Coffee', value:'icedcoffe' },
+    { id: 3, image: drink3, name: 'Frappe', value:'frappe' },
+    { id: 4, image: drink4, name: 'Mojito', value:'mojito' },
+    { id: 5, image: drink7, name: 'Breezers', value:'breezers' },
+    { id: 6, image: drink5, name: 'Smoothies' , value:'smoothies'},
+    { id: 7, image: drink6, name: 'Milk Shakes', value:'milkshakes' },
 ];
 
 
