@@ -2,7 +2,6 @@ import Cart from "@/pages/Cart";
 import Home from "@/pages/Home";
 import Menu from "@/pages/Menu";
 import OrderHistory from "@/pages/OrderHistory";
-import { IconFilter, IconSearch } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
@@ -47,7 +46,7 @@ const MainContent = (): JSX.Element => {
             {tab === "home" && (
                 <div className="h-[7rem] py-5 w-full flex items-center justify-center bg-[#fff] dark:bg-background-navygrey">
                     <div className="relative w-[40rem] flex items-center bg-[#fff] dark:bg-background-navygrey rounded-full shadow-sm">
-                        <IconSearch className="absolute left-4 text-text-whitish font-semibold" size={20} />
+                        {/* <IconSearch className="absolute left-4 text-text-whitish font-semibold" size={20} /> */}
                         <Controller
                             name="searchQuery"
                             control={control}
@@ -61,7 +60,7 @@ const MainContent = (): JSX.Element => {
                             )}
                         />
                         <button className="absolute right-1  h-[3.6rem] w-[9.75rem] bg-[#244937] text-white flex items-center justify-center rounded-full px-6 font-medium">
-                            <IconFilter className="mr-2" size={20} />
+                            {/* <IconFilter className="mr-2" size={20} /> */}
                             Search
                         </button>
                     </div>

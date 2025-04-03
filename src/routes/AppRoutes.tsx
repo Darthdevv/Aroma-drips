@@ -11,12 +11,14 @@ import Menu from '@/pages/Menu';
 import OrderHistory from '@/pages/OrderHistory';
 import ProductDetails from '@/pages/ProductDetails';
 import RootLayout from '@/pages/RootLayout'
+import SearchPage from '@/pages/SearchPage';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 
 const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path={"/"} element={<RootLayout />} >
+        <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart />} />
@@ -29,6 +31,7 @@ const AppRoutes = createBrowserRouter(
         <Route path="/mojito" element={<MojitoProducts />} />
         <Route path="/breezers" element={<BreezersProducts />} />
         <Route path="/smoothies" element={<SmoothiesProducts />} />
+        <Route path="/search" element={<SearchPage />} />
       </Route>
     </>
   )

@@ -3,6 +3,7 @@ import ShareIcon from "@/assets/icons/ShareIcon";
 import { BreezersItems } from "@/constants/Menu-options";
 import { Link, useNavigate } from "react-router-dom";
 import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import Header from "./Header";
 
 /**
  * @interface Product
@@ -32,13 +33,10 @@ const BreezersProducts = (): JSX.Element => {
     return (
         <section>
             {/* Page Header */}
-            <header className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish h-[6.625rem] w-full flex items-center justify-start p-4 text-lg font-semibold sticky top-0 z-50 shadow-md">
-                <Link to={'/home'} className="flex items-center justify-center gap-3 px-4">
-                    <ChevronLeftIcon />
-                    <span className="text-2xl">Drink menu / Breezers</span>
-                </Link>
-            </header>
-
+            <Header
+                link="/home"
+                text="Drink menu / Breezers"
+            />
             {/* Breezers Product List */}
             <main className="flex flex-wrap justify-start gap-10 px-4 md:px-10 lg:px-20 mt-10">
                 {BreezersItems.map((item: Product, index: number) => (

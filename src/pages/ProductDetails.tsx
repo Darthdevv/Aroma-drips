@@ -10,6 +10,7 @@ import PlusIcon from "@/assets/icons/PlusIcon";
 import MinusIcon from "@/assets/icons/MinusIcon";
 import { useEffect, useState } from "react";
 import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import Header from "@/components/Header";
 
 interface Product {
     id: number;
@@ -91,12 +92,10 @@ const ProductDetails = () => {
 
     return (
         <section>
-            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
-                <Link to={'/?tab=home'} className="flex items-center justify-center gap-3 px-4">
-                    <ChevronLeftIcon />
-                    <span className="text-2xl">{Product && Product.name}</span>
-                </Link>
-            </header>
+            <Header
+                link="/home"
+                text={Product && Product.name}
+            />
             <main className="p-5">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}

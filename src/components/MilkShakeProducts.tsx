@@ -3,6 +3,7 @@ import ShareIcon from "@/assets/icons/ShareIcon";
 import { MilkshakesItems } from "@/constants/Menu-options";
 import { Link, useNavigate } from "react-router-dom";
 import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import Header from "./Header";
 
 /**
  * @component MilkShakeProducts
@@ -16,13 +17,10 @@ const MilkShakeProducts = (): JSX.Element => {
     return (
         <section>
             {/* Page Header */}
-            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
-                <Link to={'/home'} className="flex items-center justify-center gap-3 px-4">
-                    <ChevronLeftIcon />
-                    <span className="text-2xl">Drink menu / Milk Shake</span>
-                </Link>
-            </header>
-
+            <Header
+                link="/home"
+                text="Drink menu / Milk Shake"
+            />
             {/* Product Grid */}
             <main className="flex flex-wrap justify-start gap-16 px-4 md:px-10 lg:px-20">
                 {MilkshakesItems.map((item, index) => (

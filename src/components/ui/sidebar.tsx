@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { Link, LinkProps } from "react-router-dom";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconMenu2, IconX } from "@tabler/icons-react";
 
 interface Links {
   label: string;
@@ -120,10 +119,10 @@ export const MobileSidebar = ({
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
-          <IconMenu2
+          {/* <IconMenu2
             className="text-text-blackish dark:text-text-whitish"
             onClick={() => setOpen(!open)}
-          />
+          /> */}
         </div>
         <AnimatePresence>
           {open && (
@@ -144,7 +143,7 @@ export const MobileSidebar = ({
                 className="absolute right-10 top-10 z-50 text-text-blackish dark:text-text-whitish"
                 onClick={() => setOpen(!open)}
               >
-                <IconX />
+                {/* <IconX /> */}
               </div>
               {children}
             </motion.div>

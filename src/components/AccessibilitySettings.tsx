@@ -1,5 +1,26 @@
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
+import AccessabiltyIcon from "@/assets/icons/AccessabiltyIcon";
+import Eye from '@/assets/images/eye.png'
+import CloseCircle from '@/assets/images/close-circle.png'
+import FlashCircle from '@/assets/images/flash-circle.png'
+import Location from '@/assets/images/location.png'
+import Import from '@/assets/images/import.png'
+import Voice from '@/assets/images/voice-square.png'
+import Scanner from '@/assets/images/scanner.png'
+import RefreshCircle from '@/assets/images/refresh-circle.png'
+import EyeSlash from '@/assets/images/eye-slash.png'
+import Reciept from '@/assets/images/receipt-minus.png'
+import ToggleSwitch from "./ToggleSwitch";
+import AccessProfielSection from "./AccessProfielSection";
+
+
+interface Toggles {
+    featureA: boolean;
+    featureB: boolean;
+    featureC: boolean;
+}
+
 
 const AccessibilitySettings = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +31,16 @@ const AccessibilitySettings = () => {
         dyslexiaFont: false,
         focusMode: false,
     });
+    const [toggles, setToggles] = useState({
+        featureA: false,
+        featureB: true,
+        featureC: false,
+    });
+
+
+    const handleToggle = (key: keyof Toggles) => {
+        setToggles((prev: Toggles) => ({ ...prev, [key]: !prev[key] }));
+    };
     const [focusedElement, setFocusedElement] = useState<string | null>(null);
 
     useEffect(() => {
@@ -52,32 +83,67 @@ const AccessibilitySettings = () => {
     };
 
     return (
-        <div className="fixed bottom-5 right-5 z-50 ">
+        <div className="fixed bottom-5 right-5 z-40 ">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className=" p-3 rounded-full "
+                className=" p-3 rounded-full z-50 "
             >
-                <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M50 25C50 18.3696 47.3661 12.0107 42.6777 7.32233C37.9893 2.63392 31.6304 0 25 0C18.3696 0 12.0107 2.63392 7.32233 7.32233C2.63392 12.0107 3.8147e-06 18.3696 3.8147e-06 25C3.8147e-06 31.6304 2.63392 37.9893 7.32233 42.6777C12.0107 47.3661 18.3696 50 25 50C31.6304 50 37.9893 47.3661 42.6777 42.6777C47.3661 37.9893 50 31.6304 50 25ZM34.2285 16.5918C35.4199 16.084 36.7969 16.6309 37.3047 17.8223C37.8125 19.0137 37.2656 20.3906 36.0742 20.8984L34.9121 21.3965C33.2227 22.1191 31.4746 22.6562 29.6777 22.9883V27.8809C29.6777 28.3008 29.7461 28.7207 29.8828 29.1113L32.6855 37.5195C33.0957 38.75 32.4316 40.0781 31.2012 40.4883C29.9707 40.8984 28.6426 40.2344 28.2324 39.0039L25.8496 31.8555C25.7227 31.4844 25.3809 31.2305 24.9902 31.2305C24.5996 31.2305 24.248 31.4844 24.1309 31.8555L21.7481 39.0039C21.3379 40.2344 20.0098 40.8984 18.7793 40.4883C17.5488 40.0781 16.8848 38.75 17.2949 37.5195L20.0977 29.1113C20.2344 28.7109 20.3027 28.3008 20.3027 27.8809V22.9883C18.5059 22.6465 16.7578 22.1191 15.0684 21.3965L13.9062 20.8984C12.7148 20.3906 12.168 19.0137 12.6758 17.8223C13.1836 16.6309 14.5605 16.084 15.752 16.5918L16.9238 17.0898C19.4727 18.1836 22.2168 18.75 25 18.75C27.7832 18.75 30.5176 18.1836 33.0762 17.0898L34.2383 16.5918H34.2285ZM25 15.625C23.964 15.625 22.9704 15.2135 22.2379 14.4809C21.5053 13.7483 21.0938 12.7548 21.0938 11.7188C21.0938 10.6827 21.5053 9.68918 22.2379 8.95661C22.9704 8.22405 23.964 7.8125 25 7.8125C26.036 7.8125 27.0296 8.22405 27.7621 8.95661C28.4947 9.68918 28.9063 10.6827 28.9063 11.7188C28.9063 12.7548 28.4947 13.7483 27.7621 14.4809C27.0296 15.2135 26.036 15.625 25 15.625Z"
-                        fill="#FF8A42"
-                    />
-                </svg>
+                <AccessabiltyIcon />
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 bottom-20 w-80 bg-background-white dark:bg-background-navy text-text-blackish dark:text-text-whitish shadow-md p-5 rounded-lg border border-text-whitish dark:border-[#2E3439]">
-                    <h2 className="text-lg font-semibold  mb-4">
-                        Accessibility Settings
-                    </h2>
+                <div className={`absolute ${!isOpen ? "left-[100px]" : "right-[-21px]"} bottom-20 w-[43.5rem] h-screen bg-background-white dark:bg-background-navy  dark:text-text-whitish shadow-md text-white rounded-lg border border-text-whitish dark:border-[#2E3439]`}>
+                    <div className="flex bg-[#e6e6e6] h-full flex-col mt-[6rem] rounded-t-lg items-center">
+                        <div className="bg-[#33664d] rounded-t-lg h-[22.313rem] w-full px-3 flex flex-col items-center">
+                            <div className="flex justify-start w-full mt-5">
+                                <img
+                                    src={CloseCircle}
+                                    alt="Close"
+                                    className="cursor-pointer w-6 h-6"
+                                    onClick={() => setIsOpen(!isOpen)}
+                                />
+                            </div>
+                            <h2 className="text-[28px] font-semibold  mb-4">
+                                Accessibility Adjustments
+                            </h2>
+                            <div className="flex justify-between mb-4 items-center w-full">
+                                <button className="w-[12.813rem] flex justify-center items-center gap-1  bg-white h-[3rem] rounded-2xl">
+                                    <img
+                                        src={RefreshCircle}
+                                        alt="Close"
+                                        className="w-6 h-6"
+                                    />
+                                    <span className="text-[16px] text-black">Reset Settings</span>
+                                </button>
+                                <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
+                                    <img
+                                        src={Reciept}
+                                        alt="Close"
+                                        className="w-6 h-6"
+                                    />
+                                    <span className="text-[16px] text-black">Statement</span>
+                                </button>
+                                <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
+                                    <img
+                                        src={EyeSlash}
+                                        alt="Close"
+                                        className="w-6 h-6"
+                                    />
+                                    <span className="text-[16px] text-black">Hide Interface</span>
+                                </button>
+                            </div>
+                            <div className="w-full mb-4">
+                                <input
+                                    type="text"
+                                    className="w-full h-[3rem] pl-5 rounded-2xl"
+                                    placeholder="Unclear content? Search in dictionary..."
+                                />
+                            </div>
+                            <AccessProfielSection />
+                        </div>
+                    </div>
 
-                    <ThemeToggle />
+                    {/* <ThemeToggle />
 
                     <label className="block mb-2">Text Size</label>
                     <select
@@ -133,13 +199,13 @@ const AccessibilitySettings = () => {
                             className="mr-2"
                         />
                         <span className="">Focus Mode</span>
-                    </label>
+                    </label> */}
                 </div>
             )}
 
-            {settings.focusMode && focusedElement && (
+            {/* {settings.focusMode && focusedElement && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-            )}
+            )} */}
         </div>
     );
 };

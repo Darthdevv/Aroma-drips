@@ -2,19 +2,23 @@ import logo from '../assets/images/Assets/AromaLogo.png';
 import user from '../assets/images/Assets/user.png';
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { IoMdClose, IoMdMenu } from "react-icons/io"; // Icons for open/close menu
+import { IoMdMenu } from "react-icons/io"; // Icons for open/close menu
 import HomeIcon from "@/assets/icons/HomeIcon";
 import SearchIcon from "@/assets/icons/SearchIcon";
 import MenuIcon from "@/assets/icons/MenuIcon";
 import CartIcon from "@/assets/icons/CartIcon";
 import OrderHistoryIcon from "@/assets/icons/OrderHistoryIcon";
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const RootLayout = () => {
+    const { cart } = useSelector((state: RootState) => state.cart)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const location = useLocation();
     const path = location.pathname;
     const extractedString = path.substring(1); // Removes the first "/"
+    // console.log(extractedString);
 
     useEffect(() => {
         setIsDarkMode(document.documentElement.classList.contains("dark"));
@@ -32,11 +36,11 @@ const RootLayout = () => {
             {/* Sidebar for Desktop and Mobile */}
             <aside className={`fixed top-0 left-0 min-h-screen bg-white dark:bg-background-navygrey text-black transition-transform duration-300 z-50 
                 ${isMenuOpen ? "translate-x-0 w-3/4 sm:w-64" : "-translate-x-full w-3/4 sm:w-64"} sm:translate-x-0 sm:block`}>
-                <div className='h-[6.625rem] flex justify-between items-center px-5 bg-accent-green dark:bg-background-navy w-full'>
-                    <img src={logo} alt='logo' />
-                    <button className="sm:hidden text-white" onClick={() => setIsMenuOpen(false)}>
+                <div className='h-[6.625rem] flex justify-center items-center px-5 bg-accent-green dark:bg-background-navy w-full'>
+                    {/* <button className="sm:hidden text-white" onClick={() => setIsMenuOpen(false)}>
                         <IoMdClose size={28} />
-                    </button>
+                    </button> */}
+                    <img src={logo} alt='logo' />
                 </div>
                 <nav className="mt-3 flex flex-col">
                     <div className="flex p-4 flex-col flex-1 overflow-y-auto overflow-x-hidden">
@@ -51,6 +55,10 @@ const RootLayout = () => {
                                 >
                                     {link.icon}
                                     <span>{link.label}</span>
+                                    {link.label === "Cart" && cart.length > 0 &&(
+                                        <span className='w-[30px] text-[15px] flex justify-center items-center rounded-full h-[30px] bg-[#ff8b43] text-white'>{cart.length}</span>
+                                    )
+                                    }
                                 </Link>
                             ))}
                         </div>
