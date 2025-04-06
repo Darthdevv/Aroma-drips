@@ -3,11 +3,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import cartReducer from './redux/cartSlice'
+import selectionReducer from './redux/selectionSlice';
 
 
 
 const rootReducer = combineReducers({
     cart: cartReducer,
+    selection: selectionReducer,
 });
 
 

@@ -2,15 +2,17 @@ import { motion } from "framer-motion";
 import CupSize from "@/assets/icons/CupSize";
 import { Options, Sizes } from "@/constants/Menu-options";
 import { Controller, useForm } from "react-hook-form";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, decreaseQuantity, increaseQuantity } from "@/redux/cartSlice";
+import { addToCart } from "@/redux/cartSlice";
 import { RootState } from "@/store";
 import PlusIcon from "@/assets/icons/PlusIcon";
 import MinusIcon from "@/assets/icons/MinusIcon";
 import { useEffect, useState } from "react";
-import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
 import Header from "@/components/Header";
+import { clearSelection, decreaseSelectionQuantity, increaseSelectionQuantity, selectAddOn, selectSize } from "@/redux/selectionSlice";
+import { selectCartItem, selectCurrentSelection, selectSelections } from "@/redux/selectors";
+import CartNotificationBanner from "@/components/CartNotificationBanner";
 
 interface Product {
     id: number;
@@ -22,33 +24,67 @@ interface Product {
 }
 
 const ProductDetails = () => {
-    const { control, watch, handleSubmit } = useForm({
+    const location = useLocation();
+    const Product: Product | null = location.state || null;
+    const currentSelection = useSelector((state: RootState) =>
+        selectCurrentSelection(state, Product?.id)
+    );
+    const { control, watch, handleSubmit, reset } = useForm({
         defaultValues: {
-            size: "Medium",
-            type: "",
+            size: currentSelection?.size || "",
+            type: currentSelection?.addOn || "",
         }
     });
 
-    const location = useLocation();
-    const Product: Product | null = location.state || null;
-
-
     const dispatch = useDispatch();
+
+    // Get current selections from Redux
+    // In ProductDetails.tsx, update the useSelector line:
+    const selections = useSelector((state: RootState) => selectSelections(state));
+    const cartItem = useSelector((state: RootState) =>
+        selectCartItem(state, Product?.id)
+    );
 
     const selectedSize = watch("size");
     const selectedOption = watch("type");
 
     const cart = useSelector((state: RootState) => state.cart.cart);
-    const cartItem = cart.find((item) => item.id === Product?.id);
-
+    // const cartItem = cart.find((item) =>
+    //     item.id === Product?.id &&
+    //     item.size === currentSelection?.size &&
+    //     item.addOn === currentSelection?.addOn
+    // );
 
     const [totalPrice, setTotalPrice] = useState(Product?.price || 0);
 
+    // Update selections in Redux when form changes
+    useEffect(() => {
+        if (!Product) return;
 
+        if (selectedSize) {
+            dispatch(selectSize({ id: Product.id, size: selectedSize }));
+        }
+    }, [selectedSize, Product, dispatch]);
 
+    useEffect(() => {
+        if (!Product) return;
+
+        if (selectedOption) {
+            dispatch(selectAddOn({ id: Product.id, addOn: selectedOption }));
+        }
+    }, [selectedOption, Product, dispatch]);
+
+    useEffect(() => {
+        if (!Product) return;
+
+        const selectedOptionObj = Options.find(option => option.name === selectedOption);
+        const selectedOptionPrice = selectedOptionObj ? selectedOptionObj.price : 0;
+
+        setTotalPrice((Product?.price || 0) + selectedOptionPrice);
+    }, [selectedOption, Product]);
 
     const handleAddToCart = () => {
-        if (!Product) return;
+        if (!Product || !currentSelection?.size) return;
 
         const productToAdd = {
             id: Product.id,
@@ -56,28 +92,20 @@ const ProductDetails = () => {
             imageUrl: Product.imageUrl,
             description: Product.description,
             price: totalPrice,
-            size: selectedSize,
-            addOn: selectedOption,
-            quantity: 1,
-            category: Product.category
+            basePrice: Product.price,
+            size: currentSelection.size,
+            addOn: currentSelection.addOn || "",
+            quantity: currentSelection.quantity || 1,
+            category: Product.category,
+            uniqueId: `${Product.id}-${currentSelection.size}-${currentSelection.addOn || 'none'}-${Date.now()}`
         };
 
         dispatch(addToCart(productToAdd));
+        dispatch(clearSelection(Product.id));
+        setTotalPrice(Product.price);
+        reset({ size: "", type: "" }); // Reset form fields
     };
 
-
-
-
-    useEffect(() => {
-        if (!Product) return;
-
-
-        const selectedOptionObj = Options.find(option => option.name === selectedOption);
-        const selectedOptionPrice = selectedOptionObj ? selectedOptionObj.price : 0;
-
-
-        setTotalPrice((Product?.price || 0) + selectedOptionPrice);
-    }, [selectedOption, Product]);
 
 
     if (!Product) {
@@ -214,18 +242,20 @@ const ProductDetails = () => {
                                 <h2 className="text-[20px] font-bold">{totalPrice} LE</h2>
 
                                 <div className="flex gap-10">
-                                    {cartItem && (
+                                    {currentSelection && (
                                         <div className="flex items-center gap-4">
                                             <span
                                                 className="w-[2.821rem] cursor-pointer h-[2.821rem] border border-orange-500 rounded-full flex items-center justify-center text-orange-500 font-bold"
-                                                onClick={() => dispatch(decreaseQuantity(Product.id))}
+                                                onClick={() => dispatch(decreaseSelectionQuantity(Product.id))}
                                             >
                                                 <MinusIcon />
                                             </span>
-                                            <span className="text-[18px] font-bold">{String(cartItem.quantity).padStart(2, '0')}</span>
+                                            <span className="text-[18px] font-bold">
+                                                {String(currentSelection.quantity || 1).padStart(2, '0')}
+                                            </span>
                                             <span
                                                 className="w-[2.821rem] cursor-pointer h-[2.821rem] bg-orange-500 text-white rounded-full flex items-center justify-center font-bold"
-                                                onClick={() => dispatch(increaseQuantity(Product.id))}
+                                                onClick={() => dispatch(increaseSelectionQuantity(Product.id))}
                                             >
                                                 <PlusIcon />
                                             </span>
@@ -240,6 +270,7 @@ const ProductDetails = () => {
                     </form>
                 </motion.div>
             </main>
+            <CartNotificationBanner />
         </section>
     );
 };

@@ -112,9 +112,11 @@ const Cart = (): JSX.Element => {
                           <div className="flex items-center justify-between w-full">
                             <p className="font-medium mb-2 text-text-greyish dark:text-text-whitish">{product.category}</p>
                             <button
-                              onClick={() =>
-                                dispatch(removeProduct(product.id))
-                              }
+                              onClick={() => dispatch(removeProduct({
+                                id: product.id,
+                                size: product.size,
+                                addOn: product.addOn
+                              }))}
                               className="text-red-500 hover:text-red-700"
                             >
                               <DeleteIcon />
@@ -126,25 +128,31 @@ const Cart = (): JSX.Element => {
                           <div className="flex items-center justify-between w-full mt-2">
                             <p className="font-semibold">{product.price} LE</p>
                             <div className="flex items-center justify-center space-x-4">
-                              <button
-                                onClick={() =>
-                                  dispatch(decreaseQuantity(product.id))
-                                }
-                                className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-accent-orange pb-3 font-medium"
-                              >
-                                _
-                              </button>
-                              <span className="">
-                                {product.quantity}
-                              </span>
-                              <button
-                                onClick={() =>
-                                  dispatch(increaseQuantity(product.id))
-                                }
-                                className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-white bg-accent-orange pt-0.5 font-medium"
-                              >
-                                +
-                              </button>
+                              <div className="flex items-center justify-center space-x-4">
+                                <button
+                                  onClick={() => dispatch(decreaseQuantity({
+                                    id: product.id,
+                                    size: product.size,
+                                    addOn: product.addOn
+                                  }))}
+                                  className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-accent-orange pb-3 font-medium"
+                                >
+                                  _
+                                </button>
+                                <span className="">
+                                  {product.quantity}
+                                </span>
+                                <button
+                                  onClick={() => dispatch(increaseQuantity({
+                                    id: product.id,
+                                    size: product.size,
+                                    addOn: product.addOn
+                                  }))}
+                                  className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-white bg-accent-orange pt-0.5 font-medium"
+                                >
+                                  +
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>

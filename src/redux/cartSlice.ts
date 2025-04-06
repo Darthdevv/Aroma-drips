@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
  * @property {number} quantity - Quantity of the product in the cart.
  * @property {string} category - Category of the product.
  */
+// Update your Product interface in cartSlice.ts
 interface Product {
     id: number;
     name: string;
@@ -21,6 +22,9 @@ interface Product {
     price: number;
     quantity: number;
     category: string;
+    size: string;
+    addOn: string;
+    basePrice: number; // To track original price before add-ons
 }
 
 /**
@@ -55,7 +59,13 @@ const cartSlice = createSlice({
          * @description Adds a product to the cart. If it already exists, increases its quantity.
          */
         addToCart: (state, action: PayloadAction<Product>) => {
-            const existingProduct = state.cart.find((item) => item.id === action.payload.id);
+            // Check for existing product with same id, size and addOn
+            const existingProduct = state.cart.find(
+                item => item.id === action.payload.id &&
+                    item.size === action.payload.size &&
+                    item.addOn === action.payload.addOn
+            );
+
             if (existingProduct) {
                 existingProduct.quantity += 1;
             } else {
@@ -67,16 +77,25 @@ const cartSlice = createSlice({
          * @function removeProduct
          * @description Removes a product from the cart by its ID.
          */
-        removeProduct: (state, action: PayloadAction<number>) => {
-            state.cart = state.cart.filter((item) => item.id !== action.payload);
+        // In your cartSlice.ts
+        removeProduct: (state, action: PayloadAction<{ id: number, size: string, addOn: string }>) => {
+            state.cart = state.cart.filter(item =>
+                !(item.id === action.payload.id &&
+                    item.size === action.payload.size &&
+                    item.addOn === action.payload.addOn)
+            );
         },
 
         /**
          * @function increaseQuantity
          * @description Increases the quantity of a product in the cart.
          */
-        increaseQuantity: (state, action: PayloadAction<number>) => {
-            const product = state.cart.find((item) => item.id === action.payload);
+        increaseQuantity: (state, action: PayloadAction<{ id: number, size: string, addOn: string }>) => {
+            const product = state.cart.find(
+                item => item.id === action.payload.id &&
+                    item.size === action.payload.size &&
+                    item.addOn === action.payload.addOn
+            );
             if (product) {
                 product.quantity += 1;
             }
@@ -86,13 +105,17 @@ const cartSlice = createSlice({
          * @function decreaseQuantity
          * @description Decreases the quantity of a product. If the quantity reaches 0, it is removed from the cart.
          */
-        decreaseQuantity: (state, action: PayloadAction<number>) => {
-            const productIndex = state.cart.findIndex((item) => item.id === action.payload);
+        decreaseQuantity: (state, action: PayloadAction<{ id: number, size: string, addOn: string }>) => {
+            const productIndex = state.cart.findIndex(
+                item => item.id === action.payload.id &&
+                    item.size === action.payload.size &&
+                    item.addOn === action.payload.addOn
+            );
             if (productIndex !== -1) {
                 if (state.cart[productIndex].quantity > 1) {
                     state.cart[productIndex].quantity -= 1;
                 } else {
-                    state.cart.splice(productIndex, 1); // Remove product if quantity reaches 0
+                    state.cart.splice(productIndex, 1);
                 }
             }
         },
