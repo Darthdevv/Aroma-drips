@@ -4,7 +4,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io"; // Icons for open/close menu
 import HomeIcon from "@/assets/icons/HomeIcon";
 import SearchIcon from "@/assets/icons/SearchIcon";
-import MenuIcon from "@/assets/icons/MenuIcon";
 import CartIcon from "@/assets/icons/CartIcon";
 import OrderHistoryIcon from "@/assets/icons/OrderHistoryIcon";
 import { useSelector } from 'react-redux';
@@ -45,7 +44,7 @@ const RootLayout = () => {
             {isMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 sm:hidden z-40" onClick={() => setIsMenuOpen(false)}></div>}
 
             {/* Main Content */}
-            <div className='w-full sm:w-[calc(100%-16rem)] ml-auto bg-[#f8f8f8] min-h-screen'>
+            <div className='w-full sm:w-[calc(100%-16rem)] ml-auto bg-background-gray dark:bg-background-navy min-h-screen'>
                 {/* Header with Menu Toggle for Mobile */}
                 <header className="bg-accent-green dark:bg-background-navy flex items-center justify-between p-4 sm:hidden">
                     <button className="text-white" onClick={() => setIsMenuOpen(true)}>

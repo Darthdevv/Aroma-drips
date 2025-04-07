@@ -136,7 +136,6 @@ const AccessibilitySettings = () => {
                   />
                 </div>
                 <AccessProfielSection />
-                <ThemeToggle />
               </div>
             </div>
 

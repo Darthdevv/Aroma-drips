@@ -80,7 +80,7 @@ const Home = (): JSX.Element => {
                                 transition={{ duration: 0.5, delay: drink.id * 0.2 }}
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <div className=''>
+                                <div className='bg-background-gray dark:bg-[#2E3439] rounded-lg  isolate'>
                                     <img
                                         src={drink.image}
                                         alt={`drink-${drink.id}`}

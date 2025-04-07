@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const SearchComponent = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const SearchComponent = () => {
         }
     }
     return (
-        <div className="h-[6.625rem] py-5 w-full flex items-center justify-center bg-[#fff] dark:bg-background-navygrey">
+        <div className="h-[6.625rem] py-5 w-full flex items-center justify-end bg-[#fff] dark:bg-background-navygrey">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="relative w-[40rem] flex items-center bg-[#fff] dark:bg-background-navygrey rounded-full shadow-sm"
@@ -40,6 +41,9 @@ const SearchComponent = () => {
                     Search
                 </button>
             </form>
+            <div className='mx-8'>
+                <ThemeToggle/>
+            </div>
         </div>
     )
 }
