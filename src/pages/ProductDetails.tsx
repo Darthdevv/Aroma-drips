@@ -119,7 +119,7 @@ const ProductDetails = () => {
 
 
     return (
-        <section>
+        <section className="bg-background-grey dark:bg-background-navy min-h-screen">
             <Header
                 link="/home"
                 text={Product && Product.name}

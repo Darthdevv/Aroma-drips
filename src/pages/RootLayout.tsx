@@ -27,7 +27,6 @@ const RootLayout = () => {
 
     const links = [
         { label: "Home", value: 'home', href: "/home", icon: <HomeIcon color={extractedString === "home" ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
-        { label: "Menu", value: 'menu', href: "/menu", icon: <MenuIcon color={extractedString === "menu" ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
         { label: "Cart", value: 'cart', href: "/cart", icon: <CartIcon color={extractedString === "cart" ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> },
         { label: "Order History", value: 'orderHistory', href: "/orderHistory", icon: <OrderHistoryIcon color={extractedString === "orderHistory" ? "#ff8b43" : isDarkMode ? "#ffffff" : "#000000"} /> }
     ];
@@ -48,7 +47,7 @@ const RootLayout = () => {
             {/* Main Content */}
             <div className='w-full sm:w-[calc(100%-16rem)] ml-auto bg-[#f8f8f8] min-h-screen'>
                 {/* Header with Menu Toggle for Mobile */}
-                <header className="bg-accent-green flex items-center justify-between p-4 sm:hidden">
+                <header className="bg-accent-green dark:bg-background-navy flex items-center justify-between p-4 sm:hidden">
                     <button className="text-white" onClick={() => setIsMenuOpen(true)}>
                         <IoMdMenu size={28} />
                     </button>

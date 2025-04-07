@@ -1,6 +1,5 @@
 import Cart from "@/pages/Cart";
 import Home from "@/pages/Home";
-import Menu from "@/pages/Menu";
 import OrderHistory from "@/pages/OrderHistory";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -70,7 +69,6 @@ const MainContent = (): JSX.Element => {
             {/* Dynamic Content Based on Selected Tab */}
             <div className="w-full h-full bg-background-gray dark:bg-background-navy">
                 {tab === "home" && <Home />}
-                {tab === "menu" && <Menu />}
                 {tab === "cart" && <Cart />}
                 {tab === "orderHistory" && <OrderHistory />}
                 {tab === "Hot Coffee" && <CoffeProducts />}

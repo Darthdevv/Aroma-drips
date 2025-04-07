@@ -1,5 +1,6 @@
 import drink1 from '@/assets/images/hotCoffe.png';
 import drink2 from '@/assets/images/icedCoffe.png';
+import drink22 from '@/assets/images/IcedCoffee.png';
 import drink3 from '@/assets/images/frappe.png';
 import drink4 from '@/assets/images/mojito.png';
 import drink5 from '@/assets/images/brezzeers.png';

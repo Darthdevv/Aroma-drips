@@ -17,7 +17,7 @@ export const Profile = () => {
         }
     })
     return (
-        <section>
+        <section className="bg-background-grey dark:bg-background-navy min-h-screen text-text-blackish dark:text-text-whitish">
             {/* Page Header */}
             <Header
                 link="/home"
@@ -38,7 +38,7 @@ export const Profile = () => {
                                             {...field}
                                             type="text"
                                             placeholder="First Name"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -55,7 +55,7 @@ export const Profile = () => {
                                             {...field}
                                             type="text"
                                             placeholder="Last Name"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -74,7 +74,7 @@ export const Profile = () => {
                                             {...field}
                                             type="email"
                                             placeholder="email"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -93,7 +93,7 @@ export const Profile = () => {
                                             {...field}
                                             type="password"
                                             placeholder="Current Password"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -112,7 +112,7 @@ export const Profile = () => {
                                             {...field}
                                             type="password"
                                             placeholder="New Password"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -129,7 +129,7 @@ export const Profile = () => {
                                             {...field}
                                             type="password"
                                             placeholder="Confirm New Password"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -149,7 +149,7 @@ export const Profile = () => {
                                             type="number"
                                             min={0}
                                             placeholder="Phone Number"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -165,7 +165,7 @@ export const Profile = () => {
                                         <input
                                             {...field}
                                             type="date"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}
@@ -184,7 +184,7 @@ export const Profile = () => {
                                             {...field}
                                             type="text"
                                             placeholder="Address"
-                                            className="bg-[#e6e6e6] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
                                         />
                                     </div>
                                 )}

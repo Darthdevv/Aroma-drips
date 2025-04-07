@@ -76,7 +76,7 @@ const Cart = (): JSX.Element => {
   })
 
   return (
-    <section>
+    <section className="bg-background-grey dark:bg-background-navy min-h-screen">
       {/* Page Header */}
       <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
         <Link
@@ -110,13 +110,19 @@ const Cart = (): JSX.Element => {
                         />
                         <div className="w-full">
                           <div className="flex items-center justify-between w-full">
-                            <p className="font-medium mb-2 text-text-greyish dark:text-text-whitish">{product.category}</p>
+                            <p className="font-medium mb-2 text-text-greyish dark:text-text-whitish">
+                              {product.category}
+                            </p>
                             <button
-                              onClick={() => dispatch(removeProduct({
-                                id: product.id,
-                                size: product.size,
-                                addOn: product.addOn
-                              }))}
+                              onClick={() =>
+                                dispatch(
+                                  removeProduct({
+                                    id: product.id,
+                                    size: product.size,
+                                    addOn: product.addOn,
+                                  })
+                                )
+                              }
                               className="text-red-500 hover:text-red-700"
                             >
                               <DeleteIcon />
@@ -130,24 +136,30 @@ const Cart = (): JSX.Element => {
                             <div className="flex items-center justify-center space-x-4">
                               <div className="flex items-center justify-center space-x-4">
                                 <button
-                                  onClick={() => dispatch(decreaseQuantity({
-                                    id: product.id,
-                                    size: product.size,
-                                    addOn: product.addOn
-                                  }))}
+                                  onClick={() =>
+                                    dispatch(
+                                      decreaseQuantity({
+                                        id: product.id,
+                                        size: product.size,
+                                        addOn: product.addOn,
+                                      })
+                                    )
+                                  }
                                   className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-accent-orange pb-3 font-medium"
                                 >
                                   _
                                 </button>
-                                <span className="">
-                                  {product.quantity}
-                                </span>
+                                <span className="">{product.quantity}</span>
                                 <button
-                                  onClick={() => dispatch(increaseQuantity({
-                                    id: product.id,
-                                    size: product.size,
-                                    addOn: product.addOn
-                                  }))}
+                                  onClick={() =>
+                                    dispatch(
+                                      increaseQuantity({
+                                        id: product.id,
+                                        size: product.size,
+                                        addOn: product.addOn,
+                                      })
+                                    )
+                                  }
                                   className="flex items-center justify-center w-[1.768rem] h-[1.768rem] aspect-square rounded-full border border-accent-orange text-white bg-accent-orange pt-0.5 font-medium"
                                 >
                                   +
@@ -253,9 +265,9 @@ const Cart = (): JSX.Element => {
               <p className="text-[#838282] text-lg">
                 Your cart lives to serve. Fill it with items to make it happy.
               </p>
-              <button className="my-4 bg-accent-darkorange text-white px-6 py-2 rounded-[1.75rem]">
+              <Link to='/' className="my-4 bg-accent-darkorange text-white px-6 py-2 rounded-[1.75rem]">
                 Continue Browsing
-              </button>
+              </Link>
             </motion.div>
           )}
         </div>
@@ -264,7 +276,7 @@ const Cart = (): JSX.Element => {
       {/* Order Success Modal */}
       {isModalOpen && (
         <main className="fixed inset-0 flex items-center justify-center bg-[#2E3439] dark:bg-[#2E3439] dark:bg-opacity-60 bg-opacity-60">
-          <div className="bg-[#F8EDDC] dark:bg-background-navy dark:text-text-whitish p-6 rounded-lg shadow-lg w-[28.8125rem] h-[31.3125rem] text-center relative z-10">
+          <div className="bg-[#F8EDDC] dark:bg-background-navy dark:text-text-whitish p-6 rounded-lg shadow-lg w-[28.8125rem] h-[31.3125rem] text-center relative z-[999]">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-7 right-7 text-gray-500 hover:text-gray-700"
@@ -284,14 +296,14 @@ const Cart = (): JSX.Element => {
               Order ID: #00110022
             </p>
             <div className="flex items-center justify-center w-full mt-4 text-[#F27245] font-semibold">
-              <button
+              <Link to="/"
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2"
               >
                 KEEP BROWSING
-              </button>
+              </Link>
               <span className="mx-2 border-l border-[#F27245] h-6"></span>
-              <button className="px-4 py-2">ORDER HISTORY</button>
+              <Link to="/orderHistory" className="px-4 py-2">ORDER HISTORY</Link>
             </div>
           </div>
         </main>

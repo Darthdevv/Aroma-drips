@@ -15,7 +15,7 @@ const SmoothiesProducts = (): JSX.Element => {
     const navigate = useNavigate();
 
     return (
-        <section>
+        <section className="bg-background-grey dark:bg-background-navy min-h-screen">
             {/* Page Header */}
             <Header
                 link="/home"

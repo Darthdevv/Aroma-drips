@@ -83,68 +83,64 @@ const AccessibilitySettings = () => {
     };
 
     return (
-        <div className="fixed bottom-5 right-5 z-40 ">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className=" p-3 rounded-full z-50 "
-            >
-                <AccessabiltyIcon />
-            </button>
+      <div className="fixed bottom-5 right-5 z-50 ">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className=" p-3 rounded-full z-50 "
+        >
+          <AccessabiltyIcon />
+        </button>
 
-            {isOpen && (
-                <div className={`absolute ${!isOpen ? "left-[100px]" : "right-[-21px]"} bottom-20 w-[43.5rem] h-screen bg-background-white dark:bg-background-navy  dark:text-text-whitish shadow-md text-white rounded-lg border border-text-whitish dark:border-[#2E3439]`}>
-                    <div className="flex bg-[#e6e6e6] h-full flex-col mt-[6rem] rounded-t-lg items-center">
-                        <div className="bg-[#33664d] rounded-t-lg h-[22.313rem] w-full px-3 flex flex-col items-center">
-                            <div className="flex justify-start w-full mt-5">
-                                <img
-                                    src={CloseCircle}
-                                    alt="Close"
-                                    className="cursor-pointer w-6 h-6"
-                                    onClick={() => setIsOpen(!isOpen)}
-                                />
-                            </div>
-                            <h2 className="text-[28px] font-semibold  mb-4">
-                                Accessibility Adjustments
-                            </h2>
-                            <div className="flex justify-between mb-4 items-center w-full">
-                                <button className="w-[12.813rem] flex justify-center items-center gap-1  bg-white h-[3rem] rounded-2xl">
-                                    <img
-                                        src={RefreshCircle}
-                                        alt="Close"
-                                        className="w-6 h-6"
-                                    />
-                                    <span className="text-[16px] text-black">Reset Settings</span>
-                                </button>
-                                <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
-                                    <img
-                                        src={Reciept}
-                                        alt="Close"
-                                        className="w-6 h-6"
-                                    />
-                                    <span className="text-[16px] text-black">Statement</span>
-                                </button>
-                                <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
-                                    <img
-                                        src={EyeSlash}
-                                        alt="Close"
-                                        className="w-6 h-6"
-                                    />
-                                    <span className="text-[16px] text-black">Hide Interface</span>
-                                </button>
-                            </div>
-                            <div className="w-full mb-4">
-                                <input
-                                    type="text"
-                                    className="w-full h-[3rem] pl-5 rounded-2xl"
-                                    placeholder="Unclear content? Search in dictionary..."
-                                />
-                            </div>
-                            <AccessProfielSection />
-                        </div>
-                    </div>
+        {isOpen && (
+          <div
+            className={`absolute ${
+              !isOpen ? "left-[100px]" : "right-[-21px]"
+            } bottom-20 w-[43.5rem] h-screen bg-background-white dark:bg-background-navy  dark:text-text-whitish shadow-md text-white rounded-lg border border-text-whitish dark:border-[#2E3439]`}
+          >
+            <div className="flex bg-[#e6e6e6] h-full flex-col mt-[6rem] rounded-t-lg items-center">
+              <div className="bg-[#33664d] rounded-t-lg h-[22.313rem] w-full px-3 flex flex-col items-center">
+                <div className="flex justify-start w-full mt-5">
+                  <img
+                    src={CloseCircle}
+                    alt="Close"
+                    className="cursor-pointer w-6 h-6"
+                    onClick={() => setIsOpen(!isOpen)}
+                  />
+                </div>
+                <h2 className="text-[28px] font-semibold  mb-4">
+                  Accessibility Adjustments
+                </h2>
+                <div className="flex justify-between mb-4 items-center w-full">
+                  <button className="w-[12.813rem] flex justify-center items-center gap-1  bg-white h-[3rem] rounded-2xl">
+                    <img src={RefreshCircle} alt="Close" className="w-6 h-6" />
+                    <span className="text-[16px] text-black">
+                      Reset Settings
+                    </span>
+                  </button>
+                  <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
+                    <img src={Reciept} alt="Close" className="w-6 h-6" />
+                    <span className="text-[16px] text-black">Statement</span>
+                  </button>
+                  <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
+                    <img src={EyeSlash} alt="Close" className="w-6 h-6" />
+                    <span className="text-[16px] text-black">
+                      Hide Interface
+                    </span>
+                  </button>
+                </div>
+                <div className="w-full mb-4">
+                  <input
+                    type="text"
+                    className="w-full h-[3rem] pl-5 rounded-2xl"
+                    placeholder="Unclear content? Search in dictionary..."
+                  />
+                </div>
+                <AccessProfielSection />
+                <ThemeToggle />
+              </div>
+            </div>
 
-                    {/* <ThemeToggle />
-
+            {/*
                     <label className="block mb-2">Text Size</label>
                     <select
                         name="textSize"
@@ -200,13 +196,13 @@ const AccessibilitySettings = () => {
                         />
                         <span className="">Focus Mode</span>
                     </label> */}
-                </div>
-            )}
+          </div>
+        )}
 
-            {/* {settings.focusMode && focusedElement && (
+        {/* {settings.focusMode && focusedElement && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
             )} */}
-        </div>
+      </div>
     );
 };
 

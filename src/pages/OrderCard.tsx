@@ -77,30 +77,30 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
       {/* Order Header */}
       <div
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex flex-col lg:flex-row justify-between items-start lg:items-center"
+        className="flex flex-row justify-between items-start lg:items-center flex-nowrap"
       >
-        <div className="flex items-start justify-center gap-4">
-          <div className="mb-2 lg:mb-0">
-            <p className="font-bold">Order ID: #{order.id}</p>
+        <div className="flex items-center gap-4 flex-wrap sm:justify-start sm:items-start">
+          <div className="mb-2 lg:mb-0 text-nowrap">
+            <p className="font-bold self-start">Order ID: #{order.id}</p>
             <p className="text-sm text-gray-500">{order.date}</p>
           </div>
           <span
             className={
               orderStatus === "Pending"
-                ? "bg-accent-yellow dark:bg-[#FFCC0033] text-accent-brown shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
+                ? "bg-accent-yellow dark:bg-[#FFCC0033] text-accent-brown shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded self-start"
                 : orderStatus === "Cancelled"
-                ? "bg-[#ffeceb] text-[#FF3B30] dark:bg-[#FF3B301A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
+                ? "bg-[#ffeceb] text-[#FF3B30] dark:bg-[#FF3B301A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded self-start"
                 : orderStatus === "Delivered"
-                ? "bg-[#ebfaef] text-[#34C759] dark:bg-[#34C7591A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded"
-                : "bg-gray-500 text-white shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded"
+                ? "bg-[#ebfaef] text-[#34C759] dark:bg-[#34C7591A] shadow-neutral-300 font-bold text-xs px-2.5 py-1.5 rounded self-start"
+                : "bg-gray-500 text-white shadow-neutral-300 shadow-md font-bold text-xs px-2 py-1 rounded self-start"
             }
           >
             {orderStatus}
           </span>
         </div>
 
-        <div className="flex items-start justify-center gap-4 text-text-blackish dark:text-text-whitish">
-          <p className="">{order.items.length} Items</p>
+        <div className="flex items-start justify-center gap-4 text-text-blackish dark:text-text-whitish text-nowrap">
+          <p className="flex-nowrap">{order.items.length} Items</p>
           <button className="focus:outline-none text-text-blackish dark:text-text-whitish">
             {isExpanded ? <ArrowUpIcon /> : <ArrowDownIcon />}
           </button>
@@ -146,7 +146,7 @@ const OrderCard: React.FC<{ order: Order, tab: "upcoming" | "history" }> = ({ or
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center gap-4 text-text-blackish dark:text-text-whitish">
+                  <div className="flex items-center justify-center gap-4 text-text-blackish dark:text-text-whitish text-nowrap">
                     <p className="mt-2 lg:mt-0 flex items-center justify-center font-medium">
                       EGP {item.price}
                     </p>

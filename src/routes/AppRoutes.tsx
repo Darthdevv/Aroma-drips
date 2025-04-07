@@ -7,7 +7,6 @@ import MojitoProducts from '@/components/MojitoProducts';
 import SmoothiesProducts from '@/components/SmoothiesProducts';
 import Cart from '@/pages/Cart';
 import Home from '@/pages/Home';
-import Menu from '@/pages/Menu';
 import OrderHistory from '@/pages/OrderHistory';
 import ProductDetails from '@/pages/ProductDetails';
 import { Profile } from '@/pages/Profile';
@@ -21,7 +20,6 @@ const AppRoutes = createBrowserRouter(
       <Route path={"/"} element={<RootLayout />} >
         <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orderHistory" element={<OrderHistory />} />
         <Route path="/product-details" element={<ProductDetails />} />

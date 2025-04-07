@@ -28,7 +28,7 @@ const Home = (): JSX.Element => {
             : "bg-[#f8f8f8] dark:bg-transparent text-[#999999] dark:text-text-whitish dark:border-[#2E3439]  border border-[#999999] text-[13px] md:text-[18px] font-semibold w-[9.375rem] h-[3.688rem] rounded-full";
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-background-gray dark:bg-background-navy">
             <SearchComponent />
             {/* Category Buttons */}
             <div className='flex flex-col pl-5 pt-5'>
@@ -74,7 +74,7 @@ const Home = (): JSX.Element => {
                                     navigate(`/${drink.value}`)
                                 }}
                                 key={drink.id}
-                                className="bg-white flex flex-col cursor-pointer w-[13rem] md:w-[19rem] justify-center h-[13rem] items-center md:h-[20rem] shadow-lg rounded-lg overflow-hidden"
+                                className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish flex flex-col cursor-pointer w-[13rem] md:w-[19rem] justify-center h-[13rem] items-center md:h-[20rem] shadow-lg rounded-lg overflow-hidden"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: drink.id * 0.2 }}
@@ -84,7 +84,7 @@ const Home = (): JSX.Element => {
                                     <img
                                         src={drink.image}
                                         alt={`drink-${drink.id}`}
-                                        className="object-contain mx-auto w-[8.782rem] h-[7.892rem] md:w-[14.5rem] md:h-[14.5rem]"
+                                        className="object-contain mx-auto w-[8.782rem] h-[7.892rem] md:w-[14.5rem] md:h-[14.5rem] mix-blend-normal"
                                     />
                                 </div>
                                 <div className='text-center mt-2'>

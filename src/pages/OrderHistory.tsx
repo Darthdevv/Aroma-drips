@@ -137,7 +137,7 @@ const OrderHistory: React.FC = () => {
 
 
     return (
-        <div>
+        <section className="bg-background-grey dark:bg-background-navy min-h-screen">
             {/* Page Header */}
             <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
                 <span className="flex items-center justify-center gap-3 px-6">
@@ -208,7 +208,7 @@ const OrderHistory: React.FC = () => {
                     ))}
                 </section>
             )}
-        </div>
+        </section>
     );
 };
 
