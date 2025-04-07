@@ -131,7 +131,7 @@ const ProductDetails = () => {
                     transition={{ duration: 0.5 }}
                     className='bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish h-auto w-full rounded-xl shadow-lg p-10'
                 >
-                    <form onSubmit={handleSubmit(handleAddToCart)} className="w-full flex space-x-5">
+                    <form onSubmit={handleSubmit(handleAddToCart)} className="w-full flex flex-col md:flex-row space-x-5">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
