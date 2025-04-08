@@ -17,7 +17,7 @@ const CartNotificationBanner = () => {
     }
 
     return (
-        <div className="w-[102rem] fixed bottom-15 right-4 z-50 h-[4.313rem] rounded-full bg-accent-green dark:bg-background-navygrey text-text-whitish">
+        <div className="mx-5 h-[4.313rem] rounded-full bg-accent-green dark:bg-background-navygrey text-text-whitish">
             <div className="w-full flex justify-between items-center h-full px-8">
                 <div className="flex gap-2 items-center">
                     <span className="text-[19px] font-semibold">Quantity</span>

@@ -74,7 +74,7 @@ const Home = (): JSX.Element => {
                                     navigate(`/${drink.value}`)
                                 }}
                                 key={drink.id}
-                                className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish flex flex-col cursor-pointer w-[13rem] md:w-[19rem] justify-center h-[13rem] items-center md:h-[20rem] shadow-lg rounded-lg overflow-hidden"
+                                className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish flex flex-col cursor-pointer w-[10rem] md:w-[19rem] justify-center h-[12.313rem] items-center md:h-[20rem] shadow-lg rounded-lg overflow-hidden"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: drink.id * 0.2 }}
