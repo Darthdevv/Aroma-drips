@@ -4,11 +4,11 @@ import DarkEmptyCart from "@/assets/images/Dark-EmptyCart.png";
 import OrderSuccess from "@/assets/images/OrderSuccess.png";
 import { motion } from "framer-motion";
 import DeleteIcon from "@/assets/icons/DeleteIcon";
-import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { decreaseQuantity, increaseQuantity, removeProduct } from "@/redux/cartSlice";
+import Header from "@/components/Header";
 
 /**
  * @interface Product
@@ -78,15 +78,7 @@ const Cart = (): JSX.Element => {
   return (
     <section className="bg-background-grey dark:bg-background-navy min-h-screen">
       {/* Page Header */}
-      <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
-        <Link
-          to={"/home"}
-          className="flex items-center justify-center gap-3 px-4 text-text-blackish dark:text-text-whitish"
-        >
-          <ChevronLeftIcon />
-          <span className="text-2xl">Cart</span>
-        </Link>
-      </header>
+      <Header link="/home" text="Cart" />
       <main className="flex justify-center items-center bg-background-grey dark:bg-background-navy p-6">
         <div className=" p-6 rounded-xl shadow-lg w-full bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish">
           {cartProducts.length > 0 ? (
@@ -265,7 +257,10 @@ const Cart = (): JSX.Element => {
               <p className="text-[#838282] text-lg">
                 Your cart lives to serve. Fill it with items to make it happy.
               </p>
-              <Link to='/' className="my-4 bg-accent-darkorange text-white px-6 py-2 rounded-[1.75rem]">
+              <Link
+                to="/"
+                className="my-4 bg-accent-darkorange text-white px-6 py-2 rounded-[1.75rem]"
+              >
                 Continue Browsing
               </Link>
             </motion.div>
@@ -296,14 +291,17 @@ const Cart = (): JSX.Element => {
               Order ID: #00110022
             </p>
             <div className="flex items-center justify-center w-full mt-4 text-[#F27245] font-semibold">
-              <Link to="/"
+              <Link
+                to="/"
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2"
               >
                 KEEP BROWSING
               </Link>
               <span className="mx-2 border-l border-[#F27245] h-6"></span>
-              <Link to="/orderHistory" className="px-4 py-2">ORDER HISTORY</Link>
+              <Link to="/orderHistory" className="px-4 py-2">
+                ORDER HISTORY
+              </Link>
             </div>
           </div>
         </main>

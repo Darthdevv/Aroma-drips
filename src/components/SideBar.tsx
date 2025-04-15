@@ -36,13 +36,12 @@ interface SideBarProps {
 const SideBar = ({ isMenuOpen, links, extractedString, cart, setIsMenuOpen }: SideBarProps): JSX.Element => {
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     return (
-        <aside className={`fixed top-0 left-0 min-h-screen bg-white dark:bg-background-navygrey text-black transition-transform duration-300
+        <aside className={`fixed top-0 left-0 min-h-screen bg-white dark:bg-background-navygrey text-black transition-transform duration-300 z-0
             ${isMenuOpen ? "translate-x-0 w-3/4 sm:w-64 z-50" : "-translate-x-full w-3/4 sm:w-64 z-0"} sm:translate-x-0 sm:block`}>
             <div className='h-[6.625rem] flex justify-center items-center px-5 bg-accent-green dark:bg-background-navy w-full'>
-                {/* <button className="sm:hidden text-white" onClick={() => setIsMenuOpen(false)}>
-                    <IoMdClose size={28} />
-                </button> */}
-                <img src={logo} alt='logo' />
+                <Link to={'/home'}>
+                    <img src={logo} alt='logo' />
+                </Link>
             </div>
             <nav className="mt-3 flex flex-col">
                 <div className="flex p-4 flex-col flex-1 overflow-y-auto overflow-x-hidden">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OrderCard from "@/pages/OrderCard";
 import SearchFilter from "./SearchFilter";
-import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import Header from "@/components/Header";
 
 /**
  * Represents an order item.
@@ -139,13 +139,16 @@ const OrderHistory: React.FC = () => {
     return (
         <section className="bg-background-grey dark:bg-background-navy min-h-screen">
             {/* Page Header */}
-            <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
+            {/* <header className="bg-background-white dark:bg-background-navygrey h-[6.625rem] w-full flex items-center justify-start p-4 text-text-blackish dark:text-text-whitish text-lg font-semibold">
                 <span className="flex items-center justify-center gap-3 px-6">
                     <ChevronLeftIcon />
                     <span className="text-2xl">Order History</span>
                 </span>
-            </header>
-
+            </header> */}
+            <Header
+                link="/home"
+                text="Order History"
+            />
             {/* Tabs to switch between Upcoming and History */}
             {activeTab === "upcoming" ? (
                 <nav className="px-8 mt-6">

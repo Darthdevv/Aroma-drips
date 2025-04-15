@@ -9,6 +9,7 @@ import OrderHistoryIcon from "@/assets/icons/OrderHistoryIcon";
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import SideBar from '@/components/SideBar';
+import { Link } from 'react-router-dom';
 
 const RootLayout = () => {
 
@@ -33,7 +34,7 @@ const RootLayout = () => {
     return (
         <div className="flex min-h-screen w-full">
             {/* Sidebar for Desktop and Mobile */}
-            <SideBar 
+            <SideBar
             cart={cart}
             isMenuOpen={isMenuOpen}
             links={links}
@@ -50,7 +51,9 @@ const RootLayout = () => {
                     <button className="text-white" onClick={() => setIsMenuOpen(true)}>
                         <IoMdMenu size={28} />
                     </button>
-                    <img src={logo} alt="logo" className="h-8" />
+                    <Link to={'/home'}>
+                        <img src={logo} alt="logo" className="h-8" />
+                    </Link>
                     <button>
                         <SearchIcon />
                     </button>
