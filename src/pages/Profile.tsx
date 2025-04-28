@@ -155,7 +155,7 @@ export const Profile = () => {
                                 <div>
                                     <input
                                         {...field}
-                                        type="password"
+                                        type="text"
                                         placeholder="Current Password"
                                         className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
                                     />
