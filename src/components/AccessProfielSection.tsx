@@ -5,142 +5,100 @@ import Voice from '@/assets/images/voice-square.png'
 import Scanner from '@/assets/images/scanner.png'
 import ToggleSwitch from './ToggleSwitch'
 import Eye from '@/assets/images/eye.png'
-import ThemeToggle from "./ThemeToggle";
-import { useState } from 'react'
 
-
-interface Toggles {
-    featureA: boolean;
-    featureB: boolean;
-    featureC: boolean;
+interface AccessProfielSectionProps {
+    profileSettings: {
+        seizureSafe: boolean;
+        visionImpaired: boolean;
+        adhdFriendly: boolean;
+        cognitiveDisability: boolean;
+        keyboardNavigation: boolean;
+        screenReader: boolean;
+    };
+    onToggle: (profile: keyof AccessProfielSectionProps['profileSettings']) => void;
 }
 
+const AccessProfielSection = ({ profileSettings, onToggle }: AccessProfielSectionProps) => {
+    const profiles = [
+        {
+            id: 'seizureSafe',
+            name: 'Seizure Safe Profile',
+            description: 'Clear flashes & reduces color',
+            icon: FlashCircle,
+            hasFunctionality: true
+        },
+        {
+            id: 'visionImpaired',
+            name: 'Vision Impaired Profile',
+            description: 'Enhances website\'s visuals',
+            icon: Eye,
+            hasFunctionality: true
+        },
+        {
+            id: 'adhdFriendly',
+            name: 'ADHD Friendly Profile',
+            description: 'More focus & fewer distractions',
+            icon: Scanner,
+            hasFunctionality: true
+        },
+        {
+            id: 'cognitiveDisability',
+            name: 'Cognitive Disability Profile',
+            description: 'Assists with reading & focusing',
+            icon: Location,
+            hasFunctionality: true
+        },
+        {
+            id: 'keyboardNavigation',
+            name: 'Keyboard Navigation',
+            description: 'Use website with the keyboard',
+            icon: Import,
+            hasFunctionality: true
+        },
+        {
+            id: 'screenReader',
+            name: 'Screen Reader',
+            description: 'Optimize for screen-readers',
+            icon: Voice,
+            hasFunctionality: true
+        }
+    ];
 
-
-const AccessProfielSection = () => {
-    const [toggles, setToggles] = useState({
-        featureA: false,
-        featureB: true,
-        featureC: false,
-    });
-
-
-    const handleToggle = (key: keyof Toggles) => {
-        setToggles((prev: Toggles) => ({ ...prev, [key]: !prev[key] }));
-    };
     return (
-        <div className="w-full bg-white rounded-xl px-3 flex flex-col items-center">
-            <div className="w-full flex justify-start mt-4">
-                <h1 className="text-black text-[19px] font-semibold">
-                    Choose the right accessibility profile for you
-                </h1>
-            </div>
-            <div className="flex w-full flex-col gap-4 mt-4 items-center">
-                <div className="w-full flex justify-between items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">Seizure Safe Profile</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">Clear flashes & reduces color</span>
-                    </div>
-                    <div>
-                        <img
-                            src={FlashCircle}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
-                <div className="w-full flex justify-between items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">Vision Impaired Profile</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">Enhances website’s visuals</span>
-                    </div>
-                    <div>
-                        <img
-                            src={Eye}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
-                <div className="w-full flex justify-between items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">ADHD Friendly Profile</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">More focus & fewer distractions</span>
-                    </div>
-                    <div>
-                        <img
-                            src={Scanner}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
-                <div className="w-full flex justify-between items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">Cognitive Disability Profile</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">Assists with reading & focusing</span>
-                    </div>
-                    <div>
-                        <img
-                            src={Location}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
-                <div className="w-full flex justify-between items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">Keyboard Navigation (Motor)</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">Use website with the keyboard</span>
-                    </div>
-                    <div>
-                        <img
-                            src={Import}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
-                <div className="w-full flex justify-between mb-4 items-center">
-                    <ToggleSwitch
-                        isOn={toggles.featureA}
-                        onToggle={() => handleToggle("featureA")}
-                    />
-                    <div className="flex flex-col items-start">
-                        <h2 className="text-[16px] text-black font-semibold">Blind Users (Screen Reader)</h2>
-                        <span className="text-[13px] text-[#cccccc] font-semibold">Optimize website for screen-readers</span>
-                    </div>
-                    <div>
-                        <img
-                            src={Voice}
-                            alt="Close"
-                            className="w-6 h-6"
-                        />
-                    </div>
-                </div>
+        <div className="w-full bg-white dark:bg-gray-700 rounded-xl p-4">
+            <h1 className="text-lg font-semibold text-black dark:text-white mb-4">
+                Choose the right accessibility profile for you
+            </h1>
+
+            <div className="space-y-3">
+                {profiles.map(profile => (
+                    profile.hasFunctionality && (
+                        <div key={profile.id} className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                            <ToggleSwitch
+                                isOn={profileSettings[profile.id as keyof typeof profileSettings]}
+                                onToggle={() => onToggle(profile.id as keyof typeof profileSettings)}
+                            />
+
+                            <div className="flex-1 ml-3">
+                                <h2 className="text-sm font-medium text-black dark:text-white">
+                                    {profile.name}
+                                </h2>
+                                <span className="text-xs text-gray-500 dark:text-gray-300">
+                                    {profile.description}
+                                </span>
+                            </div>
+
+                            <img
+                                src={profile.icon}
+                                alt={profile.name}
+                                className="w-5 h-5 ml-3"
+                            />
+                        </div>
+                    )
+                ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AccessProfielSection
+export default AccessProfielSection;

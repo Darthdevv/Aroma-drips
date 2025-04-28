@@ -1,4 +1,3 @@
-// src/redux/selectors.ts
 import { RootState } from '@/store';
 import { createSelector } from '@reduxjs/toolkit';
 
