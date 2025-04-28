@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -59,7 +60,6 @@ const cartSlice = createSlice({
          * @description Adds a product to the cart. If it already exists, increases its quantity.
          */
         addToCart: (state, action: PayloadAction<Product>) => {
-            // Check for existing product with same id, size and addOn
             const existingProduct = state.cart.find(
                 item => item.id === action.payload.id &&
                     item.size === action.payload.size &&
@@ -67,12 +67,15 @@ const cartSlice = createSlice({
             );
 
             if (existingProduct) {
-                existingProduct.quantity += 1;
+                existingProduct.quantity += action.payload.quantity || 1;
             } else {
-                state.cart.push({ ...action.payload, quantity: 1 });
+                state.cart.push({
+                    ...action.payload,
+                    quantity: action.payload.quantity || 1
+                });
             }
+            toast.success("Added To cart successfully")
         },
-
         /**
          * @function removeProduct
          * @description Removes a product from the cart by its ID.
@@ -84,6 +87,7 @@ const cartSlice = createSlice({
                     item.size === action.payload.size &&
                     item.addOn === action.payload.addOn)
             );
+            toast.success('Removed from cart successfully')
         },
 
         /**

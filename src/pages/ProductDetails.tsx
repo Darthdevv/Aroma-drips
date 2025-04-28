@@ -13,6 +13,7 @@ import Header from "@/components/Header";
 import { clearSelection, decreaseSelectionQuantity, increaseSelectionQuantity, selectAddOn, selectSize } from "@/redux/selectionSlice";
 import { selectCurrentSelection } from "@/redux/selectors";
 import CartNotificationBanner from "@/components/CartNotificationBanner";
+import toast from "react-hot-toast";
 
 interface Product {
     id: number;
@@ -67,6 +68,10 @@ const ProductDetails = () => {
     }, [selectedOption, Product]);
 
     const handleAddToCart = () => {
+        if (!currentSelection?.size) {
+            toast.error('You have to choose a size first')
+            return;
+        }
         if (!Product || !currentSelection?.size) return;
 
         const productToAdd = {
@@ -80,7 +85,8 @@ const ProductDetails = () => {
             addOn: currentSelection.addOn || "",
             quantity: currentSelection.quantity || 1,
             category: Product.category,
-            uniqueId: `${Product.id}-${currentSelection.size}-${currentSelection.addOn || 'none'}-${Date.now()}`
+            // Remove the Date.now() from the uniqueId
+            uniqueId: `${Product.id}-${currentSelection.size}-${currentSelection.addOn || 'none'}`
         };
 
         dispatch(addToCart(productToAdd));

@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import AccessabiltyIcon from "@/assets/icons/AccessabiltyIcon";
 import CloseCircle from '@/assets/images/close-circle.png'
 import ToggleSwitch from "./ToggleSwitch";
-import AccessProfielSection from "./AccessProfielSection";
+// import AccessProfielSection from "./AccessProfielSection";
 import ResetSettings from "@/assets/icons/ResetSettings";
-import Statement from "@/assets/icons/Statement";
-import HideInterface from "@/assets/icons/HideInterface";
+// import Statement from "@/assets/icons/Statement";
+// import HideInterface from "@/assets/icons/HideInterface";
 
-interface ProfileSettings {
-  seizureSafe: boolean;
-  visionImpaired: boolean;
-  adhdFriendly: boolean;
-  cognitiveDisability: boolean;
-  keyboardNavigation: boolean;
-  screenReader: boolean;
-}
+// interface ProfileSettings {
+//   seizureSafe: boolean;
+//   visionImpaired: boolean;
+//   adhdFriendly: boolean;
+//   cognitiveDisability: boolean;
+//   keyboardNavigation: boolean;
+//   screenReader: boolean;
+// }
 
 const AccessibilitySettings = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,69 +25,69 @@ const AccessibilitySettings = () => {
     dyslexiaFont: false,
     focusMode: false,
   });
-  const [profileSettings, setProfileSettings] = useState<ProfileSettings>({
-    seizureSafe: false,
-    visionImpaired: false,
-    adhdFriendly: false,
-    cognitiveDisability: false,
-    keyboardNavigation: false,
-    screenReader: false,
-  });
+  // const [profileSettings, setProfileSettings] = useState<ProfileSettings>({
+  //   seizureSafe: false,
+  //   visionImpaired: false,
+  //   adhdFriendly: false,
+  //   cognitiveDisability: false,
+  //   keyboardNavigation: false,
+  //   screenReader: false,
+  // });
 
-  const handleProfileToggle = (profile: keyof ProfileSettings) => {
-    setProfileSettings(prev => {
-      const newSettings = { ...prev, [profile]: !prev[profile] };
+  // const handleProfileToggle = (profile: keyof ProfileSettings) => {
+  //   setProfileSettings(prev => {
+  //     const newSettings = { ...prev, [profile]: !prev[profile] };
 
-      // Apply accessibility effects based on the toggled profile
-      applyProfileEffects(newSettings);
+  //     // Apply accessibility effects based on the toggled profile
+  //     applyProfileEffects(newSettings);
 
-      return newSettings;
-    });
-  };
+  //     return newSettings;
+  //   });
+  // };
 
-  const applyProfileEffects = (profiles: ProfileSettings) => {
-    // Seizure Safe Profile - reduces animations and flashing
-    if (profiles.seizureSafe) {
-      document.documentElement.classList.add("reduced-motion", "no-flash");
-    } else {
-      document.documentElement.classList.remove("reduced-motion", "no-flash");
-    }
+  // const applyProfileEffects = (profiles: ProfileSettings) => {
+  //   // Seizure Safe Profile - reduces animations and flashing
+  //   if (profiles.seizureSafe) {
+  //     document.documentElement.classList.add("reduced-motion", "no-flash");
+  //   } else {
+  //     document.documentElement.classList.remove("reduced-motion", "no-flash");
+  //   }
 
-    // Vision Impaired Profile - high contrast and larger text
-    if (profiles.visionImpaired) {
-      document.documentElement.classList.add("high-contrast", "large-text");
-    } else {
-      document.documentElement.classList.remove("high-contrast", "large-text");
-    }
+  //   // Vision Impaired Profile - high contrast and larger text
+  //   if (profiles.visionImpaired) {
+  //     document.documentElement.classList.add("high-contrast", "large-text");
+  //   } else {
+  //     document.documentElement.classList.remove("high-contrast", "large-text");
+  //   }
 
-    // ADHD Friendly Profile - focus mode and reduced distractions
-    if (profiles.adhdFriendly) {
-      document.documentElement.classList.add("focus-mode", "reduced-distractions");
-    } else {
-      document.documentElement.classList.remove("focus-mode", "reduced-distractions");
-    }
+  //   // ADHD Friendly Profile - focus mode and reduced distractions
+  //   if (profiles.adhdFriendly) {
+  //     document.documentElement.classList.add("focus-mode", "reduced-distractions");
+  //   } else {
+  //     document.documentElement.classList.remove("focus-mode", "reduced-distractions");
+  //   }
 
-    // Cognitive Disability Profile - dyslexia font and simplified layout
-    if (profiles.cognitiveDisability) {
-      document.documentElement.classList.add("dyslexia-font", "simplified-layout");
-    } else {
-      document.documentElement.classList.remove("dyslexia-font", "simplified-layout");
-    }
+  //   // Cognitive Disability Profile - dyslexia font and simplified layout
+  //   if (profiles.cognitiveDisability) {
+  //     document.documentElement.classList.add("dyslexia-font", "simplified-layout");
+  //   } else {
+  //     document.documentElement.classList.remove("dyslexia-font", "simplified-layout");
+  //   }
 
-    // Keyboard Navigation - adds keyboard navigation enhancements
-    if (profiles.keyboardNavigation) {
-      document.documentElement.classList.add("keyboard-navigation");
-    } else {
-      document.documentElement.classList.remove("keyboard-navigation");
-    }
+  //   // Keyboard Navigation - adds keyboard navigation enhancements
+  //   if (profiles.keyboardNavigation) {
+  //     document.documentElement.classList.add("keyboard-navigation");
+  //   } else {
+  //     document.documentElement.classList.remove("keyboard-navigation");
+  //   }
 
-    // Screen Reader - optimizes for screen readers
-    if (profiles.screenReader) {
-      document.documentElement.classList.add("screen-reader-optimized");
-    } else {
-      document.documentElement.classList.remove("screen-reader-optimized");
-    }
-  };
+  //   // Screen Reader - optimizes for screen readers
+  //   if (profiles.screenReader) {
+  //     document.documentElement.classList.add("screen-reader-optimized");
+  //   } else {
+  //     document.documentElement.classList.remove("screen-reader-optimized");
+  //   }
+  // };
 
   const resetSettings = () => {
     setSettings({
@@ -97,14 +97,14 @@ const AccessibilitySettings = () => {
       dyslexiaFont: false,
       focusMode: false,
     });
-    setProfileSettings({
-      seizureSafe: false,
-      visionImpaired: false,
-      adhdFriendly: false,
-      cognitiveDisability: false,
-      keyboardNavigation: false,
-      screenReader: false,
-    });
+    // setProfileSettings({
+    //   seizureSafe: false,
+    //   visionImpaired: false,
+    //   adhdFriendly: false,
+    //   cognitiveDisability: false,
+    //   keyboardNavigation: false,
+    //   screenReader: false,
+    // });
 
     // Remove all accessibility classes
     document.documentElement.className = "";
@@ -190,7 +190,7 @@ const AccessibilitySettings = () => {
                     Reset
                   </span>
                 </button>
-                <button className="flex items-center gap-1 bg-white dark:bg-[#2E3439] px-4 py-2 rounded-xl">
+                {/* <button className="flex items-center gap-1 bg-white dark:bg-[#2E3439] px-4 py-2 rounded-xl">
                   <Statement/>
                   <span className="text-sm text-text-blackish dark:text-text-whitish">
                     Statement
@@ -201,7 +201,7 @@ const AccessibilitySettings = () => {
                   <span className="text-sm text-text-blackish dark:text-text-whitish">
                     Hide
                   </span>
-                </button>
+                </button> */}
               </div>
 
               <div className="w-full mb-4">
@@ -214,10 +214,10 @@ const AccessibilitySettings = () => {
             </div>
 
             <div className="bg-background-gray dark:bg-background-navy p-4 rounded-b-lg">
-              <AccessProfielSection
+              {/* <AccessProfielSection
                 profileSettings={profileSettings}
                 onToggle={handleProfileToggle}
-              />
+              /> */}
 
               <div className="mt-6">
                 <h3 className="text-lg font-semibold mb-3 text-black dark:text-white">
@@ -286,7 +286,7 @@ const AccessibilitySettings = () => {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                       Focus Mode
                     </span>
@@ -299,7 +299,7 @@ const AccessibilitySettings = () => {
                         }))
                       }
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

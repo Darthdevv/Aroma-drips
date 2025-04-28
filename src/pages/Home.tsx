@@ -144,7 +144,7 @@ const Home = (): JSX.Element => {
                 showProgress
                 styles={{
                     options: {
-                        zIndex: 10000,
+                        zIndex: 20,
                     },
                 }}
             />

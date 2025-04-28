@@ -19,7 +19,7 @@ const SearchComponent = () => {
     };
 
     return (
-        <div className="h-auto md:h-[6.625rem] py-3 md:py-5 w-full flex flex-col md:flex-row items-center justify-between bg-[#fff] dark:bg-background-navygrey px-4 gap-4 md:gap-0">
+        <div className="h-auto md:h-[6.625rem] mb-10 py-3 md:py-5 w-full flex flex-col md:flex-row items-center justify-between bg-[#fff] dark:bg-background-navygrey px-4 gap-4 md:gap-0">
             <div className="w-full md:flex-1 flex justify-center order-2 md:order-1">
                 <form
                     onSubmit={handleSubmit(onSubmit)}

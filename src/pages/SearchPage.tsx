@@ -24,11 +24,11 @@ const SearchPage = () => {
                 {filteredProducts.length === 0 ? (
                     <p className="text-center text-gray-500">No products found matching your search.</p>
                 ) : (
-                    <main className="flex flex-wrap justify-start ml-2 gap-16 px-4 md:px-10 lg:px-20">
+                    <main className="flex flex-wrap justify-center md:justify-start ml-2 gap-16 px-4 md:px-10 lg:px-20">
                         {filteredProducts.map((product, index) => (
                             <motion.div
                                 key={index}
-                                className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish  relative flex flex-col items-center w-[14.75rem] mt-20 mb-14 h-[15.875rem] rounded-t-[120px] rounded-b-2xl"
+                                className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish  relative flex flex-col items-center w-[14.75rem] h-[15.875rem] rounded-t-[120px] rounded-b-2xl"
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}

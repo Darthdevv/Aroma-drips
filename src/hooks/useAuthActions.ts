@@ -4,9 +4,11 @@ import { RootState } from '../store';
 import { signUpSuccess, signInSuccess, signUpFailure, signInFailure, updateProfileStart, updateProfileSuccess, updateProfileFailure, User } from '@/redux/authSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const useAuthActions = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const users = useSelector((state: RootState) => state.authAroma.users);
 
     const signUp = async ({ name, email, password }: { name: string; email: string; password: string }) => {
@@ -26,7 +28,8 @@ export const useAuthActions = () => {
             };
 
             dispatch(signUpSuccess(newUser));
-            dispatch(signInSuccess(newUser));
+            // dispatch(signInSuccess(newUser));
+            navigate('/signin')
         } catch (error) {
             dispatch(signUpFailure(error instanceof Error ? error.message : 'Signup failed.'));
         }
