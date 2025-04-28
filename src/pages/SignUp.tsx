@@ -56,9 +56,9 @@ const SignUp = () => {
     }, [isAuthenticated, navigate]);
 
     return (
-        <div className="w-full flex flex-col lg:flex-row min-h-screen">
+        <div className="w-full flex flex-col lg:flex-row min-h-screen dark:bg-background-navygrey bg-background-white text-text-blackish dark:text-text-whitish">
             {/* Left side with image - hidden on mobile, shown on tablet and up */}
-            <div className="hidden md:flex flex-1 items-center justify-center bg-gray-50">
+            <div className="hidden md:flex flex-1 items-center justify-center bg-background-white dark:bg-background-navy">
                 <img
                     className="w-full max-w-[45rem] h-auto max-h-[64rem] object-cover"
                     src={SignUpImage}
@@ -94,7 +94,7 @@ const SignUp = () => {
                                     {...field}
                                     type="text"
                                     id="name"
-                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="John Doe"
                                 />
                             )}
@@ -124,7 +124,7 @@ const SignUp = () => {
                                     {...field}
                                     type="email"
                                     id="email"
-                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="johndoe@example.com"
                                 />
                             )}
@@ -154,7 +154,7 @@ const SignUp = () => {
                                     {...field}
                                     type="password"
                                     id="password"
-                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="••••••••"
                                 />
                             )}
@@ -181,7 +181,7 @@ const SignUp = () => {
                                     {...field}
                                     type="password"
                                     id="confirmPassword"
-                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+                                    className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="••••••••"
                                 />
                             )}
@@ -210,7 +210,7 @@ const SignUp = () => {
                         <button
                             type="button"
                             onClick={() => dispatch(signOut())}
-                            className="text-sm text-gray-500 hover:text-gray-700"
+                            className="text-sm text-gray-400 hover:text-gray-700"
                         >
                             Reset form
                         </button>
@@ -219,7 +219,7 @@ const SignUp = () => {
 
                 {/* Already have an account link */}
                 <div className="mt-4 text-sm sm:text-base flex items-center">
-                    <span className="text-gray-500">Already have an account?</span>
+                    <span className="text-gray-400">Already have an account?</span>
                     <Link
                         to="/signin"
                         className="ml-2 text-[#FF8A42] hover:text-[#E67A38]"

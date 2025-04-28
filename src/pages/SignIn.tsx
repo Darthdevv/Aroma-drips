@@ -39,9 +39,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row min-h-screen">
+    <div className="w-full flex flex-col lg:flex-row min-h-screen dark:bg-background-navygrey bg-background-white text-text-blackish dark:text-text-whitish">
       {/* Image Section - Hidden on mobile, visible on tablet and up */}
-      <div className="hidden md:flex flex-1 items-center justify-center bg-gray-50">
+      <div className="hidden md:flex flex-1 items-center justify-center bg-background-white dark:bg-background-navy">
         <img
           className="w-full max-w-[45rem] h-auto max-h-[64rem] object-cover"
           src={SignInImage}
@@ -77,7 +77,7 @@ const SignIn = () => {
                   {...field}
                   type="email"
                   id="email"
-                  className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="your@email.com"
                 />
@@ -108,7 +108,7 @@ const SignIn = () => {
                   {...field}
                   type="password"
                   id="password"
-                  className={`w-full h-12 sm:h-14 bg-[#F2F2F2] pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.password ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full h-12 sm:h-14 bg-[#F2F2F2] text-text-blackish pl-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-coffee-500 ${errors.password ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="••••••••"
                 />
@@ -156,7 +156,7 @@ const SignIn = () => {
         </form>
 
         {/* Sign Up Link */}
-        <div className="text-sm sm:text-base text-gray-600">
+        <div className="text-sm sm:text-base text-gray-400">
           Don't have an account?{' '}
           <Link
             to="/signup"
