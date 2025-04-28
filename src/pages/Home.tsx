@@ -5,7 +5,7 @@ import ads2 from '@/assets/images/ads2.png';
 import { Drinks } from '@/constants/Menu-options';
 import { useNavigate } from 'react-router-dom';
 import SearchComponent from '@/components/SearchComponent';
-import Joyride, { CallBackProps, STATUS, Step } from 'react-joyride';
+import Joyride, { Step } from 'react-joyride';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 // import SearchComponent from '@/components/SearchComponent';
@@ -17,9 +17,9 @@ import { RootState } from '@/store';
  */
 const Home = (): JSX.Element => {
     const [activeButton, setActiveButton] = useState<string>("Drink Menu");
-    const {  users } = useSelector((state: RootState) => state.authAroma);
+    const { users } = useSelector((state: RootState) => state.authAroma);
     console.log(users);
-    
+
     const [runTour, setRunTour] = useState(false);
     const [steps, setSteps] = useState<Step[]>([]);
 
@@ -43,7 +43,7 @@ const Home = (): JSX.Element => {
     useEffect(() => {
         const dynamicSteps: Step[] = [];
 
-        categoryRefs.current.forEach((ref, i) => {
+        categoryRefs.current.forEach((ref) => {
             if (ref) {
                 dynamicSteps.push({
                     target: ref,
@@ -53,7 +53,7 @@ const Home = (): JSX.Element => {
             }
         });
 
-        drinkRefs.current.forEach((ref, i) => {
+        drinkRefs.current.forEach((ref) => {
             if (ref) {
                 dynamicSteps.push({
                     target: ref,

@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import ShareIcon from "@/assets/icons/ShareIcon";
 import { iceCoffeeItems } from "@/constants/Menu-options";
-import { Link, useNavigate } from "react-router-dom";
-import ChevronLeftIcon from "@/assets/icons/ChevronLeft";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
 /**

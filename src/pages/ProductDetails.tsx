@@ -11,7 +11,7 @@ import MinusIcon from "@/assets/icons/MinusIcon";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { clearSelection, decreaseSelectionQuantity, increaseSelectionQuantity, selectAddOn, selectSize } from "@/redux/selectionSlice";
-import { selectCartItem, selectCurrentSelection, selectSelections } from "@/redux/selectors";
+import { selectCurrentSelection } from "@/redux/selectors";
 import CartNotificationBanner from "@/components/CartNotificationBanner";
 
 interface Product {
@@ -40,15 +40,15 @@ const ProductDetails = () => {
 
     // Get current selections from Redux
     // In ProductDetails.tsx, update the useSelector line:
-    const selections = useSelector((state: RootState) => selectSelections(state));
-    const cartItem = useSelector((state: RootState) =>
-        selectCartItem(state, Product?.id)
-    );
+    // const selections = useSelector((state: RootState) => selectSelections(state));
+    // const cartItem = useSelector((state: RootState) =>
+    //     selectCartItem(state, Product?.id)
+    // );
 
     const selectedSize = watch("size");
     const selectedOption = watch("type");
 
-    const cart = useSelector((state: RootState) => state.cart.cart);
+    // const cart = useSelector((state: RootState) => state.cart.cart);
     // const cartItem = cart.find((item) =>
     //     item.id === Product?.id &&
     //     item.size === currentSelection?.size &&

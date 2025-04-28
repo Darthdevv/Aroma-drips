@@ -13,7 +13,7 @@ type SignInFormInputs = {
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading, users } = useSelector((state: RootState) => state.authAroma);
+  const { isAuthenticated, isLoading } = useSelector((state: RootState) => state.authAroma);
 
   const { signIn } = useAuthActions();
 
