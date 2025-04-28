@@ -83,102 +83,96 @@ export const Profile = () => {
                 text="Personal Information"
             />
 
-            <main className="flex flex-wrap justify-start gap-10 px-4 md:px-10 lg:px-20 mt-10">
+            <main className="px-4 md:px-10 lg:px-20 mt-6 md:mt-10">
                 <form
-                    className="flex flex-col"
+                    className="flex flex-col max-w-4xl mx-auto"
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     {/* First Name */}
-                    <div className="flex items-center gap-6 mb-10">
-                        <div className="flex-1">
-                            <label className="text-[16px]">First Name</label>
-                            <Controller
-                                name="firstName"
-                                control={control}
-                                rules={{ required: "First name is required" }}
-                                render={({ field }) => (
-                                    <div>
-                                        <input
-                                            {...field}
-                                            type="text"
-                                            placeholder="First Name"
-                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
-                                        />
-                                        {errors.firstName && (
-                                            <p className="text-red-500 text-sm mt-1">
-                                                {errors.firstName.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-                            />
-                        </div>
+                    <div className="flex flex-col mb-6 md:mb-10 w-full">
+                        <label className="text-sm md:text-[16px] mb-1">First Name</label>
+                        <Controller
+                            name="firstName"
+                            control={control}
+                            rules={{ required: "First name is required" }}
+                            render={({ field }) => (
+                                <div>
+                                    <input
+                                        {...field}
+                                        type="text"
+                                        placeholder="First Name"
+                                        className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
+                                    />
+                                    {errors.firstName && (
+                                        <p className="text-red-500 text-xs md:text-sm mt-1">
+                                            {errors.firstName.message}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
+                        />
                     </div>
 
                     {/* Email */}
-                    <div className="flex items-center gap-6 mb-10">
-                        <div className="flex-1">
-                            <label className="text-[16px]">Email</label>
-                            <Controller
-                                name="email"
-                                control={control}
-                                rules={{
-                                    required: "Email is required",
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                        message: "Invalid email address"
-                                    }
-                                }}
-                                render={({ field }) => (
-                                    <div>
-                                        <input
-                                            {...field}
-                                            type="email"
-                                            placeholder="Email"
-                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
-                                        />
-                                        {errors.email && (
-                                            <p className="text-red-500 text-sm mt-1">
-                                                {errors.email.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-                            />
-                        </div>
+                    <div className="flex flex-col mb-6 md:mb-10 w-full">
+                        <label className="text-sm md:text-[16px] mb-1">Email</label>
+                        <Controller
+                            name="email"
+                            control={control}
+                            rules={{
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: "Invalid email address"
+                                }
+                            }}
+                            render={({ field }) => (
+                                <div>
+                                    <input
+                                        {...field}
+                                        type="email"
+                                        placeholder="Email"
+                                        className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
+                                    />
+                                    {errors.email && (
+                                        <p className="text-red-500 text-xs md:text-sm mt-1">
+                                            {errors.email.message}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
+                        />
                     </div>
 
                     {/* Current Password */}
-                    <div className="flex items-center gap-6 mb-10">
-                        <div className="flex-1">
-                            <label className="text-[16px]">Current Password</label>
-                            <Controller
-                                name="currentPassword"
-                                control={control}
-                                rules={{ required: "Current password is required" }}
-                                render={({ field }) => (
-                                    <div>
-                                        <input
-                                            {...field}
-                                            type="text"
-                                            placeholder="Current Password"
-                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
-                                        />
-                                        {errors.currentPassword && (
-                                            <p className="text-red-500 text-sm mt-1">
-                                                {errors.currentPassword.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-                            />
-                        </div>
+                    <div className="flex flex-col mb-6 md:mb-10 w-full">
+                        <label className="text-sm md:text-[16px] mb-1">Current Password</label>
+                        <Controller
+                            name="currentPassword"
+                            control={control}
+                            rules={{ required: "Current password is required" }}
+                            render={({ field }) => (
+                                <div>
+                                    <input
+                                        {...field}
+                                        type="password"
+                                        placeholder="Current Password"
+                                        className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
+                                    />
+                                    {errors.currentPassword && (
+                                        <p className="text-red-500 text-xs md:text-sm mt-1">
+                                            {errors.currentPassword.message}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
+                        />
                     </div>
 
                     {/* New Password */}
-                    <div className="flex flex-col md:flex-row gap-6 mb-10">
+                    <div className="flex flex-col gap-6 mb-6 md:mb-10">
                         <div className="flex-1">
-                            <label className="text-[16px]">New Password</label>
+                            <label className="text-sm md:text-[16px] mb-1">New Password</label>
                             <Controller
                                 name="password"
                                 control={control}
@@ -188,14 +182,14 @@ export const Profile = () => {
                                             {...field}
                                             type="password"
                                             placeholder="New Password"
-                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
                                         />
                                     </div>
                                 )}
                             />
                         </div>
                         <div className="flex-1">
-                            <label className="text-[16px]">Confirm New Password</label>
+                            <label className="text-sm md:text-[16px] mb-1">Confirm New Password</label>
                             <Controller
                                 name="confirmPassword"
                                 control={control}
@@ -209,10 +203,10 @@ export const Profile = () => {
                                             {...field}
                                             type="password"
                                             placeholder="Confirm New Password"
-                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3.375rem] w-[28.5rem]"
+                                            className="bg-[#e6e6e6] dark:bg-[#2E3439] text-[#ff8a42] pl-2 rounded-xl h-[3rem] md:h-[3.375rem] w-full max-w-full"
                                         />
                                         {errors.confirmPassword && (
-                                            <p className="text-red-500 text-sm mt-1">
+                                            <p className="text-red-500 text-xs md:text-sm mt-1">
                                                 {errors.confirmPassword.message}
                                             </p>
                                         )}
@@ -223,19 +217,19 @@ export const Profile = () => {
                     </div>
 
                     {/* Buttons */}
-                    <div className="w-full flex gap-5 justify-end items-center">
-                        <button
-                            type="submit"
-                            className="bg-[#ff8a42] h-[2.875rem] w-[10.375rem] rounded-full text-white text-[16px] font-semibold"
-                        >
-                            Save Changes
-                        </button>
+                    <div className="w-full flex flex-col sm:flex-row gap-3 sm:gap-5 justify-end items-center mt-4 mb-6">
                         <button
                             type="button"
                             onClick={onCancel}
-                            className="border-2 w-[10.375rem] rounded-full h-[2.875rem] border-[#ff8a42] text-[#ff8a42] text-[16px] font-semibold"
+                            className="border-2 w-full sm:w-auto sm:min-w-[10.375rem] rounded-full h-[2.5rem] sm:h-[2.875rem] border-[#ff8a42] text-[#ff8a42] text-sm sm:text-[16px] font-semibold"
                         >
                             Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="bg-[#ff8a42] h-[2.5rem] sm:h-[2.875rem] w-full sm:w-auto sm:min-w-[10.375rem] rounded-full text-white text-sm sm:text-[16px] font-semibold"
+                        >
+                            Save Changes
                         </button>
                     </div>
                 </form>
