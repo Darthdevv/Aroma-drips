@@ -1,10 +1,10 @@
-import FlashCircle from '@/assets/images/flash-circle.png'
-import Location from '@/assets/images/location.png'
-import Import from '@/assets/images/import.png'
-import Voice from '@/assets/images/voice-square.png'
-import Scanner from '@/assets/images/scanner.png'
 import ToggleSwitch from './ToggleSwitch'
-import Eye from '@/assets/images/eye.png'
+import SeizureSafe from '@/assets/icons/SeizureSafe'
+import VisionImpaired from '@/assets/icons/VisionImpaired'
+import ADHDFriendly from '@/assets/icons/ADHDFriendly'
+import CognitiveProfile from '@/assets/icons/CognitiveProfile'
+import KeyboardNavigation from '@/assets/icons/KeyboardNavigation'
+import BlindUsers from '@/assets/icons/BlindUsers'
 
 interface AccessProfielSectionProps {
     profileSettings: {
@@ -24,49 +24,49 @@ const AccessProfielSection = ({ profileSettings, onToggle }: AccessProfielSectio
             id: 'seizureSafe',
             name: 'Seizure Safe Profile',
             description: 'Clear flashes & reduces color',
-            icon: FlashCircle,
+            icon: <SeizureSafe/>,
             hasFunctionality: true
         },
         {
             id: 'visionImpaired',
             name: 'Vision Impaired Profile',
             description: 'Enhances website\'s visuals',
-            icon: Eye,
+            icon: <VisionImpaired/>,
             hasFunctionality: true
         },
         {
             id: 'adhdFriendly',
             name: 'ADHD Friendly Profile',
             description: 'More focus & fewer distractions',
-            icon: Scanner,
+            icon: <ADHDFriendly/>,
             hasFunctionality: true
         },
         {
             id: 'cognitiveDisability',
             name: 'Cognitive Disability Profile',
             description: 'Assists with reading & focusing',
-            icon: Location,
+            icon: <CognitiveProfile/>,
             hasFunctionality: true
         },
         {
             id: 'keyboardNavigation',
             name: 'Keyboard Navigation',
             description: 'Use website with the keyboard',
-            icon: Import,
+            icon: <KeyboardNavigation/>,
             hasFunctionality: true
         },
         {
             id: 'screenReader',
             name: 'Screen Reader',
             description: 'Optimize for screen-readers',
-            icon: Voice,
+            icon: <BlindUsers/>,
             hasFunctionality: true
         }
     ];
 
     return (
-        <div className="w-full bg-white dark:bg-gray-700 rounded-xl p-4">
-            <h1 className="text-lg font-semibold text-black dark:text-white mb-4">
+        <div className="w-full bg-white dark:bg-[#2E3439] rounded-xl p-4">
+            <h1 className="text-lg font-semibold text-text-blackish dark:text-text-whitish mb-4">
                 Choose the right accessibility profile for you
             </h1>
 
@@ -80,7 +80,7 @@ const AccessProfielSection = ({ profileSettings, onToggle }: AccessProfielSectio
                             />
 
                             <div className="flex-1 ml-3">
-                                <h2 className="text-sm font-medium text-black dark:text-white">
+                                <h2 className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                                     {profile.name}
                                 </h2>
                                 <span className="text-xs text-gray-500 dark:text-gray-300">
@@ -88,11 +88,7 @@ const AccessProfielSection = ({ profileSettings, onToggle }: AccessProfielSectio
                                 </span>
                             </div>
 
-                            <img
-                                src={profile.icon}
-                                alt={profile.name}
-                                className="w-5 h-5 ml-3"
-                            />
+                            {profile.icon}
                         </div>
                     )
                 ))}

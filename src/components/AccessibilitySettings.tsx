@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
 import AccessabiltyIcon from "@/assets/icons/AccessabiltyIcon";
-import Eye from '@/assets/images/eye.png'
 import CloseCircle from '@/assets/images/close-circle.png'
-import FlashCircle from '@/assets/images/flash-circle.png'
-import Location from '@/assets/images/location.png'
-import Import from '@/assets/images/import.png'
-import Voice from '@/assets/images/voice-square.png'
-import Scanner from '@/assets/images/scanner.png'
-import RefreshCircle from '@/assets/images/refresh-circle.png'
-import EyeSlash from '@/assets/images/eye-slash.png'
-import Reciept from '@/assets/images/receipt-minus.png'
 import ToggleSwitch from "./ToggleSwitch";
 import AccessProfielSection from "./AccessProfielSection";
+import ResetSettings from "@/assets/icons/ResetSettings";
+import Statement from "@/assets/icons/Statement";
+import HideInterface from "@/assets/icons/HideInterface";
 
 interface ProfileSettings {
   seizureSafe: boolean;
@@ -173,7 +166,7 @@ const AccessibilitySettings = () => {
       {isOpen && (
         <div className="absolute right-0 bottom-20 w-[22rem] sm:w-[35rem] max-h-[80vh] bg-background-white dark:bg-background-navy dark:text-text-whitish shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 overflow-y-auto">
           <div className="flex flex-col">
-            <div className="bg-green-700 rounded-t-lg p-4 flex flex-col items-center">
+            <div className="bg-accent-green dark:bg-background-navygrey rounded-t-lg p-4 flex flex-col items-center">
               <div className="flex justify-between w-full items-center mb-4">
                 <img
                   src={CloseCircle}
@@ -189,32 +182,38 @@ const AccessibilitySettings = () => {
 
               <div className="flex flex-wrap justify-center gap-2 mb-4 w-full">
                 <button
-                  className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl"
+                  className="flex items-center gap-1 bg-white dark:bg-[#2E3439] px-4 py-2 rounded-xl"
                   onClick={resetSettings}
                 >
-                  <img src={RefreshCircle} alt="Reset" className="w-5 h-5" />
-                  <span className="text-sm text-black">Reset</span>
+                  <ResetSettings/>
+                  <span className="text-sm text-text-blackish dark:text-text-whitish">
+                    Reset
+                  </span>
                 </button>
-                <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl">
-                  <img src={Reciept} alt="Statement" className="w-5 h-5" />
-                  <span className="text-sm text-black">Statement</span>
+                <button className="flex items-center gap-1 bg-white dark:bg-[#2E3439] px-4 py-2 rounded-xl">
+                  <Statement/>
+                  <span className="text-sm text-text-blackish dark:text-text-whitish">
+                    Statement
+                  </span>
                 </button>
-                <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl">
-                  <img src={EyeSlash} alt="Hide" className="w-5 h-5" />
-                  <span className="text-sm text-black">Hide</span>
+                <button className="flex items-center gap-1 bg-white dark:bg-[#2E3439] px-4 py-2 rounded-xl">
+                  <HideInterface/>
+                  <span className="text-sm text-text-blackish dark:text-text-whitish">
+                    Hide
+                  </span>
                 </button>
               </div>
 
               <div className="w-full mb-4">
                 <input
                   type="text"
-                  className="w-full h-10 pl-3 rounded-xl text-black"
+                  className="w-full h-10 pl-3 rounded-xl dark:bg-[#2E3439] text-text-blackish dark:text-text-whitish placeholder:text-text-blackish dark:placeholder:text-text-whitish"
                   placeholder="Search in dictionary..."
                 />
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-b-lg">
+            <div className="bg-background-gray dark:bg-background-navy p-4 rounded-b-lg">
               <AccessProfielSection
                 profileSettings={profileSettings}
                 onToggle={handleProfileToggle}
@@ -233,7 +232,7 @@ const AccessibilitySettings = () => {
                     name="textSize"
                     value={settings.textSize}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-black dark:text-white"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-[#2E3439] text-black dark:text-white"
                   >
                     <option value="text-sm">Small</option>
                     <option value="text-base">Default</option>
@@ -243,54 +242,62 @@ const AccessibilitySettings = () => {
 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                       High Contrast
                     </span>
                     <ToggleSwitch
                       isOn={settings.highContrast}
-                      onToggle={() => setSettings(prev => ({
-                        ...prev,
-                        highContrast: !prev.highContrast
-                      }))}
+                      onToggle={() =>
+                        setSettings((prev) => ({
+                          ...prev,
+                          highContrast: !prev.highContrast,
+                        }))
+                      }
                     />
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                       Grayscale Mode
                     </span>
                     <ToggleSwitch
                       isOn={settings.grayscale}
-                      onToggle={() => setSettings(prev => ({
-                        ...prev,
-                        grayscale: !prev.grayscale
-                      }))}
+                      onToggle={() =>
+                        setSettings((prev) => ({
+                          ...prev,
+                          grayscale: !prev.grayscale,
+                        }))
+                      }
                     />
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                       Dyslexia Font
                     </span>
                     <ToggleSwitch
                       isOn={settings.dyslexiaFont}
-                      onToggle={() => setSettings(prev => ({
-                        ...prev,
-                        dyslexiaFont: !prev.dyslexiaFont
-                      }))}
+                      onToggle={() =>
+                        setSettings((prev) => ({
+                          ...prev,
+                          dyslexiaFont: !prev.dyslexiaFont,
+                        }))
+                      }
                     />
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-text-blackish dark:text-text-whitish">
                       Focus Mode
                     </span>
                     <ToggleSwitch
                       isOn={settings.focusMode}
-                      onToggle={() => setSettings(prev => ({
-                        ...prev,
-                        focusMode: !prev.focusMode
-                      }))}
+                      onToggle={() =>
+                        setSettings((prev) => ({
+                          ...prev,
+                          focusMode: !prev.focusMode,
+                        }))
+                      }
                     />
                   </div>
                 </div>
