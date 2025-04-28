@@ -157,7 +157,7 @@ const AccessibilitySettings = () => {
     <div className="fixed bottom-5 right-5 z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-3 rounded-full z-50 bg-white dark:bg-gray-700 shadow-lg"
+        className="p-3 rounded-full z-50 bg-white dark:bg-[#2e3439] shadow-lg"
         aria-label="Accessibility settings"
       >
         <AccessabiltyIcon />
