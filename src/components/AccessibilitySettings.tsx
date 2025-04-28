@@ -14,195 +14,293 @@ import Reciept from '@/assets/images/receipt-minus.png'
 import ToggleSwitch from "./ToggleSwitch";
 import AccessProfielSection from "./AccessProfielSection";
 
-
-interface Toggles {
-    featureA: boolean;
-    featureB: boolean;
-    featureC: boolean;
+interface ProfileSettings {
+  seizureSafe: boolean;
+  visionImpaired: boolean;
+  adhdFriendly: boolean;
+  cognitiveDisability: boolean;
+  keyboardNavigation: boolean;
+  screenReader: boolean;
 }
 
-
 const AccessibilitySettings = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [settings, setSettings] = useState({
-        textSize: "base",
-        highContrast: false,
-        grayscale: false,
-        dyslexiaFont: false,
-        focusMode: false,
+  const [isOpen, setIsOpen] = useState(false);
+  const [settings, setSettings] = useState({
+    textSize: "base",
+    highContrast: false,
+    grayscale: false,
+    dyslexiaFont: false,
+    focusMode: false,
+  });
+  const [profileSettings, setProfileSettings] = useState<ProfileSettings>({
+    seizureSafe: false,
+    visionImpaired: false,
+    adhdFriendly: false,
+    cognitiveDisability: false,
+    keyboardNavigation: false,
+    screenReader: false,
+  });
+
+  const handleProfileToggle = (profile: keyof ProfileSettings) => {
+    setProfileSettings(prev => {
+      const newSettings = { ...prev, [profile]: !prev[profile] };
+
+      // Apply accessibility effects based on the toggled profile
+      applyProfileEffects(newSettings);
+
+      return newSettings;
     });
-    const [toggles, setToggles] = useState({
-        featureA: false,
-        featureB: true,
-        featureC: false,
+  };
+
+  const applyProfileEffects = (profiles: ProfileSettings) => {
+    // Seizure Safe Profile - reduces animations and flashing
+    if (profiles.seizureSafe) {
+      document.documentElement.classList.add("reduced-motion", "no-flash");
+    } else {
+      document.documentElement.classList.remove("reduced-motion", "no-flash");
+    }
+
+    // Vision Impaired Profile - high contrast and larger text
+    if (profiles.visionImpaired) {
+      document.documentElement.classList.add("high-contrast", "large-text");
+    } else {
+      document.documentElement.classList.remove("high-contrast", "large-text");
+    }
+
+    // ADHD Friendly Profile - focus mode and reduced distractions
+    if (profiles.adhdFriendly) {
+      document.documentElement.classList.add("focus-mode", "reduced-distractions");
+    } else {
+      document.documentElement.classList.remove("focus-mode", "reduced-distractions");
+    }
+
+    // Cognitive Disability Profile - dyslexia font and simplified layout
+    if (profiles.cognitiveDisability) {
+      document.documentElement.classList.add("dyslexia-font", "simplified-layout");
+    } else {
+      document.documentElement.classList.remove("dyslexia-font", "simplified-layout");
+    }
+
+    // Keyboard Navigation - adds keyboard navigation enhancements
+    if (profiles.keyboardNavigation) {
+      document.documentElement.classList.add("keyboard-navigation");
+    } else {
+      document.documentElement.classList.remove("keyboard-navigation");
+    }
+
+    // Screen Reader - optimizes for screen readers
+    if (profiles.screenReader) {
+      document.documentElement.classList.add("screen-reader-optimized");
+    } else {
+      document.documentElement.classList.remove("screen-reader-optimized");
+    }
+  };
+
+  const resetSettings = () => {
+    setSettings({
+      textSize: "base",
+      highContrast: false,
+      grayscale: false,
+      dyslexiaFont: false,
+      focusMode: false,
+    });
+    setProfileSettings({
+      seizureSafe: false,
+      visionImpaired: false,
+      adhdFriendly: false,
+      cognitiveDisability: false,
+      keyboardNavigation: false,
+      screenReader: false,
     });
 
+    // Remove all accessibility classes
+    document.documentElement.className = "";
+  };
 
-    const handleToggle = (key: keyof Toggles) => {
-        setToggles((prev: Toggles) => ({ ...prev, [key]: !prev[key] }));
-    };
-    const [focusedElement, setFocusedElement] = useState<string | null>(null);
+  useEffect(() => {
+    // Apply text size
+    document.documentElement.classList.remove("text-sm", "text-base", "text-lg");
+    document.documentElement.classList.add(settings.textSize);
 
-    useEffect(() => {
-        document.documentElement.classList.remove("text-sm", "text-base", "text-lg");
-        document.documentElement.classList.add(settings.textSize);
+    // Apply high contrast
+    if (settings.highContrast) {
+      document.documentElement.classList.add("contrast-high");
+    } else {
+      document.documentElement.classList.remove("contrast-high");
+    }
 
-        if (settings.highContrast) {
-            document.documentElement.classList.add("contrast-high");
-        } else {
-            document.documentElement.classList.remove("contrast-high");
-        }
+    // Apply grayscale
+    if (settings.grayscale) {
+      document.documentElement.classList.add("grayscale");
+    } else {
+      document.documentElement.classList.remove("grayscale");
+    }
 
-        if (settings.grayscale) {
-            document.documentElement.classList.add("grayscale");
-        } else {
-            document.documentElement.classList.remove("grayscale");
-        }
+    // Apply dyslexia font
+    if (settings.dyslexiaFont) {
+      document.documentElement.classList.add("dyslexia-font");
+    } else {
+      document.documentElement.classList.remove("dyslexia-font");
+    }
 
-        if (settings.dyslexiaFont) {
-            document.documentElement.classList.add("dyslexia-font");
-        } else {
-            document.documentElement.classList.remove("dyslexia-font");
-        }
+    // Apply focus mode
+    if (settings.focusMode) {
+      document.documentElement.classList.add("focus-overlay");
+    } else {
+      document.documentElement.classList.remove("focus-overlay");
+    }
+  }, [settings]);
 
-        if (settings.focusMode) {
-            document.documentElement.classList.add("focus-overlay");
-        } else {
-            document.documentElement.classList.remove("focus-overlay");
-            setFocusedElement(null);
-        }
-    }, [settings]);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, type, value } = event.target;
+    const checked = (event.target as HTMLInputElement).checked;
+    setSettings(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, type, value } = event.target;
-        const checked = (event.target as HTMLInputElement).checked;
-        setSettings((prev) => ({
-            ...prev,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-    };
+  return (
+    <div className="fixed bottom-5 right-5 z-50">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-3 rounded-full z-50 bg-white dark:bg-gray-700 shadow-lg"
+        aria-label="Accessibility settings"
+      >
+        <AccessabiltyIcon />
+      </button>
 
-    return (
-      <div className="fixed bottom-5 right-5 z-50 ">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className=" p-3 rounded-full z-50 "
-        >
-          <AccessabiltyIcon />
-        </button>
-
-        {isOpen && (
-          <div
-            className={`absolute ${
-              !isOpen ? "left-[100px]" : "right-[-21px]"
-            } bottom-20 w-[43.5rem] h-screen bg-background-white dark:bg-background-navy  dark:text-text-whitish shadow-md text-white rounded-lg border border-text-whitish dark:border-[#2E3439]`}
-          >
-            <div className="flex bg-[#e6e6e6] h-full flex-col mt-[6rem] rounded-t-lg items-center">
-              <div className="bg-[#33664d] rounded-t-lg h-[22.313rem] w-full px-3 flex flex-col items-center">
-                <div className="flex justify-start w-full mt-5">
-                  <img
-                    src={CloseCircle}
-                    alt="Close"
-                    className="cursor-pointer w-6 h-6"
-                    onClick={() => setIsOpen(!isOpen)}
-                  />
-                </div>
-                <h2 className="text-[28px] font-semibold  mb-4">
+      {isOpen && (
+        <div className="absolute right-0 bottom-20 w-[22rem] sm:w-[35rem] max-h-[80vh] bg-background-white dark:bg-background-navy dark:text-text-whitish shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 overflow-y-auto">
+          <div className="flex flex-col">
+            <div className="bg-green-700 rounded-t-lg p-4 flex flex-col items-center">
+              <div className="flex justify-between w-full items-center mb-4">
+                <img
+                  src={CloseCircle}
+                  alt="Close"
+                  className="cursor-pointer w-6 h-6"
+                  onClick={() => setIsOpen(false)}
+                />
+                <h2 className="text-xl sm:text-2xl font-semibold text-white">
                   Accessibility Adjustments
                 </h2>
-                <div className="flex justify-between mb-4 items-center w-full">
-                  <button className="w-[12.813rem] flex justify-center items-center gap-1  bg-white h-[3rem] rounded-2xl">
-                    <img src={RefreshCircle} alt="Close" className="w-6 h-6" />
-                    <span className="text-[16px] text-black">
-                      Reset Settings
-                    </span>
-                  </button>
-                  <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
-                    <img src={Reciept} alt="Close" className="w-6 h-6" />
-                    <span className="text-[16px] text-black">Statement</span>
-                  </button>
-                  <button className="w-[12.813rem] flex justify-center items-center gap-1 bg-white h-[3rem] rounded-2xl">
-                    <img src={EyeSlash} alt="Close" className="w-6 h-6" />
-                    <span className="text-[16px] text-black">
-                      Hide Interface
-                    </span>
-                  </button>
-                </div>
-                <div className="w-full mb-4">
-                  <input
-                    type="text"
-                    className="w-full h-[3rem] pl-5 rounded-2xl"
-                    placeholder="Unclear content? Search in dictionary..."
-                  />
-                </div>
-                <AccessProfielSection />
+                <div className="w-6 h-6"></div> {/* Spacer for alignment */}
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2 mb-4 w-full">
+                <button
+                  className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl"
+                  onClick={resetSettings}
+                >
+                  <img src={RefreshCircle} alt="Reset" className="w-5 h-5" />
+                  <span className="text-sm text-black">Reset</span>
+                </button>
+                <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl">
+                  <img src={Reciept} alt="Statement" className="w-5 h-5" />
+                  <span className="text-sm text-black">Statement</span>
+                </button>
+                <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl">
+                  <img src={EyeSlash} alt="Hide" className="w-5 h-5" />
+                  <span className="text-sm text-black">Hide</span>
+                </button>
+              </div>
+
+              <div className="w-full mb-4">
+                <input
+                  type="text"
+                  className="w-full h-10 pl-3 rounded-xl text-black"
+                  placeholder="Search in dictionary..."
+                />
               </div>
             </div>
 
-            {/*
-                    <label className="block mb-2">Text Size</label>
-                    <select
-                        name="textSize"
-                        value={settings.textSize}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-text-whitish dark:border-[#2E3439] rounded-md bg-background-white dark:bg-background-navy text-text-blackish dark:text-text-whitish"
-                    >
-                        <option value="text-sm">Small</option>
-                        <option value="text-base">Default</option>
-                        <option value="text-lg">Large</option>
-                    </select>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-b-lg">
+              <AccessProfielSection
+                profileSettings={profileSettings}
+                onToggle={handleProfileToggle}
+              />
 
-                    <label className="flex items-center mt-4">
-                        <input
-                            type="checkbox"
-                            name="highContrast"
-                            checked={settings.highContrast}
-                            onChange={handleChange}
-                            className="mr-2"
-                        />
-                        <span className="">High Contrast</span>
-                    </label>
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold mb-3 text-black dark:text-white">
+                  Additional Settings
+                </h3>
 
-                    <label className="flex items-center mt-4">
-                        <input
-                            type="checkbox"
-                            name="grayscale"
-                            checked={settings.grayscale}
-                            onChange={handleChange}
-                            className="mr-2"
-                        />
-                        <span className="">Grayscale Mode</span>
-                    </label>
+                <div className="mb-3">
+                  <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Text Size
+                  </label>
+                  <select
+                    name="textSize"
+                    value={settings.textSize}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-black dark:text-white"
+                  >
+                    <option value="text-sm">Small</option>
+                    <option value="text-base">Default</option>
+                    <option value="text-lg">Large</option>
+                  </select>
+                </div>
 
-                    <label className="flex items-center mt-4">
-                        <input
-                            type="checkbox"
-                            name="dyslexiaFont"
-                            checked={settings.dyslexiaFont}
-                            onChange={handleChange}
-                            className="mr-2"
-                        />
-                        <span className="">Dyslexia-Friendly Font</span>
-                    </label>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      High Contrast
+                    </span>
+                    <ToggleSwitch
+                      isOn={settings.highContrast}
+                      onToggle={() => setSettings(prev => ({
+                        ...prev,
+                        highContrast: !prev.highContrast
+                      }))}
+                    />
+                  </div>
 
-                    <label className="flex items-center mt-4">
-                        <input
-                            type="checkbox"
-                            name="focusMode"
-                            checked={settings.focusMode}
-                            onChange={handleChange}
-                            className="mr-2"
-                        />
-                        <span className="">Focus Mode</span>
-                    </label> */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Grayscale Mode
+                    </span>
+                    <ToggleSwitch
+                      isOn={settings.grayscale}
+                      onToggle={() => setSettings(prev => ({
+                        ...prev,
+                        grayscale: !prev.grayscale
+                      }))}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Dyslexia Font
+                    </span>
+                    <ToggleSwitch
+                      isOn={settings.dyslexiaFont}
+                      onToggle={() => setSettings(prev => ({
+                        ...prev,
+                        dyslexiaFont: !prev.dyslexiaFont
+                      }))}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Focus Mode
+                    </span>
+                    <ToggleSwitch
+                      isOn={settings.focusMode}
+                      onToggle={() => setSettings(prev => ({
+                        ...prev,
+                        focusMode: !prev.focusMode
+                      }))}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-
-        {/* {settings.focusMode && focusedElement && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-            )} */}
-      </div>
-    );
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default AccessibilitySettings;

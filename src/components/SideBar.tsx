@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/Assets/AromaLogo.png';
 import user from '../assets/images/Assets/user.png';
 import { ReactNode, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/store';
+import { signOut } from '@/redux/authSlice';
+
 
 /**
  * @component SideBar
@@ -35,6 +39,8 @@ interface SideBarProps {
 }
 const SideBar = ({ isMenuOpen, links, extractedString, cart, setIsMenuOpen }: SideBarProps): JSX.Element => {
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const { currentUser } = useSelector((state: RootState) => state.authAroma);
+    const dispatch: AppDispatch = useDispatch()
     return (
         <aside className={`fixed top-0 left-0 min-h-screen bg-white dark:bg-background-navygrey text-black transition-transform duration-300 z-0
             ${isMenuOpen ? "translate-x-0 w-3/4 sm:w-64 z-50" : "-translate-x-full w-3/4 sm:w-64 z-0"} sm:translate-x-0 sm:block`}>
@@ -74,8 +80,8 @@ const SideBar = ({ isMenuOpen, links, extractedString, cart, setIsMenuOpen }: Si
                             <img src={user} className="flex-shrink-0 w-8 h-8 rounded-full" alt="Avatar" />
                         </div>
                         <div className='flex flex-col justify-center'>
-                            <span className='text-[17px] text-[#141B22] dark:text-[white]'>Mazen Afifi</span>
-                            <span className='text-[11px] text-[#999999]'>mazenafifi1999@gmail.com</span>
+                            <span className='text-[17px] text-[#141B22] dark:text-[white]'>{currentUser?.name}</span>
+                            <span className='text-[11px] text-[#999999]'>{currentUser?.email}</span>
                         </div>
 
                         {/* Dropdown Menu */}
@@ -93,6 +99,7 @@ const SideBar = ({ isMenuOpen, links, extractedString, cart, setIsMenuOpen }: Si
                                 </Link>
                                 <button
                                     onClick={() => {
+                                        dispatch(signOut());
                                         setIsUserDropdownOpen(false);
                                         setIsMenuOpen(false);
                                     }}
