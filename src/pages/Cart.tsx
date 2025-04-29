@@ -71,9 +71,6 @@ const Cart = (): JSX.Element => {
   const total: number = subtotal + taxAndFees - discount;
 
 
-  useEffect(() => {
-    console.log(cartProducts)
-  })
 
   return (
     <section className="bg-background-grey dark:bg-background-navy min-h-screen">
@@ -110,8 +107,8 @@ const Cart = (): JSX.Element => {
                                 dispatch(
                                   removeProduct({
                                     id: product.id,
-                                    size: product.size,
-                                    addOn: product.addOn,
+                                    size: product.size || "", // Fallback to empty string
+                                    addOn: product.addOn || "", // Fallback to empty string
                                   })
                                 )
                               }

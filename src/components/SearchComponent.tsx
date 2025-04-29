@@ -34,7 +34,7 @@ const SearchComponent = () => {
                                 {...field}
                                 type="text"
                                 placeholder="Menu"
-                                className="w-full h-[3rem] md:h-[3.625rem] pl-10 bg-background-gray dark:bg-background-navy rounded-full outline-none text-text-whitish placeholder:text-text-whitish font-semibold text-sm md:text-base"
+                                className="w-full h-[3rem] md:h-[3.625rem] pl-10 bg-background-gray dark:bg-background-navy rounded-full outline-none text-black placeholder:text-text-whitish font-semibold text-sm md:text-base"
                             />
                         )}
                     />
