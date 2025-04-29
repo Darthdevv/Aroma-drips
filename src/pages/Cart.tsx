@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EmptyCart from "@/assets/images/EmptyCart.png";
 import DarkEmptyCart from "@/assets/images/Dark-EmptyCart.png";
 import OrderSuccess from "@/assets/images/OrderSuccess.png";
