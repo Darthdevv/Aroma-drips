@@ -32,10 +32,11 @@ const ProductDetails = () => {
     );
     const { control, watch, handleSubmit, reset } = useForm({
         defaultValues: {
-            size: currentSelection?.size || "",
-            type: currentSelection?.addOn || "",
+            size: "",
+            type: "",
         }
     });
+    console.log(currentSelection);
 
     const dispatch = useDispatch();
     const selectedSize = watch("size");
@@ -85,15 +86,19 @@ const ProductDetails = () => {
             addOn: currentSelection.addOn || "",
             quantity: currentSelection.quantity || 1,
             category: Product.category,
-            // Remove the Date.now() from the uniqueId
             uniqueId: `${Product.id}-${currentSelection.size}-${currentSelection.addOn || 'none'}`
         };
 
         dispatch(addToCart(productToAdd));
         dispatch(clearSelection(Product.id));
         setTotalPrice(Product.price);
-        reset({ size: "", type: "" });
+        reset({
+            size: "",
+            type: ""
+        });
     };
+    const type = watch('type')
+    console.log(type);
 
     if (!Product) {
         return (
@@ -194,7 +199,7 @@ const ProductDetails = () => {
                                                 <motion.label
                                                     whileHover={{ scale: 1.02 }}
                                                     whileTap={{ scale: 0.98 }}
-                                                    className={`cursor-pointer px-2 md:px-3 py-2 rounded-lg flex justify-between items-center h-auto md:h-[3.448rem] transition-all ${selectedOption === option.name ? "border border-orange-500" : "hover:bg-gray-100 dark:hover:bg-gray-700"
+                                                    className={`cursor-pointer px-2 md:px-3 py-2 rounded-lg flex justify-between items-center h-auto md:h-[3.448rem] transition-all ${field.value === option.name ? "border border-orange-500" : "hover:bg-gray-100 dark:hover:bg-gray-700"
                                                         }`}
                                                     onClick={() => field.onChange(option.name)}
                                                 >
@@ -212,9 +217,10 @@ const ProductDetails = () => {
                                                     <div className="flex gap-2 md:gap-3 items-center">
                                                         <span className="text-[12px] md:text-[14px]">+{option.price} LE</span>
                                                         <input
-                                                            {...field}
                                                             type="radio"
                                                             value={option.name}
+                                                            checked={field.value === option.name}
+                                                            onChange={() => field.onChange(option.name)}
                                                             className="w-4 h-4"
                                                         />
                                                     </div>
@@ -236,26 +242,29 @@ const ProductDetails = () => {
                                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10 w-full md:w-auto">
                                     {currentSelection && (
                                         <div className="flex items-center gap-2 md:gap-4 w-full justify-between md:w-auto">
-                                            <span
+                                            <button
+                                                type="button"
                                                 className="w-[2.5rem] md:w-[2.821rem] cursor-pointer h-[2.5rem] md:h-[2.821rem] border border-orange-500 rounded-full flex items-center justify-center text-orange-500 font-bold"
                                                 onClick={() => dispatch(decreaseSelectionQuantity(Product.id))}
                                             >
                                                 <MinusIcon className="w-4 h-4" />
-                                            </span>
+                                            </button>
                                             <span className="text-[16px] md:text-[18px] font-bold">
                                                 {String(currentSelection.quantity || 1).padStart(2, '0')}
                                             </span>
-                                            <span
+                                            <button
+                                                type="button"
                                                 className="w-[2.5rem] md:w-[2.821rem] cursor-pointer h-[2.5rem] md:h-[2.821rem] bg-orange-500 text-white rounded-full flex items-center justify-center font-bold"
                                                 onClick={() => dispatch(increaseSelectionQuantity(Product.id))}
                                             >
                                                 <PlusIcon className="w-4 h-4" />
-                                            </span>
+                                            </button>
                                         </div>
                                     )}
                                     <button
                                         type="submit"
-                                        className="w-full md:w-[9.125rem] bg-[#ff8b43] h-[2.5rem] md:h-[3.125rem] rounded-full text-[14px] md:text-[17px] text-white hover:bg-[#e67e34] transition-all"
+                                        disabled={!currentSelection}
+                                        className={`${currentSelection ? "" : " opacity-45 cursor-not-allowed"} w-full md:w-[9.125rem] bg-[#ff8b43] h-[2.5rem] md:h-[3.125rem] rounded-full text-[14px] md:text-[17px] text-white hover:bg-[#e67e34] transition-all`}
                                     >
                                         Add to cart
                                     </button>

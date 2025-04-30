@@ -61,9 +61,10 @@ const cartSlice = createSlice({
          */
         addToCart: (state, action: PayloadAction<Product>) => {
             const existingProduct = state.cart.find(
-                item => item.id === action.payload.id &&
+                item =>
+                    item.id === action.payload.id &&
                     item.size === action.payload.size &&
-                    item.addOn === action.payload.addOn
+                    item.addOn === (action.payload.addOn || "")
             );
 
             if (existingProduct) {
@@ -71,23 +72,32 @@ const cartSlice = createSlice({
             } else {
                 state.cart.push({
                     ...action.payload,
-                    quantity: action.payload.quantity || 1
+                    addOn: action.payload.addOn || "", // Ensure addOn is always a string
+                    quantity: action.payload.quantity || 1,
                 });
             }
-            toast.success("Added To cart successfully")
+            toast.success("Added to cart successfully");
         },
         /**
          * @function removeProduct
          * @description Removes a product from the cart by its ID.
          */
         // In your cartSlice.ts
-        removeProduct: (state, action: PayloadAction<{ id: number, size: string, addOn: string }>) => {
-            state.cart = state.cart.filter(item =>
-                !(item.id === action.payload.id &&
-                    item.size === action.payload.size &&
-                    item.addOn === action.payload.addOn)
+        removeProduct: (state, action: PayloadAction<{ id: number; size: string; addOn: string }>) => {
+            const initialLength = state.cart.length;
+            state.cart = state.cart.filter(
+                item =>
+                    !(
+                        item.id === action.payload.id &&
+                        item.size === action.payload.size &&
+                        item.addOn === (action.payload.addOn || "")
+                    )
             );
-            toast.success('Removed from cart successfully')
+            if (state.cart.length < initialLength) {
+                toast.success("Removed from cart successfully");
+            } else {
+                toast.error("Failed to remove product from cart");
+            }
         },
 
         /**

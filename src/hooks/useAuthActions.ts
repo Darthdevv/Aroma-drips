@@ -28,7 +28,6 @@ export const useAuthActions = () => {
             };
 
             dispatch(signUpSuccess(newUser));
-            // dispatch(signInSuccess(newUser));
             navigate('/signin')
         } catch (error) {
             dispatch(signUpFailure(error instanceof Error ? error.message : 'Signup failed.'));
