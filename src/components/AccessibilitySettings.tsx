@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { ThemeContext } from "@/context/themeContext";
 import AccessabiltyIcon from "@/assets/icons/AccessabiltyIcon";
@@ -32,7 +32,33 @@ const AccessibilitySettings = () => {
   } = context;
 
   const [isOpen, setIsOpen] = useState(false);
+  // ===== Screen Reader Speech =====
+  useEffect(() => {
+    if (!settings.screenReader) return;
 
+    const speak = (text: string) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.cancel(); // Stop previous speech
+      window.speechSynthesis.speak(utterance);
+    };
+
+    const handleFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      const textToSpeak =
+        target.getAttribute('aria-label') ||
+        target.textContent?.trim() ||
+        target.getAttribute('placeholder');
+
+      if (textToSpeak) speak(textToSpeak);
+    };
+
+    document.addEventListener('focus', handleFocus, true);
+
+    return () => {
+      document.removeEventListener('focus', handleFocus, true);
+      window.speechSynthesis.cancel(); // Clean up
+    };
+  }, [settings.screenReader]);
   return (
     <div className="fixed bottom-5 right-5 z-50">
       <button

@@ -26,7 +26,7 @@ interface Settings {
   lineHeight: number;
   readingGuide: boolean;
 }
-
+ 
 type Theme = "light" | "dark" | "system";
 
 type ThemeContextType = {
