@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ShareIcon from "@/assets/icons/ShareIcon";
-import { coffeeItems, iceCoffeeItems } from "@/constants/Menu-options";
+import { iceCoffeeItems } from "@/constants/Menu-options";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useContext, useEffect, useRef } from "react";

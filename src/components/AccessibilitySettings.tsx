@@ -5,7 +5,7 @@ import AccessabiltyIcon from "@/assets/icons/AccessabiltyIcon";
 import ResetSettings from "@/assets/icons/ResetSettings";
 import CloseCircle from "@/assets/images/close-circle.png"
 import FlashCircle from "@/assets/icons/FlashCircle";
-import { Eclipse, EyeIcon, LassoSelect, MousePointer, PaintRoller, Voicemail, Ruler, CircleArrowLeft, CircleArrowRight, PencilRuler, Ratio, ZoomIn, Type, TableRowsSplit } from "lucide-react";
+import { Eclipse, EyeIcon, LassoSelect, MousePointer, PaintRoller, Voicemail, Ruler, CircleArrowLeft, CircleArrowRight, PencilRuler, Ratio, ZoomIn, TableRowsSplit } from "lucide-react";
 import ADHDFriendly from "@/assets/icons/ADHDFriendly";
 import KeyboardNavigation from "@/assets/icons/KeyboardNavigation";
 
@@ -27,8 +27,7 @@ const AccessibilitySettings = () => {
     resetSettings,
     setSettings,
     toggleBigWhiteCursor,
-    toggleBigBlackCursor,
-    toggleReadingGuide
+    toggleBigBlackCursor
   } = context;
 
   const [isOpen, setIsOpen] = useState(false);
