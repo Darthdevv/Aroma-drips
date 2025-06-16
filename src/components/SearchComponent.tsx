@@ -33,7 +33,9 @@ const SearchComponent = () => {
                             <input
                                 {...field}
                                 type="text"
-                                placeholder="Menu"
+                                aria-details='search-input'
+                                aria-label='this is a search input'
+                                placeholder="search input"
                                 className="w-full h-[3rem] md:h-[3.625rem] pl-10 bg-background-gray dark:bg-background-navy rounded-full outline-none text-black placeholder:text-text-whitish font-semibold text-sm md:text-base"
                             />
                         )}

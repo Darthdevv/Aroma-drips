@@ -13,7 +13,7 @@ const ToggleSwitch = ({ isOn, onToggle }: ToggleProps) => {
                 }`}
         >
             <div
-                className={`text-xs font-bold transition-all duration-300 ${isOn ? "text-black dark:text-white ml-auto" : "text-white dark:text-black"
+                className={`text-xs p-2 font-bold transition-all duration-300 ${isOn ? "text-black dark:text-white ml-auto" : "text-white dark:text-black"
                     }`}
             >
                 {isOn ? "ON" : "OFF"}

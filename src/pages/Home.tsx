@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ads1 from '@/assets/images/ads1.png';
 import ads2 from '@/assets/images/ads2.png';
@@ -8,6 +8,7 @@ import SearchComponent from '@/components/SearchComponent';
 import Joyride, { Step } from 'react-joyride';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { ThemeContext } from '@/context/themeContext';
 // import SearchComponent from '@/components/SearchComponent';
 
 /**
@@ -16,6 +17,14 @@ import { RootState } from '@/store';
  * @returns {JSX.Element} The rendered Home component.
  */
 const Home = (): JSX.Element => {
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error(
+            "AccessibilitySettings must be used within a ThemeProvider"
+        );
+    }
+
+    const { settings } = context;
     const [activeButton, setActiveButton] = useState<string>("Drink Menu");
     const { users } = useSelector((state: RootState) => state.authAroma);
     console.log(users);
@@ -112,12 +121,19 @@ const Home = (): JSX.Element => {
                             <motion.div
                                 ref={el => drinkRefs.current[index] = el}
                                 key={drink.id}
+                                tabIndex={settings.keyboardNavigation ? 0 : -1} // Make focusable only when keyboardNavigation is on
                                 className="bg-background-white dark:bg-background-navygrey text-text-blackish dark:text-text-whitish flex flex-col cursor-pointer w-[10rem] md:w-[19rem] justify-center h-[12.313rem] items-center md:h-[20rem] shadow-lg rounded-lg overflow-hidden"
                                 onClick={() => navigate(`/${drink.value}`)}
+                                onKeyDown={(e) => {
+                                    if (settings.keyboardNavigation && (e.key === 'Enter' || e.key === ' ')) {
+                                        e.preventDefault();
+                                        navigate(`/${drink.value}`);
+                                    }
+                                }}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: drink.id * 0.2 }}
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: settings.keyboardNavigation ? 1 : 1.05 }} // Only scale on hover if not keyboard navigating
                             >
                                 <div className='bg-background-gray dark:bg-[#2E3439] rounded-lg  isolate'>
                                     <img

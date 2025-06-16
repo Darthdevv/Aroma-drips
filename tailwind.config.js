@@ -8,6 +8,15 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        'marquee': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        }
+      },
+      animation: {
+        'marquee': 'marquee 20s linear infinite',
+      },
       fontFamily: {
         dyslexia: ["OpenDyslexic", "Arial", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
@@ -28,22 +37,22 @@ export default {
       },
       colors: {
         background: {
-          white: "#FFFFFF;",
-          gray: "#F8F8F8;",
-          navy: "#0B0F14",
-          navygrey: "#141B22",
+          white: "var(--background-white, #FFFFFF)",
+          gray: "var(--background-gray, #F8F8F8)",
+          navy: "var(--background-navy, #0B0F14)",
+          navygrey: "var(--background-navygrey, #141B22)",
         },
         accent: {
-          orange: "#FF8B43;",
-          darkorange: "#FE724C",
-          yellow: "#fff5cc",
-          brown: "#A2845E",
-          green: "#244937;",
+          orange: "var(--accent-orange, #FF8B43)",
+          darkorange: "var(--accent-darkorange, #FE724C)",
+          yellow: "var(--accent-yellow, #fff5cc)",
+          brown: "var(--accent-brown, #A2845E)",
+          green: "var(--accent-green, #244937)",
         },
         text: {
-          whitish: "#E6E6E6",
-          blackish: "#141B22",
-          greyish: "#999999",
+          whitish: "var(--text-whitish, #E6E6E6)",
+          blackish: "var(--text-blackish, #141B22)",
+          greyish: "var(--text-greyish, #999999)",
         },
       },
     },
@@ -57,5 +66,14 @@ export default {
     "text-sm",
     "text-base",
     "text-lg",
+    "reduced-motion",
+    "no-flash",
+    "safe-colors",
+    "no-animations",
+    "seizure-safe",
+    "keyboard-navigation",
+    "keyboard-focusable",
+    "screen-reader-optimized",
+    "sr-only"
   ],
 };

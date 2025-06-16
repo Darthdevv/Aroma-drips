@@ -8,6 +8,7 @@
   }
 }
 
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -24,10 +25,6 @@ body {
   filter: grayscale(100%);
 }
 
-/* Dyslexia-Friendly Font */
-.dyslexia-font * {
-  font-family: "OpenDyslexic", Arial, sans-serif !important;
-}
 
 /* Increase focus visibility */
 *:focus {
@@ -62,13 +59,204 @@ body {
 
 @keyframes marquee {
   0% {
-      transform: translateX(100%);
+    transform: translateX(100%);
   }
+
   100% {
-      transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 }
 
 .animate-marquee {
   animation: marquee 20s linear infinite;
+}
+
+
+/*
+  Screen Reader Optimizations
+*/
+.screen-reader-optimized {
+
+  /* Ensure all decorative images are hidden from screen readers */
+  img:not([alt]) {
+    visibility: hidden !important;
+  }
+
+  /* Force semantic structure */
+  * {
+    background-image: none !important;
+  }
+
+  /* Remove animations */
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Add these to your global CSS */
+.seizure-safe {
+  /* Ensures no flashing animations */
+  --tw-brightness: 1 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+.safe-colors {
+  /* Reduces color palette to safer, more muted colors */
+  --background-white: #ffffff;
+  --background-gray: #f0f0f0;
+  --background-navy: #1a1a1a;
+  --background-navygrey: #2a2a2a;
+  --accent-orange: #cc7a3d;
+  --accent-darkorange: #cc5a3d;
+  --accent-yellow: #e6e6cc;
+  --accent-brown: #8a6d4e;
+  --accent-green: #2a4a3a;
+  --text-whitish: #e0e0e0;
+  --text-blackish: #2a2a2a;
+  --text-greyish: #777777;
+}
+
+.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Override risky color combinations */
+.safe-colors [style*="red"],
+.safe-colors [style*="blue"],
+.safe-colors [style*="green"] {
+  filter: grayscale(50%) !important;
+  /* Desaturate potentially risky colors */
+}
+
+
+/* Keyboard navigation styles */
+.keyboard-navigation {
+  --focus-ring-color: #3b82f6;
+  /* Blue 500 */
+  --focus-ring-width: 3px;
+}
+
+.keyboard-navigation .keyboard-focusable:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px white, 0 0 0 5px var(--focus-ring-color);
+}
+
+.keyboard-navigation a:focus,
+.keyboard-navigation button:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation select:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation [tabindex="0"]:focus {
+  position: relative;
+  z-index: 9999;
+}
+
+/* Remove default focus styles when not in keyboard navigation mode */
+:not(.keyboard-navigation) *:focus {
+  outline: none;
+}
+
+
+.screen-reader-optimized {
+  /* Ensure good contrast */
+  --text-color: #000;
+  --background-color: #fff;
+}
+
+/* Hide decorative elements from screen readers */
+.screen-reader-optimized .decorative {
+  display: none;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles for screen readers */
+.screen-reader-optimized *:focus {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px;
+}
+
+
+.reading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Dark overlay for everything except the reading line */
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.35) var(--mask-top, 0px),
+      transparent var(--mask-top, 0px),
+      transparent calc(var(--mask-top, 0px) + var(--mask-height, 80px)),
+      rgba(0, 0, 0, 0.35) calc(var(--mask-top, 0px) + var(--mask-height, 80px)),
+      rgba(0, 0, 0, 0.35) 100%);
+  z-index: 9998;
+  pointer-events: none;
+  display: none;
+}
+
+.reading-mask-line {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  /* Adjust height as needed */
+  background-color: transparent;
+  pointer-events: none;
+  display: none;
+  z-index: 9999;
+}
+
+/* Big white cursor (larger version of default pointer) */
+.big-white-cursor, 
+.big-white-cursor * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 32 32"><path fill="white" stroke="black" stroke-width="1.5" d="M2 2L26 16L14 18L20 26L16 30L10 22L2 26Z"/></svg>') 2 2, pointer;
+}
+
+/* Big black cursor (larger version of default pointer) */
+.big-black-cursor, 
+.big-black-cursor * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 32 32"><path fill="black" stroke="white" stroke-width="1.5" d="M2 2L26 16L14 18L20 26L16 30L10 22L2 26Z"/></svg>') 2 2, pointer;
+}
+
+.big-white-cursor *,
+.big-black-cursor * {
+  cursor: inherit !important;
+}
+
+:root {
+  --letter-spacing: 0px;
+  --line-height: 1.5;
+}
+
+body {
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
+}
+
+
+.reading-guide {
+  position: fixed;
+  height: 10px; /* Small height */
+  width: 25%; /* 40% width */
+  background-color: orange; /* Orange background */
+  border: 1px solid black; /* Black border */
+  z-index: 9998;
+  pointer-events: none;
+  display: none;
+  transform: translateX(-50%); /* Center the guide on the cursor */
+  border-radius: 2px; /* Slightly rounded corners */
 }
