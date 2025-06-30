@@ -80,7 +80,7 @@ const Home = (): JSX.Element => {
             <SearchComponent />
             {/* Category Buttons */}
             <div className='flex flex-col pl-5 pt-5'>
-                <div className="flex items-center gap-6">
+                <div className="flex flex-wrap justify-center md:justify-start gap-6">
                     {["Drink Menu", "Food", "Dessert", "Sandwich"].map((label, index) => (
                         <motion.button
                             key={label}
