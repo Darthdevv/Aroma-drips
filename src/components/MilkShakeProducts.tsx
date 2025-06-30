@@ -76,7 +76,7 @@ const MilkShakeProducts = (): JSX.Element => {
                 text="Drink menu / Milk Shake"
             />
             {/* Product Grid */}
-            <main className="flex flex-wrap justify-start gap-16 px-4 md:px-10 lg:px-20">
+            <main className="flex flex-wrap justify-center md:justify-start gap-16 md:px-10 lg:px-20">
                 {MilkshakesItems.map((item, index) => (
                     <motion.div
                         role="button"
