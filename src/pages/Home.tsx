@@ -116,7 +116,7 @@ const Home = (): JSX.Element => {
                 {/* Drink Menu */}
                 <div className="mt-10 flex flex-col">
                     <h1 className="text-[24px] font-bold text-text-blackish dark:text-text-whitish">Drink Menu</h1>
-                    <div className="flex flex-wrap justify-center md:justify-start gap-16 md:px-10 lg:px-20">
+                    <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-6">
                         {Drinks.map((drink, index) => (
                             <motion.div
                                 ref={el => drinkRefs.current[index] = el}
