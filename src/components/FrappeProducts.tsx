@@ -91,7 +91,7 @@ const FrappeProducts = (): JSX.Element => {
                 text="Drink menu / Frappe"
             />
             {/* Frappe Products List */}
-            <main className="flex flex-wrap justify-start gap-16 px-4 md:px-10 lg:px-20">
+            <main className="flex flex-wrap justify-center md:justify-start gap-16 md:px-10 lg:px-20">
                 {FrappeItems.map((item: FrappeProduct, index: number) => (
                     <motion.div
                         role="button"
