@@ -76,7 +76,7 @@ const MojitoProducts = (): JSX.Element => {
                 text="Drink menu / Mojito"
             />
             {/* Product Grid */}
-            <main className="flex flex-wrap justify-start gap-16 px-4 md:px-10 lg:px-20">
+            <main className="flex flex-wrap justify-center md:justify-start gap-16 md:px-10 lg:px-20">
                 {MojitoItems.map((item, index) => (
                     <motion.div
                         key={index}
